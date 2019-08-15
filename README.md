@@ -1,19 +1,7 @@
 
-项目涉及到的大概知识：  
-* `vue 3.x`最新脚手架使用
-* `webstorm`使用小技巧
-* `webpack`配置优化
-* `vue`通用组件封装
-* `vw`移动端适配及踩坑实践
-* `jsDOC`来为工具函数编写注释  
-* `mockjs`进行数据模拟  
-* 打包部署到`github page`  
 
 ## 快速启动
 通过如下命令我们可以快速将项目运行，打包和发布：  
-```npm
-git clone git@github.com:wangkaiwd/xiaomi-shop.git
-cd xiaomi-shop
 # 启动项目
 npm run start
 # 打包项目
