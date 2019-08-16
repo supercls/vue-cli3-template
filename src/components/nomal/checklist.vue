@@ -13,10 +13,12 @@
             name='checkboxinput'
             :disabled="option.disabled"
             :value="option.value || option">
-          <span class="mint-checkbox-core" @click="currens(option,index)"></span>
+          <span class="mint-checkbox-core" ></span>
         </span>
         <span class="mint-checkbox-label" v-text="option.label || option"></span>
+        <input type="text" @change="changeInput(option.name,option.filed)" v-model="option.filed" v-if="option.other && currentValue.indexOf(option.value)>-1" class="otherInput">
       </label>
+      
     </div>
   </div>
 </template>
@@ -31,23 +33,21 @@ export default {
       type: Array,
       required: true
     },
-    value: Array
+    value: Array,
+    keyValue:{     //传数据库字段，自动转化为name
+        type:[String,Number,Array,Object,Boolean]
+    },
   },
 
   data() {
     return {
-      currentValue: this.value
+      currentValue: this.value,
     };
   },
   methods:{
-    currens:function(val,index){
-      var chaIndex=this.currentValue.indexOf(val.value)
-      if(chaIndex>=0){
-        this.currentValue.splice(chaIndex,1)
-      }
-      else{
-        this.currentValue.push(val.value)
-      }
+    changeInput(name,val){   //针对特殊处理进行传值赋值
+      let data=name.split('.')
+      this.$parent[data[0]][data[1]]=val
     }
   },
   computed: {
@@ -56,10 +56,12 @@ export default {
     }
   },
   mounted:function(){
+      console.log(this.options)
   },
   watch: {
     value:{
         handler(val){
+           console.log(val)
             this.currentValue = val;
         },
         immediate:true
@@ -161,4 +163,5 @@ export default {
     -webkit-overflow-scrolling: touch;
     padding:20px 0px;
   }
+  .otherInput{height: 50px;line-height: 50px;margin-left: 30px;font-size: 28px;border-bottom:1px solid #E4E4E4;padding-left: 10px;}
 </style>
