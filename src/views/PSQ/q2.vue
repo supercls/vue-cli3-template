@@ -303,7 +303,7 @@
                                     <mt-radio
                                         title=""
                                         v-model="dataList.g"
-                                        :options="[{ label: '都没做过',value: '1'},{ label: '做过婚前检查 ',value: '2'},{ label: '做过孕前检查',value: '3'},{ label: '都做过',value: '3'}]">
+                                        :options="[{ label: '都没做过',value: '1'},{ label: '做过婚前检查 ',value: '2'},{ label: '做过孕前检查',value: '3'},{ label: '都做过',value: '4'}]">
                                     </mt-radio>
                                 </div>
                             </div>
@@ -328,7 +328,7 @@
                                     <mt-radio
                                         title=""
                                         v-model="dataList.g"
-                                        :options="[{ label: '未建立',value: '1'},{ label: '孕3月前 ',value: '2'},{ label: '孕4-7月',value: '3'},{ label: '孕7个月后',value: '3'}]">
+                                        :options="[{ label: '未建立',value: '1'},{ label: '孕3月前 ',value: '2'},{ label: '孕4-7月',value: '3'},{ label: '孕7个月后',value: '4'}]">
                                     </mt-radio>
                                 </div>
                             </div>
@@ -371,6 +371,132 @@
                                         :disabled="true"  label="记不清" >
                                     </drage-input>
                                 </div>
+                                <div class="form-inp">
+                                     <p style="margin:15px 0px">服用方法</p>
+                                    <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
+                                        placeholder="请选择"
+                                        typeItem="checkRight"
+                                        :disabled="true"  label="每天服用" >
+                                    </drage-input>
+                                    <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
+                                        placeholder="请选择"
+                                        typeItem="checkRight"
+                                        :disabled="true"  label="间断服用" >
+                                    </drage-input>
+                                    <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
+                                        placeholder="请选择"
+                                        typeItem="checkRight"
+                                        :disabled="true"  label="记不清" >
+                                    </drage-input>
+                                </div>
+                                <div class="form-inp">
+                                    <p style="margin:15px 0px">每天服用量</p>
+                                    <drage-input v-model="dataList.cMqxm" label="______mg"  type="text" >
+                                    </drage-input>
+                                    <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
+                                        placeholder="请选择"
+                                        typeItem="checkRight"
+                                        :disabled="true"  label="记不清" >
+                                    </drage-input>
+                                </div>
+                            </div>
+                            <div class="form-list">
+                                <p class="form-p1">28.2服用叶酸</span></p>
+                                <p>开始服用孕周</p>
+                                <div class="form-inp">
+                                    <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
+                                        placeholder="请选择"
+                                        typeItem="checkRight"
+                                        :disabled="true"  label="孕前" >
+                                    </drage-input>
+                                    <drage-input v-model="dataList.iFmyz" :keyValue.sync="dataList.iFmyz"
+                                        placeholder=""
+                                        :slotContent="slotContent9" typeItem="pickeMore"  
+                                        :disabled="true" unit="周"  label="孕——周" >
+                                    </drage-input>
+                                    <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
+                                        placeholder="请选择"
+                                        typeItem="checkRight"
+                                        :disabled="true"  label="未服用" >
+                                    </drage-input>
+                                </div>
+                                <div class="form-inp">
+                                    <p style="margin:15px 0px">结束时间</p>
+                                    <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
+                                        placeholder="请选择"
+                                        typeItem="checkRight"
+                                        :disabled="true"  label="至今仍服用" >
+                                    </drage-input>
+                                    <drage-input v-model="dataList.iFmyz" :keyValue.sync="dataList.iFmyz"
+                                        placeholder=""
+                                        :slotContent="slotContent9" typeItem="pickeMore"  
+                                        :disabled="true" unit="周"  label="孕____周停止服用" >
+                                    </drage-input>
+                                    <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
+                                        placeholder="请选择"
+                                        typeItem="checkRight"
+                                        :disabled="true"  label="记不清" >
+                                    </drage-input>
+                                </div>
+                                <div class="form-inp">
+                                     <p style="margin:15px 0px">服用方法</p>
+                                    <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
+                                        placeholder="请选择"
+                                        typeItem="checkRight"
+                                        :disabled="true"  label="每天服用" >
+                                    </drage-input>
+                                    <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
+                                        placeholder="请选择"
+                                        typeItem="checkRight"
+                                        :disabled="true"  label="间断服用" >
+                                    </drage-input>
+                                    <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
+                                        placeholder="请选择"
+                                        typeItem="checkRight"
+                                        :disabled="true"  label="记不清" >
+                                    </drage-input>
+                                </div>
+                                <div class="form-inp">
+                                    <p style="margin:15px 0px">每天服用量</p>
+                                    <drage-input v-model="dataList.cMqxm" label="______mg"  type="text" >
+                                    </drage-input>
+                                    <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
+                                        placeholder="请选择"
+                                        typeItem="checkRight"
+                                        :disabled="true"  label="记不清" >
+                                    </drage-input>
+                                </div>
+                            </div>
+                            <div class="form-list">
+                                <p class="form-p1">29.您孕期计划的分娩方式是什么？</p>
+                                <div class="check-list">
+                                    <mt-radio
+                                        title=""
+                                        v-model="dataList.g"
+                                        :options="[{ label: '自然分娩',value: '1'},{ label: '剖宫产 ',value: '2'},{ label: '没想过',value: '3'},{ label: '不确定',value: '4'}]">
+                                    </mt-radio>
+                                </div>
+                            </div>
+                            <div class="form-list">
+                                <p class="form-p1">30.产后您打算给孩子喂母乳吗？</p>
+                                <div class="check-list">
+                                    <mt-radio
+                                        title=""
+                                        v-model="dataList.g"
+                                        :options="[{ label: '喂',value: '1'},{ label: '不喂 ',value: '2'},{ label: '不知道/看情况',value: '3'}]">
+                                    </mt-radio>
+                                </div>
+                            </div>
+                            <div class="form-list">
+                                <p class="form-p1">31.您是否有以下孕产期并发症/合并症？（可多选）</p>
+                                <div class="check-list">
+                                     <super-checklist
+                                        title=""
+                                        v-model="dataList.g"
+                                        :options="[{ label: '无',value: '1'},{ label: '妊娠期高血压',value: '2'},{ label: '妊娠期糖尿病',value: '3'},{ label: '妊娠期贫血',value: '4',other:true,filed:dataList.asd,name:'dataList.asd',placeholder:'最近一次血色素g/L'},{ label: '妊娠合并甲状腺疾病',value: '5'},{ label: '妊娠合并肝脏疾病',value: '6'}]">
+                                    </super-checklist>
+                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -394,34 +520,39 @@
                 <div class="center">
                     <div class="zf-wrapper-mom">
                         <div class="form-component">
-                            <h3>三、《母子健康APP》宣传应用情况</h3>
+                            <h3>三、孕产期知识需求</h3>
                             <div class="form-list">
-                                <p class="form-p1">13.本机构是否已经开始推广使用《母子健康APP》?</p>
-                                <mt-radio
-                                    title=""
-                                    v-model="dataList.c"
-                                    :options="[{ label: '使用',value: '1'},{ label: '未使用',value: '2'}]">
-                                </mt-radio>
+                                <p class="form-p1">32.请选出三种您最需要的孕产期保健知识（可多选）</p>
+                                <div class="check-list">
+                                    <super-checklist
+                                        title=""
+                                        v-model="dataList.g"
+                                        :max="3"
+                                        :options="[{ label: '如何科学备孕',value: '1'},{ label: '孕产期生理知识',value: '2'},{ label: '孕期保健和自我监护',value: '3'},{ label: '孕妇营养和运动',value: '4'},{ label: '孕期心理',value: '5'},{ label: '孕期疾病防治',value: '6'},{ label: '分娩相关知识',value: '7'},{ label: '母乳喂养和乳房保健',value: '8'}]">
+                                    </super-checklist>
+                                </div>
                             </div>
                             <div class="form-list">
-                                <p class="form-p1">14.该项目宣传推广是否具体到某个部门负责？</p>
+                                <p class="form-p1">33.请选出三种您最常采用的孕产期保健知识获取渠道（可多选）</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-checklist
                                         title=""
-                                        v-model="dataList.c"
-                                        :options="[{ label: '无',value: '1'},{ label: '医院宣传科',value: '2'},{ label: '儿童保健科',value: '3'},{ label: '信息科',value: '4'},{ label: '健康教育科',value: '5'},{ label: '保健科',value: '6'}]">
-                                    </mt-radio>
+                                        v-model="dataList.g"
+                                        :max="3"
+                                        :options="[{ label: '如何科学备孕',value: '1'},{ label: '孕产期生理知识',value: '2'},{ label: '孕期保健和自我监护',value: '3'},{ label: '孕妇营养和运动',value: '4'},{ label: '孕期心理',value: '5'},{ label: '孕期疾病防治',value: '6'},{ label: '分娩相关知识',value: '7'},{ label: '母乳喂养和乳房保健',value: '8'}]">
+                                    </super-checklist>
                                     <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
-                                <p class="form-p1">15.没有推广使用/或推广不顺畅的原因是：</p>
+                                <p class="form-p1">34.请选出您最喜欢的三种网络健康教育知识呈现形式（可多选）</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-checklist
                                         title=""
-                                        v-model="dataList.c"
-                                        :options="[{ label: '领导不认可',value: '1'},{ label: '机构内wifi信息不通畅',value: '2'},{ label: '硬件设备不具备',value: '3'},{ label: '政策不允许',value: '4'},{ label: '本机构有类似APP',value: '5'},{ label: '担心信息安全',value: '6'},{ label: '服务对象认可度低',value: '7'},{ label: '医务人员认可度低',value: '8'},{ label: '缺乏经费进行推广',value: '9'}]">
-                                    </mt-radio>
+                                        v-model="dataList.g"
+                                        :max="3"            
+                                        :options="[{ label: '文字形式',value: '1'},{ label: '音频',value: '2',picker:true,filed:dataList.asd,name:'dataList.asd',placeholder:'请选择音频时长'},{ label: '视频',value: '3',picker:true,filed:dataList.asd,name:'dataList.asd',placeholder:'请选择视频时长'},{ label: '微信课堂',value: '4'},{ label: '图片',value: '5'}]">
+                                    </super-checklist>
                                     <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
                                 </div>
                             </div>
@@ -447,62 +578,105 @@
                 <div class="center">
                     <div class="zf-wrapper-mom">
                         <div class="form-component">
-                            <h3>四、本机构健康教育开展情况</h3>
+                            <h3>四、对《母子健康APP》了解和需求</h3>
                             <div class="form-list">
-                                <p class="form-p1">16.本机构是否有独立的健康教育部门？</p>
+                                <p class="form-p1">35.您是否下载使用《母子健康APP》?</p>
                                 <div class="check-list">
                                     <mt-radio
                                         title=""
                                         v-model="dataList.c"
-                                        :options="[{ label: '有',value: '1'},{ label: '无',value: '2'}]">
+                                        :options="[{ label: '是',value: '1'},{ label: '否',value: '2'}]">
                                     </mt-radio>
                                  </div>
                             </div>
                             <div class="form-list">
-                                <p class="form-p1">17.本机构是否由专人负责健康教育工作？</p>
+                                <p class="form-p1">36.s未下载使用的原因是</p>
+                                <div class="check-list">
+                                    <mt-radio
+                                        title=""
+                                        v-model="dataList.c"
+                                        :options="[{ label: '不知道',value: '1'},{ label: '不感兴趣',value: '2'},{ label: '不需要',value: '3'}]">
+                                    </mt-radio>
+                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                </div>
+                            </div>
+                            <div class="form-list">
+                                <p class="form-p1">37.您是否看过《母子健康APP》健康教育内容？</p>
                                 <div class="check-list">
                                 <mt-radio
                                     title=""
                                     v-model="dataList.c"
-                                    :options="[{ label: '有',value: '1'},{ label: '无',value: '2'}]">
+                                    :options="[{ label: '看过',value: '1'},{ label: '未看过',value: '2'}]">
                                 </mt-radio>
                                 </div>
                             </div>
                             <div class="form-list">
-                                <p class="form-p1">18.本机构提供的健康教育信息主要来源于？</p>
+                                <p class="form-p1">38.您未看过的原因是</p>
                                 <div class="check-list">
                                 <mt-radio
                                     title=""
                                     v-model="dataList.c"
-                                    :options="[{ label: '网络',value: '1'},{ label: '医生经验总结',value: '2'},{ label: '项目总结',value: '3'}]">
+                                    :options="[{ label: '不知道',value: '1'},{ label: '不感兴趣',value: '2'},{ label: '不需要',value: '3'}]">
                                 </mt-radio>
                                 <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
-                                <p class="form-p1">19.本机构对孕产妇进行健康教育的主要形式有（可多选）</p>
-                                <div class="check-list">
-                                <mt-checklist
-                                    title=""
-                                    v-model="dataList.c"
-                                    :options="[{ label: '孕妇学校',value: '1'},{ label: '家长学校',value: '2'},{ label: '医生咨询',value: '3'},{ label: '宣传折页、小册子等纸质材料',value: '4'},{ label: '医院互联网（如微信公众号）',value: '5'}]">
-                                </mt-checklist>
-                                <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
-                                </div>
-                            </div>
-                            <div class="form-list">
-                                <p class="form-p1">20.本机构对儿童家长进行健康教育的主要形式有</p>
+                                <p class="form-p1">39.您能否在《母子健康APP》中得到您需要的知识？</p>
                                 <div class="check-list">
                                 <mt-radio
                                     title=""
                                     v-model="dataList.c"
-                                    :options="[{ label: '孕妇学校',value: '1'},{ label: '家长学校',value: '2'},{ label: '医生咨询',value: '3'},{ label: '宣传折页、小册子等纸质材料',value: '4'},{ label: '医院互联网（如微信公众号）',value: '5'}]">
+                                    :options="[{ label: '全部能找到',value: '1'},{ label: '大部分能得到',value: '2'},{ label: '只能得到一部分',value: '3'},{ label: '完全不能',value: '4'}]">
                                 </mt-radio>
-                                <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                </div>
+                            </div>
+                            <div class="form-list">
+                                <p class="form-p1">40.您对母子健康app健康教育内容是否满意?</p>
+                                <div class="check-list">
+                                <mt-radio
+                                    title=""
+                                    v-model="dataList.c"
+                                    :options="[{ label: '非常满意',value: '1'},{ label: '比较满意',value: '2'},{ label: '一般',value: '3'},{ label: '比较不满意',value: '4'},{ label: '非常不满意',value: '5'}]">
+                                </mt-radio>
+                                </div>
+                            </div>
+                            <div class="form-list">
+                                <p class="form-p1">41.您对母子健康app健康教育呈现形式是否满意?</p>
+                                <div class="check-list">
+                                <mt-radio
+                                    title=""
+                                    v-model="dataList.c"
+                                    :options="[{ label: '非常满意',value: '1'},{ label: '比较满意',value: '2'},{ label: '一般',value: '3'},{ label: '比较不满意',value: '4'},{ label: '非常不满意',value: '5'}]">
+                                </mt-radio>
+                                </div>
+                            </div>
+                            <div class="form-list">
+                                <p class="form-p1">42.您认为《母子健康APP》健康教育内容存在哪些问题？（可多选）</p>
+                                <div class="check-list">
+                                    <super-checklist
+                                        title=""
+                                        v-model="dataList.g"
+                                        :max="3"            
+                                        :options="[{ label: '没有问题',value: '1'},{ label: '查找不方便',value: '2'},{ label: '文字太多，不爱看',value: '3'},{ label: '内容太专业，看不懂  ',value: '4'},{ label: '内容不全面，想看的内容查不到',value: '5'},{ label: '形式单一，不够吸引人',value: '6'},{ label: '图片不合适',value: '7'}]">
+                                    </super-checklist>
+                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                </div>
+                            </div>
+                            <div class="form-list">
+                                <p class="form-p1">43.您认为针对《母子健康APP》健康教育内容应如何进一步完善？</p>
+                                <div class="check-list">
+                                    <mt-field placeholder="应用APP的回答" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                </div>
+                            </div>
+                            <div class="form-list">
+                                <p class="form-p1">44.您希望《母子健康APP》的健康教育内容是什么？</p>
+                                <div class="check-list">
+                                    <mt-field placeholder="未用APP的回答" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>   
                 </div>
                 <div class="bottom">
                     <div class= "pagination">
@@ -534,14 +708,14 @@ export default {
             dataList:{
                 b:'1',
                 iCstz:'',
-                g:['6'],
-                asd:'666'
+                g:[],
+                asd:''
             },
             page1:false,
             page2:false,
-            page3:true,
+            page3:false,
             page4:false,
-            page5:false,
+            page5:true,
             slotContent1: {   //
                 columns: 1,
                 default: [{text: '贵州', value: '1'}],
@@ -567,7 +741,7 @@ export default {
         }
     },
     watch:{
-        'dataList.asd'(val){
+        'dataList.r'(val){
             console.log(val)
         }
     },

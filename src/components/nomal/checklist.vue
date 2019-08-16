@@ -1,28 +1,57 @@
 <template>
   <div @change="$emit('change', currentValue)" class="mint-checklist"  :class="{ 'is-limit': max <= currentValue.length }">
     <label class="mint-checklist-title" v-text="title"></label>
-    <div class="new-checklist" v-for="(option,index) in options" :key="index">
+    <div class="new-checklist" v-for="(option,index) in options" :key="index" >
       <label class="mint-checklist-label" slot="title">
         <span
           :class="{'is-right': align === 'right'}"
           class="mint-checkbox">
           <input
-            class="mint-checkbox-input check-on"
+            @change="checkedEmit"
+            class="mint-checkbox-input"
             type="checkbox"
             v-model="currentValue"
-            name='checkboxinput'
             :disabled="option.disabled"
             :value="option.value || option">
           <span class="mint-checkbox-core" ></span>
         </span>
         <span class="mint-checkbox-label" v-text="option.label || option"></span>
-        <input type="text" @change="changeInput(option.name,option.filed)" v-model="option.filed" v-if="option.other && currentValue.indexOf(option.value)>-1" class="otherInput">
+        <input type="text" 
+            :placeholder="option.placeholder ||'请输入'"  
+            @change="changeInput(option.name,option.filed)" 
+            v-model="option.filed" 
+            v-if="option.other && currentValue.indexOf(option.value)>-1" 
+            class="otherInput">
+        <span             
+            v-if="option.picker && currentValue.indexOf(option.value)>-1"
+            class="spanRit"
+            @click="showPicker(option.name,option)">
+            {{option.filed || option.placeholder}}
+        </span>    
       </label>
-      
     </div>
+    <!--临时选择器-->
+    <vue-pickers
+              v-if="FshowPicke"
+              :show="FshowPicke"
+              :defaultValue="dataValue"
+              :selectData="FpickData"
+              @cancel="FcloseFn"
+              @confirm="FconfirmFn">
+    </vue-pickers>
+
+    <mt-popup
+            v-if="FshowPicke"
+            v-model="FshowPicke"
+            @touchmove.prevent
+            position="bottom">
+    </mt-popup>
   </div>
 </template>
 <script>
+/********有时间再造轮子*** */
+import VuePickers from  '@/components/picker/picker_list'
+import {timaAge}  from '@/utils/slotContent.js'
 export default {
   name: 'mt-checklist',
   props: {
@@ -42,13 +71,61 @@ export default {
   data() {
     return {
       currentValue: this.value,
+      FshowPicke:false,
+      dataValue:'',
+      FpickData:{
+         columns: 1,
+         default: [{text: '15', value: '15'}],
+         pData1:timaAge
+      },
+      dataItem:null,
+      dataName:''
     };
+  },
+  components:{
+    VuePickers
   },
   methods:{
     changeInput(name,val){   //针对特殊处理进行传值赋值
       let data=name.split('.')
       this.$parent[data[0]][data[1]]=val
-    }
+    },
+    checkedEmit(e){         //mint ui bug处理
+      if(this.limit) e.target.checked=false
+    },
+    showPicker(name,val){   //picker选择器
+      this.FshowPicke=true;
+      this.dataName=name;
+      this.dataItem=val
+      event.preventDefault(); 
+    },
+    FcloseFn(){          //关闭
+        this.FshowPicke=false
+    },
+    FconfirmFn(val){
+        let Chaval, Chatxt;
+        if(val.select1 && val.select2 &&val.select3){  //三级
+            Chaval=(val.select1.value).toString()+' '+(val.select2.value).toString()+' '+(val.select3.value).toString()
+            Chatxt=val.select1.text+''+val.select2.text+''+val.select3.text
+        }
+        else if(val.select1 && val.select2){   //二级
+            if(this.isStr){
+                Chaval=(val.select1.value).toString()+' '+(val.select2.value).toString()
+            }
+            else{
+                Chaval=(val.select1.value).toString()+(val.select2.value).toString()
+            }
+            Chatxt=val.select1.text+''+val.select2.text
+        }
+        else if(val.select1){       //一级
+            Chatxt=val.select1.text
+            Chaval=val.select1.value
+        }
+        this.dataItem.filed=Chaval
+        let data=this.dataName.split('.')
+        this.$parent[data[0]][data[1]]=Chaval
+        this.FshowPicke=false
+    },
   },
   computed: {
     limit() {
@@ -56,12 +133,10 @@ export default {
     }
   },
   mounted:function(){
-      console.log(this.options)
   },
   watch: {
     value:{
         handler(val){
-           console.log(val)
             this.currentValue = val;
         },
         immediate:true
@@ -164,4 +239,5 @@ export default {
     padding:20px 0px;
   }
   .otherInput{height: 50px;line-height: 50px;margin-left: 30px;font-size: 28px;border-bottom:1px solid #E4E4E4;padding-left: 10px;}
+  .spanRit{display: inline-block;cursor: pointer;float:right;color: #CCCCCC;padding: 3px 10px;}
 </style>
