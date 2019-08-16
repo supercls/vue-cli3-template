@@ -35,6 +35,7 @@ module.exports = {
   chainWebpack: config => {
     // 这里是对环境的配置，不同环境对应不同的BASE_API，以便axios的请求地址不同。也可以通过vue cli的mode来实现
     // 这里用到了webpack.DefinePlugin
+    config.resolve.symlinks(true) // 修复热更新失效
     config.plugin('define').tap(args => {
       // 这里必须要使用`"string"`,字符串必须要单双引号俩层嵌套，否则使用到process.env的时候会报错
       // 文档：这个插件直接执行文本替换，给定的值必须包含字符串本身内的实际引用。通常，有俩种方式
