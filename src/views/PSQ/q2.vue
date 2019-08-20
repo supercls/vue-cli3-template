@@ -11,7 +11,7 @@
                 <div class="center">
                     <div class="zf-wrapper-mom">
                         <div class="form-component">
-                            <drage-input v-model="dataList.a" :keyValue.sync="dataList.a"
+                            <drage-input v-model="model1" :keyValue.sync="dataList.a"
                                         :slotContent="slotContent1" typeItem="pickeMore" :required="true"
                                         :disabled="true"  label="填表所在地" >
                             </drage-input>
@@ -666,13 +666,13 @@
                             <div class="form-list">
                                 <p class="form-p1">43.您认为针对《母子健康APP》健康教育内容应如何进一步完善？</p>
                                 <div class="check-list">
-                                    <mt-field placeholder="应用APP的回答" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                    <mt-field ref="inputBoxs" placeholder="应用APP的回答" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">44.您希望《母子健康APP》的健康教育内容是什么？</p>
                                 <div class="check-list">
-                                    <mt-field placeholder="未用APP的回答" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                    <mt-field  placeholder="未用APP的回答" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
                                 </div>
                             </div>
                         </div>
@@ -693,7 +693,7 @@
                 </div>
             </div>
         </div>
-        <message-toast :hideOn="hideOn" mtitle="知情同意书" type="3" :conts="articleArray"></message-toast>    
+        <message-toast :hideOn="hideOn" mtitle="知情同意书" type="3" :conts="articleArray" @Onchange="changeHiddenOn"></message-toast>    
     </div>
 </template>
 <script>
@@ -713,12 +713,13 @@ export default {
                 g:[],
                 asd:''
             },
-            page1:false,
+            model1:'',
+            page1:true,
             page2:false,
             page3:false,
             page4:false,
             hideOn:false,
-            page5:true,
+            page5:false,
             slotContent1: {   //
                 columns: 1,
                 default: [{text: '贵州', value: '1'}],
@@ -764,6 +765,9 @@ export default {
         messageToast
     },
     methods:{
+        changeHiddenOn(val){
+            this.hideOn=false;
+        },
         changePage(before,next){  //点击上一页，下一页
             let pageBefore='page'+before;
             let pageNext='page'+next;
@@ -783,6 +787,17 @@ export default {
     },
     mounted(){
        this.hideOn=true
+       let obj={
+           name:'supe',
+           get(val){
+               console.log(val)
+           }
+       }
+       function handler(){
+           console.log(9)
+       }
+       let Os=new Proxy(obj,handler)
+       console.log(Os)
     },
     computed:{
 

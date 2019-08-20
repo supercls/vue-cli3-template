@@ -296,21 +296,7 @@
                                     <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
                                 </div>
                             </div>
-                            <!-- <div class="form-list">
-                                <p class="form-p1">28.您用哪些方法鼓励孩子吃各种食物？（可多选） </p>
-                                <div class="form-inp">
-                                    <drage-input v-model="dataList.iFmyz" :keyValue.sync="dataList.iFmyz"
-                                        placeholder="请选择"
-                                        :slotContent="slotContent3" typeItem="pickeMore"  
-                                        :disabled="true"  label="____个月开始培养" >
-                                    </drage-input>
-                                    <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
-                                        placeholder="请选择"
-                                        typeItem="checkRight"
-                                        :disabled="true"  label="还没有开始培养" >
-                                    </drage-input>
-                                </div>
-                            </div> -->
+ 
                             <div class="form-list">
                                 <p class="form-p1">29.您的宝宝是否在吃维生素D或者维生素AD？</p>
                                 <div class="check-list">
@@ -322,17 +308,17 @@
                                 </div>
                             </div>
                             <div class="form-list">
-                                <p class="form-p1">29.您培养宝宝自己用勺吃饭的时间</p>
+                                <p class="form-p1">30.您开始给孩子定期测查视力的时间</p>
                                 <div class="form-inp">
                                     <drage-input v-model="dataList.iFmyz" :keyValue.sync="dataList.iFmyz"
                                         placeholder="请选择"
                                         :slotContent="slotContent3" typeItem="pickeMore"  
-                                        :disabled="true"  label="____个月开始培养" >
+                                        :disabled="true"  label="____岁开始检查视力" >
                                     </drage-input>
                                     <drage-input v-model="dataList.b"  :keyValue.sync="dataList.b" 
                                         placeholder="请选择"
                                         typeItem="checkRight"
-                                        :disabled="true"  label="还没有开始练习" >
+                                        :disabled="true"  label="还没有开始" >
                                     </drage-input>
                                 </div>
                             </div>
@@ -453,6 +439,16 @@
                                 </div>
                             </div>
                             <div class="form-list">
+                                <p class="form-p1">36.您未下载使用的原因是</p>
+                                <div class="check-list">
+                                    <super-radio
+                                        title=""
+                                        v-model="dataList.c"
+                                        :options="[{ label: '不知道',value: '1'},{ label: '不感兴趣',value:'2'},{ label: '不需要',value:'3'},{ label: '其他',value:'4',other:true,filed:dataList.asd,name:'dataList.asd'}]">
+                                    </super-radio>
+                                </div>
+                            </div>
+                            <div class="form-list">
                                 <p class="form-p1">37.您是否看过《母子健康APP》健康教育内容？</p>
                                 <div class="check-list">
                                     <super-radio
@@ -462,6 +458,7 @@
                                     </super-radio>
                                 </div>
                             </div>
+                           
                            <div class="form-list">
                                 <p class="form-p1">38.您未看过的原因是</p>
                                 <div class="check-list">
@@ -483,7 +480,7 @@
                                 </div>
                             </div>
                             <div class="form-list">
-                                <p class="form-p1">40.您对母子健康app健康教育内容是否满意? </p>
+                                <p class="form-p1">40.您对母子健康app健康教育内容是否满意?  </p>
                                 <div class="check-list">
                                     <super-radio
                                         title=""

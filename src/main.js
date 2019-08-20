@@ -12,7 +12,7 @@ import "./styles/reset.scss"
 import "./styles/index.less"
 Vue.use(MintUI)
 Vue.use(VueRouter)
-
+Vue.config.devtools = true;
 const router = new VueRouter({           //滚动行为监测，返回是否回到原来位置，模拟app端数据缓存
     routes:routersList,
     mode:'hash',                  //默认行为

@@ -30,8 +30,9 @@
         },
         methods: {
             closeToase: function () {    //关闭按钮
+
                 this.toggleOn=false
-                this.$emit("Onchange")
+                this.$emit("Onchange",false)
             }
         },
         props:{
@@ -59,7 +60,6 @@
         watch:{                       //监听数据变化
             hideOn: function (val,index) {
                 this.toggleOn=val
- 
                 if(val){
                     this.$refs.messageToast.parentNode.querySelector('.qs-content').style.overflow='hidden'
                 }
