@@ -59,11 +59,12 @@
         watch:{                       //监听数据变化
             hideOn: function (val,index) {
                 this.toggleOn=val
+ 
                 if(val){
-                    this.$refs.messageToast.parentNode.querySelector('.jc-content').style.overflow='hidden'
+                    this.$refs.messageToast.parentNode.querySelector('.qs-content').style.overflow='hidden'
                 }
                 else{
-                    this.$refs.messageToast.parentNode.querySelector('.jc-content').style.overflow='auto'
+                    this.$refs.messageToast.parentNode.querySelector('.qs-content').style.overflow='auto'
                 }
             }
         }

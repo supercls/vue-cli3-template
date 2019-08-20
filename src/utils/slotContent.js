@@ -1,4 +1,4 @@
-export {monthCont, dayCont,timaAge, frequencyCont,cardType,hourCont,minuteCont,heightCont,radixPoint,weightCont,tenCont,bitCon,sexCon,headCon,yunCon,booleanCon,weekCon,bornCon,alltenCon,hasCon,momAge,addressCon,hukCon}
+export {monthCont, dayCont,timaAge,fourSixth, frequencyCont,cardType,hourCont,minuteCont,heightCont,radixPoint,weightCont,tenCont,bitCon,sexCon,headCon,yunCon,booleanCon,weekCon,bornCon,alltenCon,hasCon,momAge,addressCon,hukCon}
 
 let cardType=[    //证件类型
     {text: '身份证', value: '身份证'},
@@ -120,4 +120,10 @@ let timaAge=[]
 for(let i =0;i*5<91;i++){
     let obj= {text: i*5+'分钟', value: i*5+'分钟'};
     timaAge.push(obj)
+}
+
+let fourSixth=[]
+for(let i =4;i<17;i++){
+    let obj= {text: i+'个月', value: i+'个月'};
+    fourSixth.push(obj)
 }

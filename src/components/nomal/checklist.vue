@@ -50,6 +50,14 @@
 </template>
 <script>
 /********有时间再造轮子*** */
+/*****  other  //输入框，选中以后
+ *      picker   //选择器，选中以后
+ *      dataList.name1  //绑定的字段
+ *  :options="[{ label: '文字1',value: '1'},{ label: '其他',value: '6',other:true,filed:dataList.name1,name:'dataList.name1'}">
+ * 
+ * 
+ * 
+ */
 import VuePickers from  '@/components/picker/picker_list'
 import {timaAge}  from '@/utils/slotContent.js'
 export default {

@@ -693,6 +693,7 @@
                 </div>
             </div>
         </div>
+        <message-toast :hideOn="hideOn" mtitle="知情同意书" type="3" :conts="articleArray"></message-toast>    
     </div>
 </template>
 <script>
@@ -701,6 +702,7 @@ import {yunCon}  from '@/utils/slotContent'
 import {nations} from '@/utils/nations'
 import drageInput from '@/components/nomal/drageInput'
 import superChecklist from '@/components/nomal/checklist'
+import messageToast  from '@/components/nomal/messageToast'
 export default {
     name:'hello',
     data(){
@@ -715,6 +717,7 @@ export default {
             page2:false,
             page3:false,
             page4:false,
+            hideOn:false,
             page5:true,
             slotContent1: {   //
                 columns: 1,
@@ -738,6 +741,15 @@ export default {
                 default: [{text: '15', value: '15'}],
                 pData1:yunCon
             },
+            articleArray:[
+                {detail:'尊敬的孕妈妈：'},
+                {detail:'您好！'},
+                {detail:'诚邀您参加《母子健康APP推广应用效果评价研究》，本研究由中国疾病预防控制中心妇幼保健中心及本县医疗机构共同参与，目的是了解APP应用对孕产妇及儿童监护人在妇幼健康方面的知识、行为和妇幼健康服务的可及性、服务利用和服务质量产生的影响，从而为项目成果的远期推广和实施策略的制定提供重要的参考依据。'},
+                {detail:'此项研究通过问卷向您询问您的基本情况、孕产期相关知识知晓情况、对母子健康APP的应用情况和建议，请您协助我们完成调查，问卷调查大约占用您10分钟左右的时间。调查过程中您可以随时提出想了解的问题，我们会尽力解答。调查结束后我们会赠送小礼品表示感谢。'},
+                {detail:'您参加本项调查一次完成，匿名进行，所有您的个人的信息及问题答案将受到严格保密，仅供研究使用，不会向与研究无关的人提供任何信息。调查相关资料也将在研究结束后销毁。本研究以自愿为原则，您有权选择参加或不参加。调查过程中，您有权在任何时间、无需任何理由退出本调查，这将不会给您或您孩子的常规保健带来任何不良影响。'},
+                {detail:'如果您有关于本研究的任何问题，可以随时向我们询问，我们将耐心为您解释。如果您同意参加本研究，请点击同意按钮进入问卷调查部分。'},
+                {detail:'期待您的参与！'},
+            ]
         }
     },
     watch:{
@@ -748,7 +760,8 @@ export default {
     components:{
         headers,
         drageInput,
-        superChecklist
+        superChecklist,
+        messageToast
     },
     methods:{
         changePage(before,next){  //点击上一页，下一页
@@ -769,7 +782,7 @@ export default {
 
     },
     mounted(){
-       
+       this.hideOn=true
     },
     computed:{
 
