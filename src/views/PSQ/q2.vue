@@ -772,7 +772,8 @@ export default {
             let pageBefore='page'+before;
             let pageNext='page'+next;
             this[pageBefore]=false;
-            this[pageNext]=true
+            this[pageNext]=true;
+            document.querySelector('.qs-content').scrollTop=0  //翻页时候滚动到最顶部
         },
         submitForm(){
             this.$messagebox.confirm('确定执行此操作?').then(action => {
@@ -786,18 +787,8 @@ export default {
 
     },
     mounted(){
-       this.hideOn=true
-       let obj={
-           name:'supe',
-           get(val){
-               console.log(val)
-           }
-       }
-       function handler(){
-           console.log(9)
-       }
-       let Os=new Proxy(obj,handler)
-       console.log(Os)
+       this.hideOn=true;
+
     },
     computed:{
 

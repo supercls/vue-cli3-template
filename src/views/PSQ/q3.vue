@@ -628,7 +628,8 @@ export default {
             let pageBefore='page'+before;
             let pageNext='page'+next;
             this[pageBefore]=false;
-            this[pageNext]=true
+            this[pageNext]=true;
+            document.querySelector('.qs-content').scrollTop=0
         },
         submitForm(){
             this.$messagebox.confirm('确定执行此操作?').then(action => {
