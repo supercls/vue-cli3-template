@@ -101,7 +101,7 @@
                                         v-model="dataList.c"
                                         :options="[{ label: '行政干部',value: '1'},{ label: '工人',value: '2'},{ label: '专业技术人员',value: '3'},{ label: '农民',value: '4'},{ label: '公司职员',value: '5'},{ label: '商业服务人员',value: '6'},{ label: '无业',value: '7'}]">
                                     </mt-radio>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.c"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -112,7 +112,7 @@
                                         v-model="dataList.c"
                                         :options="[{ label: '行政干部',value: '1'},{ label: '工人',value: '2'},{ label: '专业技术人员',value: '3'},{ label: '农民',value: '4'},{ label: '公司职员',value: '5'},{ label: '商业服务人员',value: '6'},{ label: '无业',value: '7'}]">
                                     </mt-radio>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.c"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -272,7 +272,7 @@
                                         v-model="dataList.g"
                                         :options="[{ label: '应避免宝宝睡前吃母乳和（或）配方奶',value: '1'},{ label: '宝宝萌出第一颗乳牙就应开始清洁牙齿',value: '2'},{ label: '乳牙龋齿可以等到换恒牙后再治疗',value: '3'},{ label: '宝宝牙齿“地包天”最佳矫治时间是3-6岁',value: '4'},{ label: '以上都正确',value: '5'}]">
                                     </mt-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.c"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -293,7 +293,7 @@
                                         v-model="dataList.g"
                                         :options="[{ label: '拥抱或表扬孩子',value: '1'},{ label: '玩玩具或讲故事',value: '2'},{ label: '边看电视边吃',value: '3'},{ label: '甜食或零食作为奖励',value: '4'},{ label: '追着喂',value: '5'}]">
                                     </mt-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.c"></mt-field>
                                 </div>
                             </div>
  
@@ -331,7 +331,7 @@
                                         v-model="dataList.g"
                                         :options="[{ label: '无',value: '1'},{ label: '腹泻',value: '2'},{ label: '便秘 ',value: '3'},{ label: '腹痛 ',value: '4'},{ label: '体重减轻或不增 ',value: '5'},{ label: '贫血 ',value: '6'},{ label: '过敏表现：如湿疹、哮喘、食物过敏或不耐受等 ',value: '7'},{ label: '超重或肥胖 ',value: '8'}]">
                                     </mt-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.c"></mt-field>
                                 </div>
                             </div>
                         </div>
@@ -367,7 +367,7 @@
                                         :max="3"
                                         :options="[{ label: '生长发育',value: '1'},{ label: '生活护理',value: '2'},{ label: '营养与喂养 ',value: '3'},{ label: '常见病预防',value: '4'},{ label: '早期发展',value: '5'},{ label: '安全防护',value: '6'},{ label: '五官保健（眼、耳、口腔保健）',value: '7'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.c"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -379,7 +379,7 @@
                                         :max="3"
                                         :options="[{ label: '医护人员',value: '1'},{ label: '孕妇学校课堂',value: '2'},{ label: '家庭成员或朋友 ',value: '3'},{ label: '宣传手册、宣传单及折',value: '4'},{ label: '书籍/报刊/杂志',value: '5'},{ label: '广播/电视',value: '6'},{ label: '母婴健康类APP',value: '7'},{ label: '其他网络：微信、百度等 ',value: '7'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.c"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -391,7 +391,7 @@
                                         :max="3"            
                                         :options="[{ label: '文字形式',value: '1'},{ label: '音频',value: '2',picker:true,filed:dataList.asd,name:'dataList.asd',placeholder:'请选择音频时长'},{ label: '视频',value: '3',picker:true,filed:dataList.asd,name:'dataList.asd',placeholder:'请选择视频时长'},{ label: '微信课堂',value: '4'},{ label: '图片',value: '5'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.c"></mt-field>
                                 </div>
                             </div>
 
@@ -508,19 +508,19 @@
                                         :max="3"
                                         :options="[{ label: '没有问题',value: '1'},{ label: '查找不方便 ',value: '2'},{ label: '文字太多，不爱看 ',value: '3'},{ label: '内容太专业，看不懂 ',value: '4'},{ label: '内容不全面，想看的内容查不到',value: '5'},{ label: '形式单一，不够吸引人',value: '6'},{ label: '图片不合适',value: '7'},{ label: '图片不合适 ',value: '7'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.c"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">43.您认为针对《母子健康APP》健康教育内容应如何进一步完善？（应用APP的回答，问卷结束）</p>
                                 <div class="check-list">
-                                    <mt-field placeholder="应用APP的回答" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                    <mt-field placeholder="应用APP的回答" type="textarea" rows="3" v-model="dataList.c"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">44.您希望《母子健康APP》的健康教育内容是什么？（未用APP的回答，问卷结束）</p>
                                 <div class="check-list">
-                                    <mt-field placeholder="应用APP的回答" type="textarea" rows="3" v-modal="dataList.c"></mt-field>
+                                    <mt-field placeholder="应用APP的回答" type="textarea" rows="3" v-model="dataList.c"></mt-field>
                                 </div>
                             </div>
                         </div>
