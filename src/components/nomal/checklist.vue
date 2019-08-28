@@ -1,5 +1,5 @@
 <template>
-  <div @change="$emit('change', currentValue)" class="mint-checklist"  :class="{ 'is-limit': max <= currentValue.length }">
+  <div @change="$emit('change', currentValue)" class="mint-checklist "  :class="{ 'is-limit': max <= currentValue.length }">
     <label class="mint-checklist-title" v-text="title"></label>
     <div class="new-checklist" v-for="(option,index) in options" :key="index" >
       <label class="mint-checklist-label" slot="title">
@@ -16,7 +16,8 @@
           <span class="mint-checkbox-core" ></span>
         </span>
         <span class="mint-checkbox-label" v-text="option.label || option"></span>
-        <input type="text" 
+        <span class="icon-right" v-if="option.other && currentValue.indexOf(option.value)>-1" >{{option.icon||''}}</span>
+        <input type="number" 
             :placeholder="option.placeholder ||'请输入'"  
             @change="changeInput(option.name,option.filed)" 
             v-model="option.filed" 
@@ -26,7 +27,7 @@
             v-if="option.picker && currentValue.indexOf(option.value)>-1"
             class="spanRit"
             @click="showPicker(option.name,option)">
-            {{option.filed || option.placeholder}}
+            {{option.filed || option.placeholder}}{{option.filed?option.icon:''}}
         </span>    
       </label>
     </div>
@@ -39,7 +40,6 @@
               @cancel="FcloseFn"
               @confirm="FconfirmFn">
     </vue-pickers>
-
     <mt-popup
             v-if="FshowPicke"
             v-model="FshowPicke"
@@ -55,11 +55,9 @@
  *      dataList.name1  //绑定的字段
  *  :options="[{ label: '文字1',value: '1'},{ label: '其他',value: '6',other:true,filed:dataList.name1,name:'dataList.name1'}">
  * 
- * 
- * 
  */
 import VuePickers from  '@/components/picker/picker_list'
-import {timaAge}  from '@/utils/slotContent.js'
+import * as slotList   from '@/utils/slotContent.js'
 export default {
   name: 'mt-checklist',
   props: {
@@ -70,24 +68,30 @@ export default {
       type: Array,
       required: true
     },
-    value: Array,
-    keyValue:{     //传数据库字段，自动转化为name
-        type:[String,Number,Array,Object,Boolean]
+    pickContent:{
+       type:[String,Number,Array,Object,Boolean]
+    },
+    value:{
+      type: Array,
+      default:[]
+    },
+    clearValue:{
+      type:[String,Number,Array,Object,Boolean]
     },
   },
 
   data() {
     return {
-      currentValue: this.value,
+      currentValue: this.value ||[],
       FshowPicke:false,
       dataValue:'',
       FpickData:{
          columns: 1,
          default: [{text: '15', value: '15'}],
-         pData1:timaAge
+         pData1:[]
       },
       dataItem:null,
-      dataName:''
+      dataName:'',
     };
   },
   components:{
@@ -141,11 +145,18 @@ export default {
     }
   },
   mounted:function(){
+    
   },
   watch: {
+    pickContent:{
+      handler(val){
+            this.FpickData.pData1=slotList[val] || slotList.timaAge
+        },
+        immediate:true
+    },
     value:{
         handler(val){
-            this.currentValue = val;
+            this.currentValue=val;
         },
         immediate:true
     },
@@ -157,7 +168,7 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
   @import "../../styles/var.css";
 
   @component-namespace mint {
@@ -246,6 +257,7 @@ export default {
     -webkit-overflow-scrolling: touch;
     padding:20px 0px;
   }
-  .otherInput{height: 50px;line-height: 50px;margin-left: 30px;font-size: 28px;border-bottom:1px solid #E4E4E4;padding-left: 10px;}
-  .spanRit{display: inline-block;cursor: pointer;float:right;color: #CCCCCC;padding: 3px 10px;}
+  .otherInput{height: 50px;line-height: 50px;display:inline;font-size: 28px;padding-left: 10px;margin-left: 30px;float: right;text-align: right;margin-right: 30px;}
+  .spanRit{display: inline-block;cursor: pointer;float:right;padding: 3px 10px;}
+  .icon-right{float: right;line-height: 1.8;}
 </style>

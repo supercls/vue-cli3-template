@@ -359,7 +359,6 @@
                         this.checkoptions=this.slotContent
                         this.$emit('update:keyValue',this.currentValue)
                         this.showChecklist=true
-
                         break;
                     case 'pickCounty':
                         this.showAdress=true;
@@ -367,6 +366,7 @@
                         break;
                     case 'checkRight':   //对勾选择器
                         this.$emit('update:keyValue',this.currentValue=='1'?'2':'1')
+                        this.$emit('updateRight',this.currentValue=='1'?'2':'1')
                         break;    
                     default:
                         console.log('error')
