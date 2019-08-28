@@ -20,7 +20,7 @@ module.exports = {
   productionSourceMap: false,
   devServer: {
     open: true,
-    port: 8080,
+    port: 8089,
     proxy: {
       '/api': {
         target: '<url>',  //接口前面需加上/api/防止和路由冲突 fetch.js也需要加
@@ -81,7 +81,7 @@ module.exports = {
   configureWebpack: config => {
     const plugins = [
       new HardSourceWebpackPlugin(),
-      new AutoDllPlugin({       //对于第三方插件无需每次都重新打包编译
+      new AutoDllPlugin({       //对于第三方插件无需每次都重新打包编译，离线缓存
         inject: true, // will inject the DLL bundle to index.html
         debug: true,
         filename: '[name]_[hash].js',
