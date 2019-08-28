@@ -118,7 +118,7 @@ let hukCon=[           //
 ]
 let timaAge=[]
 for(let i =0;i*5<91;i++){
-    let obj= {text: i*5+'分钟', value: i*5+'分钟'};
+    let obj= {text: i*5, value: i*5};
     timaAge.push(obj)
 }
 
