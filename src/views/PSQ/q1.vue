@@ -329,7 +329,7 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
-                                        class="requrePage3" data-name="Jghlwjs"  data-next="Jghlwjs2"
+                                        class="requrePage3 moreCheck" data-name="Jghlwjs"  data-next="Jghlwjs2"
                                         @change="changeValue(dataList.Jghlwjs,'Jghlwjs','1')"
                                         v-model="dataList.Jghlwjs"
                                         :options="[{ label: '无',value: '1'},{ label: '相关网站',value: '2'},{ label: ' 相关APP',value: '3'},{ label: '物联网技术',value: '4'},{ label: '远程医疗服务',value: '5'},{ label: '就诊环境免费提供wifi',value: '6'},{ label: '使用一卡通（机构内）',value: '7'},{ label: '使用一卡通（辖区内）',value: '8'},{ label: 'HIS等系统与区域卫生信息平台对接',value: '9'}]">
@@ -342,7 +342,7 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
-                                        class="requrePage3" data-name="JgApp" data-next="JgApp2"
+                                        class="requrePage3 moreCheck" data-name="JgApp" data-next="JgApp2"
                                         @change="changeValue(dataList.JgApp,'JgApp','1')"
                                         v-model="dataList.JgApp"
                                         :options="[{ label: '无',value: '1'},{ label: '微信（包括微信公众号、订阅号或企业号，不包括面向服务对象和医务人员的微信群）',value: '2'},{ label: ' 支付宝',value: '3'},{ label: '本机构或本地区自主开发的APP',value: '4'},{ label: '包含母子健康手册功能的APP',value: '5'}]">
@@ -355,7 +355,7 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
-                                         class="requrePage3" data-name="Jgfw" data-next="Jgfw2"
+                                         class="requrePage3 moreCheck" data-name="Jgfw" data-next="Jgfw2"
                                         @change="changeValue(dataList.Jgfw,'Jgfw','1')"
                                         v-model="dataList.Jgfw"
                                         :options="[{ label: '无',value: '1'},{ label: '医院信息、就医、出诊等信息查询',value: '2'},{ label: ' 健康宣教',value: '3'},{ label: '预约挂号/预约医技检查',value: '4'},{ label: '线上孕妇学校',value: '5'},{ label: '线下课程预约',value: '6'},{ label: '自助缴费和相关费用查询',value: '7'},{ label: '产检、儿童体检或预防接种提醒服务',value: '8'},{ label: '产检或儿童体检信息上传',value: '9'},{ label: '医患互动咨询',value: '10'},{label:'就医满意度反馈/服务评价/投诉建议',value:'11'}]">
@@ -368,7 +368,7 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
-                                         class="requrePage3" data-name="Jgysfw"  data-next="Jgysfw2"
+                                         class="requrePage3 moreCheck" data-name="Jgysfw"  data-next="Jgysfw2"
                                         @change="changeValue(dataList.Jgysfw,'Jgysfw','1')"
                                         v-model="dataList.Jgysfw"
                                         :options="[{ label: '无',value: '1'},{ label: '查询患者基本信息',value: '2'},{ label: ' 查看患者检查报告（包括检验、影像报告等）',value: '3'},{ label: '查看患者诊疗情况',value: '4'},{ label: '下医嘱、写病历',value: '5'},{ label: '院内外会诊',value: '6'},{ label: '远程会诊',value: '7'}]">
@@ -381,7 +381,7 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
-                                         class="requrePage3" data-name="JgApphlht"  data-next="JgApphlht2"
+                                         class="requrePage3 moreCheck" data-name="JgApphlht"  data-next="JgApphlht2"
                                         @change="changeValue(dataList.JgApphlht,'JgApphlht','1')"
                                         v-model="dataList.JgApphlht"
                                         :options="[{ label: '无',value: '1'},{ label: '本院HIS系统',value: '2'},{ label: '医保系统',value: '3'},{ label: '公安系统',value: '4'},{ label: '计划免疫系统',value: '5'},{ label: '妇幼健康信息平台',value: '6'}]">
@@ -394,7 +394,7 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
-                                        class="requrePage3" data-name="JgAppjggl" data-next="JgAppjggl2"
+                                        class="requrePage3 moreCheck" data-name="JgAppjggl" data-next="JgAppjggl2"
                                         @change="changeValue(dataList.JgAppjggl,'JgAppjggl','1')"
                                         v-model="dataList.JgAppjggl"
                                         :options="[{ label: '无',value: '1'},{ label: '移动办公',value: '2'},{ label: '资源调配',value: '3'},{ label: '成本效益分析',value: '4'},{ label: '绩效管理',value: '5'},{ label: '培训管理',value: '6'},{ label: '不良事件报告',value: '7'}]">
@@ -418,7 +418,7 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
-                                        class="requrePage3" data-name="JgAppsjwsnr" data-next="JgAppsjwsnr2"
+                                        class="requrePage3 moreCheck" data-name="JgAppsjwsnr" data-next="JgAppsjwsnr2"
                                         v-model="dataList.JgAppsjwsnr"
                                         :options="[{ label: '增加了《母子健康APP》应用功能（如母子手册浏览、记录等）',value: '1'},{ label: '引入了《母子健康APP》健康教育内容',value: '2'}]">
                                     </super-checklist>
@@ -430,7 +430,7 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
-                                        class="requrePage3" data-name="Jgxxhlht" data-next="Jgxxhlht2"
+                                        class="requrePage3 moreCheck" data-name="Jgxxhlht" data-next="Jgxxhlht2"
                                         v-model="dataList.Jgxxhlht"
                                         :options="[{ label: '无',value: '1'},{ label: '本院HIS系统',value: '2'},{ label: '医保系统',value: '3'},{ label: '公安系统',value: '4'},{ label: '计划免疫系统',value: '5'},{ label: '妇幼健康信息平台',value: '6'}]">
                                     </super-checklist>
@@ -486,7 +486,7 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
-                                        class="requrePage4" data-name="Tgbscyy" data-next="Tgbscyy2"
+                                        class="requrePage4 moreCheck" data-name="Tgbscyy" data-next="Tgbscyy2"
                                         v-model="dataList.Tgbscyy"
                                         :options="[{ label: '领导不认可',value: '1'},{ label: '机构内wifi信息不通畅',value: '2'},{ label: '硬件设备不具备',value: '3'},{ label: '政策不允许',value: '4'},{ label: '本机构有类似APP',value: '5'},{ label: '担心信息安全',value: '6'},{ label: '服务对象认可度低',value: '7'},{ label: '医务人员认可度低',value: '8'},{ label: '缺乏经费进行推广',value: '9'}]">
                                     </super-checklist>
@@ -543,7 +543,7 @@
                                 <div class="check-list">
                                 <super-checklist
                                     title=""
-                                     class="requrePage5" data-name="Jkjyly" data-next="Jkjyly2"
+                                     class="requrePage5 moreCheck" data-name="Jkjyly" data-next="Jkjyly2"
                                     v-model="dataList.Jkjyly"
                                     :options="[{ label: '网络',value: '1'},{ label: '医生经验总结',value: '2'},{ label: '项目总结',value: '3'}]">
                                 </super-checklist>
@@ -555,7 +555,7 @@
                                 <div class="check-list">
                                 <super-checklist
                                     title=""
-                                     class="requrePage5" data-name="Jkjyxs" data-next="Jkjyxs2"
+                                     class="requrePage5 moreCheck" data-name="Jkjyxs" data-next="Jkjyxs2"
                                     v-model="dataList.Jkjyxs"
                                     :options="[{ label: '孕妇学校',value: '1'},{ label: '家长学校',value: '2'},{ label: '医生咨询',value: '3'},{ label: '宣传折页、小册子等纸质材料',value: '4'},{ label: '医院互联网（如微信公众号）',value: '5'}]">
                                 </super-checklist>
@@ -567,7 +567,7 @@
                                 <div class="check-list">
                                 <super-checklist
                                     title=""
-                                     class="requrePage5" data-name="Jzjkjyxs" data-next="Jzjkjyxs2"
+                                    class="requrePage5 moreCheck" data-name="Jzjkjyxs" data-next="Jzjkjyxs2"
                                     v-model="dataList.Jzjkjyxs"
                                     :options="[{ label: '孕妇学校',value: '1'},{ label: '家长学校',value: '2'},{ label: '医生咨询',value: '3'},{ label: '宣传折页、小册子等纸质材料',value: '4'},{ label: '医院互联网（如微信公众号）',value: '5'}]">
                                 </super-checklist>
@@ -625,6 +625,7 @@ export default {
                     {text: '未定级', value: '未定级'},
                 ]
             },
+            checkObj:{}
         }
     },
     watch:{
@@ -668,6 +669,10 @@ export default {
                 })
                 return false;
             }
+            let checkDom=document.querySelectorAll('.moreCheck')
+            for(let i=0;i<checkDom.length;i++){
+                this.checkObj[checkDom[i].getAttribute('data-name')]=(this.dataList[checkDom[i].getAttribute('data-name')] ||[""]).join(",")
+            }
             let pageBefore='page'+before;
             let pageNext='page'+next;
             this[pageBefore]=false;
@@ -689,7 +694,11 @@ export default {
                 return false;
             }
             this.$messagebox.confirm('确定执行此操作?').then(action => {
-                SaveQuestionair_Hospital(this.dataList).then(res=>{
+                let checkDom=document.querySelectorAll('.moreCheck')
+                for(let i=0;i<checkDom.length;i++){
+                    this.checkObj[checkDom[i].getAttribute('data-name')]=(this.dataList[checkDom[i].getAttribute('data-name')] ||[""]).join(",")
+                }
+                SaveQuestionair_Hospital({...this.dataList,...this.checkObj}).then(res=>{
                     localStorage.setItem(this.$route.path,JSON.stringify(this.dataList))
                     this.$toast({
                         message:'提交成功，稍后请自行退出'
