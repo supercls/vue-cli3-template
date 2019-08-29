@@ -521,7 +521,7 @@
                                 <div class="check-list">
                                     <mt-radio
                                         title=""
-                                         class="requrePage5" data-name="Sfyjkjybm"
+                                        class="requrePage5" data-name="Sfyjkjybm"
                                         v-model="dataList.Sfyjkjybm"
                                         :options="[{ label: '有',value: '1'},{ label: '无',value: '2'}]">
                                     </mt-radio>

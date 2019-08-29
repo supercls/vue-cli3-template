@@ -821,7 +821,6 @@ export default {
                 }).catch(err=>{
                     console.log(err)
                 })
-                console.log(this.dataList)
             }).catch(error=>{
                 console.log(error)
             })
