@@ -1,6 +1,6 @@
 <template>
     <div class="zf-wrapper">
-        <headers heaTitle='孕产妇调查表' :showBack="false"></headers>
+        <!-- <headers heaTitle='孕产妇调查表' :showBack="false"></headers> -->
         <div class="qs-content mint-tab-container">
             <div class="page1" v-if="page1">
                 <div class="top">
@@ -150,6 +150,7 @@
                                 <p class="form-p1">12.您的孩子的体重(g)</p>
                                 <drage-input v-model="dataList.Cstz" :keyValue.sync="dataList.Cstz"  type="number"
                                     placeholder=""
+                                    maxlength="5"
                                     class="requrePage2" data-name="Cstz"
                                     unit="g"  label="出生体重" >
                                 </drage-input>
@@ -687,7 +688,7 @@
                             <span>/</span>
                             <span>5</span>
                             </div>
-                            <button  class="btn" @click="submitForm('requrePage5')"   :class= "{ disabledBtn: false }"> 提交</button>
+                            <button  class="btn" v-if="hasReady" @click="submitForm('requrePage5')"   :class= "{ disabledBtn: false }"> 提交</button>
                         </div>
                     </div>
                 </div>
@@ -751,7 +752,8 @@ export default {
                 {detail:'如果您有关于本研究的任何问题，可以随时向我们询问，我们将耐心为您解释。如果您同意参加本研究，请点击同意按钮进入问卷调查部分。'},
                 {detail:'期待您的参与！'},
             ],
-            checkObj:{}
+            checkObj:{},
+            hasReady:true
         }
     },
     watch:{
@@ -815,6 +817,7 @@ export default {
                 }
                 SaveQuestionair_Maternal({...this.dataList,...this.checkObj}).then(res=>{
                     localStorage.setItem(this.$route.path,JSON.stringify(this.dataList))
+                    this.hasReady=false
                     this.$toast({
                         message:'提交成功，稍后请自行退出'
                     })
@@ -833,6 +836,7 @@ export default {
        if(localStorage.getItem(this.$route.path)){  //数据缓存
             this.dataList=JSON.parse(localStorage.getItem(this.$route.path))
             this.$messagebox.alert('您已经提交过了，请勿重复提交')
+            this.hasReady=false
             return false
         }
         this.hideOn=true;
@@ -850,7 +854,7 @@ export default {
         margin:0 auto;
         .qs-content{
             padding:0 30px;
-            top:100px;
+            top:10px;
             h3{
                 font-size: 36px;
                 margin:30px 10px 0 10px;

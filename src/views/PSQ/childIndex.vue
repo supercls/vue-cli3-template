@@ -11,8 +11,8 @@
                 <div class="center">
                     <div class="zf-wrapper-mom">
                         <div class="form-component">
-                            <drage-input v-model="dataList.a" :keyValue.sync="dataList.a"
-                                        :slotContent="slotContent1" typeItem="pickeMore" :required="true"
+                            <drage-input v-model="dataList.DistrictName" :keyValue.sync="dataList.DistrictName" :modelValue.sync="dataList.DistrictNo"  
+                                        :slotContent="slotContent1" typeItem="pickCounty" :required="true" :iconRight="true"
                                         :disabled="true"  label="填表所在地" >
                             </drage-input>
                              <div class="form-list">
@@ -20,7 +20,7 @@
                                 <div class="check-list">
                                     <mt-radio
                                         title=""
-                                        v-model="dataList.c"
+                                        v-model="dataList.age"
                                         :options="[{ label: '不满1岁',value: '1'},{ label: '满1岁~不满3岁',value: '2'},{ label: '满3岁~不满6岁',value: '3'}]">
                                     </mt-radio>
                                 </div>
@@ -60,10 +60,8 @@ export default {
     data(){
         return {
             dataList:{
-                b:'1',
-                iCstz:'',
-                g:[],
-                asd:''
+               age:'',
+               DistrictNo:''
             },
             page1:true,
             page2:false,
@@ -74,14 +72,7 @@ export default {
             slotContent1: {   //
                 columns: 1,
                 default: [{text: '贵州', value: '1'}],
-                pData1: [
-                    {text: '贵州', value: '1'},
-                    {text: '宁夏', value: '2'},
-                    {text: '新疆', value: '3'},
-                    {text: '江苏', value: '4'},
-                    {text: '河南', value: '5'},
-                    {text: '湖南', value: '6'},
-                ]
+                pData1:nations
             },
             slotContent2: {  //名族
                 columns: 1,
@@ -104,11 +95,6 @@ export default {
             ]
         }
     },
-    watch:{
-        'dataList.r'(val){
-            console.log(val)
-        }
-    },
     components:{
         headers,
         drageInput,
@@ -117,7 +103,19 @@ export default {
     },
     methods:{
         changePage(){  //点击上一页，下一页
-            
+            if(this.dataList.age=='' && this.dataList.DistrictNo==''){
+               this.$toast({
+                    message:'请填写完整'
+                })
+                return false;
+            }
+            this.$router.push({
+                path:`/Family${this.dataList.age}`,
+                query:{
+                    DistrictName:this.dataList.DistrictName,
+                    DistrictNo:this.dataList.DistrictNo
+                }
+            })
         },
         
     },

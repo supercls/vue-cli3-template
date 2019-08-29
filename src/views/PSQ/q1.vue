@@ -1,8 +1,8 @@
 <template>
     <div class="zf-wrapper">
-        <headers heaTitle='医疗机构调查表' :showBack="false"></headers>
+        <!-- <headers heaTitle='医疗机构调查表' :showBack="false"></headers> -->
         <div class="qs-content mint-tab-container">
-            <div class="page1" v-show="page1">
+            <div class="page1" v-if="page1">
                 <div class="top">
                     <p>为了进一步了解母子健康APP试点地区及试点机构妇幼健康基本情况、信息化建设情况、母子健康APP推广应用情况及健康教育开展情况，
                         中国疾病预防控制中心妇幼中心开展了本次调查。本调查对项目开展十分重要，请您逐项准确填报，避免空项及错填。</p>
@@ -57,7 +57,7 @@
                 </div>
             </div>    
             <!--page2-->
-            <div class="page2" v-show="page2">
+            <div class="page2" v-if="page2">
                 <div class="center">
                     <div class="zf-wrapper-mom">
                         <div class="form-component">
@@ -319,7 +319,7 @@
             </div>
         <!--page3-->
         <!--page2-->
-            <div class="page3" v-show="page3">
+            <div class="page3" v-if="page3">
                 <div class="center">
                     <div class="zf-wrapper-mom">
                         <div class="form-component">
@@ -332,9 +332,9 @@
                                         class="requrePage3 moreCheck" data-name="Jghlwjs"  data-next="Jghlwjs2"
                                         @change="changeValue(dataList.Jghlwjs,'Jghlwjs','1')"
                                         v-model="dataList.Jghlwjs"
-                                        :options="[{ label: '无',value: '1'},{ label: '相关网站',value: '2'},{ label: ' 相关APP',value: '3'},{ label: '物联网技术',value: '4'},{ label: '远程医疗服务',value: '5'},{ label: '就诊环境免费提供wifi',value: '6'},{ label: '使用一卡通（机构内）',value: '7'},{ label: '使用一卡通（辖区内）',value: '8'},{ label: 'HIS等系统与区域卫生信息平台对接',value: '9'}]">
+                                        :options="[{ label: '无',value: '1'},{ label: '相关网站',value: '2'},{ label: ' 相关APP',value: '3'},{ label: '物联网技术',value: '4'},{ label: '远程医疗服务',value: '5'},{ label: '就诊环境免费提供wifi',value: '6'},{ label: '使用一卡通（机构内）',value: '7'},{ label: '使用一卡通（辖区内）',value: '8'},{ label: 'HIS等系统与区域卫生信息平台对接',value: '9'},{label:'其他',value:'10'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jghlwjs2"></mt-field>
+                                    <mt-field v-if="dataList.Jghlwjs=='10'" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jghlwjs2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -345,9 +345,9 @@
                                         class="requrePage3 moreCheck" data-name="JgApp" data-next="JgApp2"
                                         @change="changeValue(dataList.JgApp,'JgApp','1')"
                                         v-model="dataList.JgApp"
-                                        :options="[{ label: '无',value: '1'},{ label: '微信（包括微信公众号、订阅号或企业号，不包括面向服务对象和医务人员的微信群）',value: '2'},{ label: ' 支付宝',value: '3'},{ label: '本机构或本地区自主开发的APP',value: '4'},{ label: '包含母子健康手册功能的APP',value: '5'}]">
+                                        :options="[{ label: '无',value: '1'},{ label: '微信（包括微信公众号、订阅号或企业号，不包括面向服务对象和医务人员的微信群）',value: '2'},{ label: ' 支付宝',value: '3'},{ label: '本机构或本地区自主开发的APP',value: '4'},{ label: '包含母子健康手册功能的APP',value: '5'},{label:'其他',value:'6'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.JgApp2"></mt-field>
+                                    <mt-field v-if="dataList.JgApp=='6'" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.JgApp2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list" v-if="dataList.JgApp!='1'">
@@ -455,7 +455,7 @@
                 </div>
             </div>
             <!--page4-->
-            <div class="page4" v-show="page4">
+            <div class="page4" v-if="page4">
                 <div class="center">
                     <div class="zf-wrapper-mom">
                         <div class="form-component">
@@ -511,7 +511,7 @@
                 </div>
             </div>
             <!--page5-->
-            <div class="page5" v-show="page5">
+            <div class="page5" v-if="page5">
                 <div class="center">
                     <div class="zf-wrapper-mom">
                         <div class="form-component">
@@ -586,7 +586,7 @@
                             <span>/</span>
                             <span>5</span>
                             </div>
-                            <button  class="btn" @click="submitForm('requrePage5')"   :class= "{ disabledBtn: false }"> 提交</button>
+                            <button v-if="hasReady"  class="btn" @click="submitForm('requrePage5')"   :class= "{ disabledBtn: false }"> 提交</button>
                         </div>
                     </div>
                 </div>
@@ -625,7 +625,8 @@ export default {
                     {text: '未定级', value: '未定级'},
                 ]
             },
-            checkObj:{}
+            checkObj:{},
+            hasReady:true
         }
     },
     watch:{
@@ -700,6 +701,7 @@ export default {
                 }
                 SaveQuestionair_Hospital({...this.dataList,...this.checkObj}).then(res=>{
                     localStorage.setItem(this.$route.path,JSON.stringify(this.dataList))
+                    this.hasReady=false
                     this.$toast({
                         message:'提交成功，稍后请自行退出'
                     })
@@ -718,6 +720,7 @@ export default {
     mounted(){
         if(localStorage.getItem(this.$route.path)){  //数据缓存
             this.dataList=JSON.parse(localStorage.getItem(this.$route.path))
+            this.hasReady=false
             this.$messagebox.alert('您已经提交过了，请勿重复提交')
         }
     },
@@ -734,7 +737,7 @@ export default {
         margin:0 auto;
         .qs-content{
             padding:0 30px;
-            top:100px;
+            top:10px;
             h3{
                 font-size: 36px;
                 margin:30px 10px 0 10px;
