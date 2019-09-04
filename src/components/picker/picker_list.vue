@@ -388,68 +388,78 @@
       },
       deep: true
     },
-    show (val) {
-      let valueImport=this.$parent.keyValue  //获取关键初始值
-      if(Object.prototype.toString.call(valueImport)!='[object Undefined]'){  //取初始化的值
-          valueImport=this.$parent.keyValue
-          let dataArray=[]
-          if(!this.$parent.isTwo && !this.pData2){
+    show :{
+      handler(val){
+        let valueImport=this.$parent.keyValue  //获取关键初始值
+        if(Object.prototype.toString.call(valueImport)!='[object Undefined]'){  //取初始化的值
+            valueImport=this.$parent.keyValue
+            let dataArray=[]
+            if(!this.$parent.isTwo && !this.pData2){
+                let defaultValue={
+                    text:'',
+                    value:this.$parent.keyValue
+                }
+                dataArray.push(defaultValue)
+            }
+            else if(this.$parent.isTwo &&!this.$parent.isStr){
+                let Mlen=valueImport.split('.')
+                let defaultValue1={
+                    text:'',
+                    value:Mlen[0]
+                }
+                let defaultValue2={
+                    text:'',
+                    value:'.'+Mlen[1]   //后续弄成变量,jiben不会变
+                }
+                dataArray.push(defaultValue1)
+                dataArray.push(defaultValue2)
+            }
+            else if(this.$parent.isTwo &&this.$parent.isStr){
+                let Mlen=valueImport.split(" ")
+                let defaultValue1={
+                    text:'',
+                    value:Mlen[0]
+                }
+                let defaultValue2={
+                    text:'',
+                    value:Mlen[1]   //
+                }
+                dataArray.push(defaultValue1)
+                dataArray.push(defaultValue2)
+            }
+            else if(this.$parent.isThird){
+                let Mlen=valueImport.split(" ")
+                let defaultValue1={
+                    text:'',
+                    value:Mlen[0]
+                }
+                let defaultValue2={
+                    text:'',
+                    value:Mlen[1]   //
+                }
+                let defaultValue3={
+                    text:'',
+                    value:Mlen[2]   //
+                }
+                dataArray.push(defaultValue1)
+                dataArray.push(defaultValue2)
+                dataArray.push(defaultValue3)
+            }
+            else{
               let defaultValue={
                   text:'',
                   value:this.$parent.keyValue
               }
               dataArray.push(defaultValue)
-          }
-          else if(this.$parent.isTwo &&!this.$parent.isStr){
-              let Mlen=valueImport.split('.')
-              let defaultValue1={
-                  text:'',
-                  value:Mlen[0]
-              }
-              let defaultValue2={
-                  text:'',
-                  value:'.'+Mlen[1]   //后续弄成变量,jiben不会变
-              }
-              dataArray.push(defaultValue1)
-              dataArray.push(defaultValue2)
-          }
-          else if(this.$parent.isTwo &&this.$parent.isStr){
-              let Mlen=valueImport.split(" ")
-              let defaultValue1={
-                  text:'',
-                  value:Mlen[0]
-              }
-              let defaultValue2={
-                  text:'',
-                  value:Mlen[1]   //
-              }
-              dataArray.push(defaultValue1)
-              dataArray.push(defaultValue2)
-          }
-          else if(this.$parent.isThird){
-              let Mlen=valueImport.split(" ")
-              let defaultValue1={
-                  text:'',
-                  value:Mlen[0]
-              }
-              let defaultValue2={
-                  text:'',
-                  value:Mlen[1]   //
-              }
-              let defaultValue3={
-                  text:'',
-                  value:Mlen[2]   //
-              }
-              dataArray.push(defaultValue1)
-              dataArray.push(defaultValue2)
-              dataArray.push(defaultValue3)
-          }
-          val && this.setTop(dataArray|| this.selectData.default || [])
-      }
-      else{         //取默认值
-          val && this.setTop(this.selectData.default || [])
-      }
-
+            }
+            if(this.$parent.keyValue=='')  dataArray=null
+            val && this.setTop(dataArray|| this.selectData.default || [])
+        }
+        else{         //取默认值
+            val && this.setTop(this.selectData.default || [])
+        }
+      },
+      immediate:true
     }
   }
   }

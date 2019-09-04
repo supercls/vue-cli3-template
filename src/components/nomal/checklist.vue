@@ -15,14 +15,22 @@
             :value="option.value || option">
           <span class="mint-checkbox-core" ></span>
         </span>
-        <span class="mint-checkbox-label" v-text="option.label || option"></span>
-        <span class="icon-right" v-if="option.other && currentValue.indexOf(option.value)>-1" >{{option.icon||''}}</span>
-        <input type="number" 
-            :placeholder="option.placeholder ||'请输入'"  
-            @change="changeInput(option.name,option.filed)" 
-            v-model="option.filed" 
-            v-if="option.other && currentValue.indexOf(option.value)>-1" 
-            class="otherInput">
+        <span class="mint-checkbox-label" 
+          v-text="option.label || option">
+        </span>
+        <span class="icon-right" 
+            v-if="option.other 
+            && currentValue.indexOf(option.value)>-1" 
+            >{{option.icon||''}}
+        </span>
+        <input type="text" 
+          :placeholder="option.placeholder ||'请输入'"  
+          @change="changeInput(option.name,option.filed)" 
+          @click ="inputFocus"
+          v-model="option.filed" 
+          class="otherInput"  
+          v-if="option.other && currentValue.indexOf(option.value)>-1" 
+        >
         <span             
             v-if="option.picker && currentValue.indexOf(option.value)>-1"
             class="spanRit"
@@ -35,7 +43,7 @@
     <vue-pickers
               v-if="FshowPicke"
               :show="FshowPicke"
-              :defaultValue="dataValue"
+              :defaultValue="keyValue"
               :selectData="FpickData"
               @cancel="FcloseFn"
               @confirm="FconfirmFn">
@@ -75,6 +83,7 @@ export default {
       type: Array,
       default:[]
     },
+    defaultValue:String,
     clearValue:{
       type:[String,Number,Array,Object,Boolean]
     },
@@ -84,10 +93,10 @@ export default {
     return {
       currentValue: this.value ||[],
       FshowPicke:false,
-      dataValue:'',
+      keyValue:'',
       FpickData:{
          columns: 1,
-         default: [{text: '15', value: '15'}],
+         default: [{text: '', value: ''}],
          pData1:[]
       },
       dataItem:null,
@@ -101,15 +110,20 @@ export default {
     changeInput(name,val){   //针对特殊处理进行传值赋值
       let data=name.split('.')
       this.$parent[data[0]][data[1]]=val
+      event.preventDefault(); 
+    },
+    inputFocus(e){   //阻止事件冒泡
+      e.preventDefault(); 
     },
     checkedEmit(e){         //mint ui bug处理
       if(this.limit) e.target.checked=false
     },
     showPicker(name,val){   //picker选择器
+     
       this.FshowPicke=true;
       this.dataName=name;
-      this.dataItem=val
-      event.preventDefault(); 
+      this.dataItem=val;
+      event.preventDefault();
     },
     FcloseFn(){          //关闭
         this.FshowPicke=false
@@ -136,7 +150,9 @@ export default {
         this.dataItem.filed=Chaval
         let data=this.dataName.split('.')
         this.$parent[data[0]][data[1]]=Chaval
+        this.keyValue=Chaval
         this.FshowPicke=false
+        
     },
   },
   computed: {
@@ -150,6 +166,8 @@ export default {
   watch: {
     pickContent:{
       handler(val){
+        let arr=[{text:this.defaultValue||'',value:this.defaultValue||''}]
+          this.FpickData.default=arr
             this.FpickData.pData1=slotList[val] || slotList.timaAge
         },
         immediate:true
@@ -163,7 +181,8 @@ export default {
     currentValue(val) {
       if (this.limit) val.pop();
       this.$emit('input', val);
-    }
+    },
+   
   }
 };
 </script>
@@ -257,7 +276,8 @@ export default {
     -webkit-overflow-scrolling: touch;
     padding:20px 0px;
   }
-  .otherInput{height: 50px;line-height: 50px;display:inline;font-size: 28px;padding-left: 10px;margin-left: 30px;float: right;text-align: right;margin-right: 30px;}
+  .mint-checklist-label{position: relative;}
+  .otherInput{height: 50px;cursor: pointer; line-height: 50px;display:inline-block;font-size: 28px;padding-left: 10px;text-align: right;position: absolute;top:0;right: 100px;z-index: 9999;}
   .spanRit{display: inline-block;cursor: pointer;float:right;padding: 3px 10px;}
   .icon-right{float: right;line-height: 1.8;}
 </style>

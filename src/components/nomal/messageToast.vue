@@ -3,7 +3,7 @@
         <div class="boxA animated zoomIn" :class="{maxHeight:type==3}">
             <div class="top">
                 <span>{{mtitle}}</span>
-                <i class="close" @click.prevent="closeToase"></i>
+                <!-- <i class="close" @click.prevent="closeToase"></i> -->
             </div>
             <article v-if="type==1">
                 <h3>{{arcont}}：<i></i></h3>
@@ -14,9 +14,11 @@
             </article>
             <article v-if="type==3">  <!--应对长内容,后续可以继续拓展-->
                 <p v-for="item in conts">{{item.detail}}</p>
+                 
             </article>
+           <p class="p-add"><span style="color:#026DBB;font-size:18px;" @click.prevent="closeToase"> 同意</span></p>
         </div>
-        <div class="fixBody" @click.self="closeToase" @touchmove.prevent></div>
+        <div class="fixBody" ></div>
     </div>
 </template>
 <script>
@@ -161,7 +163,7 @@
                 top: 80px;
                 left: 0;
                 right: 0;
-                bottom: 0;
+                bottom: 80px;
                 height:auto;
                 overflow:auto;
                 h3{
@@ -196,8 +198,9 @@
             }
         }
         .fixBody{
-            position: fixed;top: 0px;left: 0px;right: 0px;bottom: 0px;z-index:10;background:#000;opacity: 0.3;
+            position: fixed;top: 0px;left: 0px;right: 0px;bottom: 0px;z-index:10;background:#000;opacity: 0.9;
         }
 
     }
+    .p-add{text-align:center;position:absolute;bottom:0px;left:0;height: 80px;line-height: 80px;right: 0;}
 </style>

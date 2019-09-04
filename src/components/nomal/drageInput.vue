@@ -12,8 +12,22 @@
                     <!---->
                 </div>
                 <div class="mint-cell-value" @click="showPickers" style="position：relative">
+                    <!--针对数字特殊增加的选项  isNum为true-->
+                    <input
+                            v-if="isNum"
+                            ref="input"
+                            :disabled="disabled"
+                            oninput="if(value.length>4)value=value.slice(0,4)"   
+                            :placeholder="placeholder"
+                            @blur="blusa"
+                            @input="inputHandle"
+                            @focus="active=true"
+                            :value="currentValue"
+                            :type="type"
+                    class="mint-field-core" />
                     <!---->
                     <input
+                            v-else
                             ref="input"
                             :disabled="disabled"
                             :maxlength="maxlength"
@@ -163,6 +177,7 @@
                 type:String,
                 default:''
             },
+            isNum: Boolean,
             maxlength:{
                 default:'9999999999'
             },
@@ -209,6 +224,9 @@
             },
             isChecked:{    //选择对勾，没选则请选择
                 type:[String,Number,Array,Boolean],
+                default:''
+            },
+            clearName:{    //需要清楚的
                 default:''
             },
             clickOff:Boolean,  //是否允许点击
@@ -329,6 +347,7 @@
         methods:{
             inputHandle(e){      //input原生输入事件
                 this.$emit('changeInput',e.target.value)
+                if(this.clearName)  this.$parent.dataList[this.clearName]='2'
             },
             clearValue(){         //清除按钮
                 this.$emit('changeInput','')
@@ -433,7 +452,7 @@
     @color6:#666;
     .drage-wrapper{
         height: 110px;
-        font-size: 28px;
+        font-size: 30px;
         color: @color6;
         .mint-cell-wrapper{
             padding: 0 30px;
@@ -449,7 +468,7 @@
             input{
                 color: @color6;
                 -webkit-tap-highlight-color:transparent;
-                font-size: 28px;
+                font-size: 30px;
             }
         }
         .light-cell{
@@ -465,7 +484,7 @@
         }
         .mint-cell-right-danw{
             color: #999;
-            font-size: 28px;
+            font-size: 30px;
         }
         .mint-field-core{
             padding-right: 10px;
@@ -475,7 +494,8 @@
         .mint-cell-title{
             margin-right: 10px;
             .mint-cell-text{
-                font-size: 28px;
+                font-size: 32px;
+                color:#333;
             }
         }
         .light-icon-right{
@@ -487,6 +507,7 @@
             }
         }
     }
+    input{cursor: pointer;}
     .checkListDiv{position:absolute;top:0px;right:20px;width:200px;height:100%;background:#fff;}
     .check-span-cen{
             margin-top: 36px;
