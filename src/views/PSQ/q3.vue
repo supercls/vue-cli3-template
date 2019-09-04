@@ -421,9 +421,9 @@
                                         class="requrePage3 moreCheck" data-name="Yezshqqd"   data-next="Yezshqqd2"
                                         v-model="dataList.Yezshqqd"
                                         :max="3"
-                                        :options="[{ label: '医护人员',value: '1'},{ label: '孕妇学校课堂',value: '2'},{ label: '家庭成员或朋友 ',value: '3'},{ label: '宣传手册、宣传单及折',value: '4'},{ label: '书籍/报刊/杂志',value: '5'},{ label: '广播/电视',value: '6'},{ label: '母婴健康类APP',value: '7'},{ label: '其他网络：微信、百度等 ',value: '7'},{ label: '其他 ',value: '8'}]">
+                                        :options="[{ label: '医护人员',value: '1'},{ label: '孕妇学校课堂',value: '2'},{ label: '家庭成员或朋友 ',value: '3'},{ label: '宣传手册、宣传单及折',value: '4'},{ label: '书籍/报刊/杂志',value: '5'},{ label: '广播/电视',value: '6'},{ label: '母婴健康类APP',value: '7'},{ label: '其他网络：微信、百度等 ',value: '8'},{ label: '其他 ',value: '9'}]">
                                     </super-checklist>
-                                    <mt-field v-if="(dataList.Yezshqqd||[]).indexOf('8')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Yezshqqd2"></mt-field>
+                                    <mt-field v-if="(dataList.Yezshqqd||[]).indexOf('9')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Yezshqqd2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -431,12 +431,13 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
-                                         class="requrePage3 moreCheck" data-name="Xhdwljkjyxs"   data-next="Xhdwljkjyxs2"
+                                        defaultValue="15"
+                                        class="requrePage3 moreCheck" data-name="Xhdwljkjyxs"   data-next="Xhdwljkjyxs2"
                                         v-model="dataList.Xhdwljkjyxs"
                                         :max="3"            
-                                        :options="[{ label: '文字形式',value: '1'},{ label: '音频',value: '2',picker:true,filed:dataList.asd,name:'dataList.asd',placeholder:'请选择音频时长',icon:'分钟'},{ label: '视频',value: '3',picker:true,filed:dataList.asd,name:'dataList.asd',placeholder:'请选择视频时长',icon:'分钟'},{ label: '微信课堂',value: '4'},{ label: '图片',value: '5'},{ label: '其他 ',value: '6'}]">
+                                        :options="[{ label: '文字形式',value: '1'},{ label: '音频',value: '2',picker:true,filed:dataList.Xhdwljkjyxs1,name:'dataList.Xhdwljkjyxs1',placeholder:'请选择音频时长',icon:'分钟'},{ label: '视频',value: '3',picker:true,filed:dataList.Xhdwljkjyxs2,name:'dataList.Xhdwljkjyxs2',placeholder:'请选择视频时长',icon:'分钟'},{ label: '微信课堂',value: '4'},{ label: '图片',value: '5'},{ label: '其他 ',value: '6'}]">
                                     </super-checklist>
-                                    <mt-field v-if="(dataList.Xhdwljkjyxs||[]).indexOf('6')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Xhdwljkjyxs2"></mt-field>
+                                    <mt-field v-if="(dataList.Xhdwljkjyxs||[]).indexOf('6')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Xhdwljkjyxs3"></mt-field>
                                 </div>
                             </div>
 
@@ -480,7 +481,7 @@
                                     <super-checklist
                                         title=""
                                         :max="1"
-                                        class="requrePage4" data-name="Wxzyy"
+                                        class="requrePage4 moreCheck" data-name="Wxzyy"
                                         v-model="dataList.Wxzyy"
                                         :options="[{ label: '不知道',value: '1'},{ label: '不感兴趣',value:'2'},{ label: '不需要',value:'3'},{ label: '其他',value:'4',other:true,filed:dataList.Wxzyy2,name:'dataList.Wxzyy2'}]">
                                     </super-checklist>
@@ -489,12 +490,13 @@
                             <div class="form-list" v-if="(dataList.Wxzyy.length==0)">
                                 <p class="form-p1">38.您是否看过《母子健康APP》健康教育内容？</p>
                                 <div class="check-list">
-                                    <super-radio
+                                    <super-checklist
                                         title=""
-                                        class="requrePage4" data-name="SfkgAppnr"
+                                        :max="1"
+                                        class="requrePage4 moreCheck" data-name="SfkgAppnr"
                                         v-model="dataList.SfkgAppnr"
                                         :options="[{ label: '看过',value: '1'},{ label: '未看过',value:'2'}]">
-                                    </super-radio>
+                                    </super-checklist>
                                 </div>
                             </div>
                            <div class="form-list"  v-if="(dataList.Wxzyy.length==0) && dataList.SfkgAppnr !='1'">
@@ -503,7 +505,7 @@
                                     <super-checklist
                                         title=""
                                         :max="1"
-                                        class="requrePage4" data-name="Wkgyy"
+                                        class="requrePage4 moreCheck" data-name="Wkgyy"
                                         v-model="dataList.Wkgyy"
                                         :options="[{ label: '不知道',value: '1'},{ label: '不感兴趣',value:'2'},{ label: '不需要',value:'3'},{ label: '其他',value:'4',other:true,filed:dataList.Wkgyy2,name:'dataList.Wkgyy2'}]">
                                     </super-checklist>
@@ -536,7 +538,7 @@
                                 <div class="check-list">
                                     <super-radio
                                         title=""
-                                        class="requrePage4" data-name="Cxxssfmy"
+                                        class="requrePage4 " data-name="Cxxssfmy"
                                         v-model="dataList.Cxxssfmy"
                                         :options="[{ label: '非常满意',value: '1'},{ label: '比较满意',value:'2'},{ label: '一般',value:'3'},{ label: '比较不满意',value:'4'},{ label: '非常不满意',value:'5'}]">
                                     </super-radio>
@@ -555,13 +557,13 @@
                                     <mt-field v-if="(dataList.Jjnrwt||[]).indexOf('8')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jjnrwt2"></mt-field>
                                 </div>
                             </div>
-                            <div class="form-list"  v-if="(dataList.Wxzyy.length==0) && dataList.Wkgyy.length==0">
+                            <div class="form-list"  v-if="(dataList.Wxzyy.length==0) && dataList.Wkgyy.length==0 && !dataList.Xwjjnr">
                                 <p class="form-p1">44.您认为针对《母子健康APP》健康教育内容应如何进一步完善？（应用APP的回答，问卷结束）</p>
                                 <div class="check-list">
                                     <mt-field placeholder="应用APP的回答" type="textarea" rows="3" v-model="dataList.Jjnrrhws" class="requrePage4" data-name="Jjnrrhws"></mt-field>
                                 </div>
                             </div>
-                            <div class="form-list" >
+                            <div class="form-list" v-if="!dataList.Jjnrrhws">
                                 <p class="form-p1">45.您希望《母子健康APP》的健康教育内容是什么？（未用APP的回答，问卷结束）</p>
                                 <div class="check-list">
                                     <mt-field placeholder="应用APP的回答" type="textarea" rows="3" v-model="dataList.Xwjjnr" class="requrePage4" data-name="Xwjjnr"></mt-field></mt-field>
@@ -573,13 +575,13 @@
                 <div class="bottom">
                     <div class= "pagination">
                         <div class="pag-box">
-                            <button  class="btn" :disabled= "false" @click="changePage('4','3','requrePage4')" :class= "{ disabledBtn: false }" >上一页</button>
+                            <button  class="btn" :disabled= "false" @click="changePage('4','3')" :class= "{ disabledBtn: false }" >上一页</button>
                             <div class= "pag-center">
                             <span class= "num1">5</span>
                             <span>/</span>
                             <span>5</span>
                             </div>
-                            <button  class="btn" v-if="hasReady" @click="submitForm('requrePage4')"   :class= "{ disabledBtn: false }">提交</button>
+                            <button  class="btn"  @click="submitForm('requrePage4')"   :class= "{ disabledBtn: !hasReady }">提交</button>
                         </div>
                     </div>
                 </div>
@@ -606,7 +608,9 @@ export default {
                 Wxzyy:[],
                 Wkgyy:[],
                 Jjnrwt:[],
-             
+                Xhdwljkjyxs:[],
+                Pybblxpdsj:[],
+                Pybbyscfsj:[]
             },
             page1:true,
             page2:false,
@@ -660,7 +664,10 @@ export default {
         }
     },
     watch:{
-
+       'dataList.SfxzsyApp'(val){
+           this.$set(this.dataList,'Wxzyy',[])
+           this.$set(this.dataList,'Wkgyy',[])
+       },
     },
     components:{
         headers,
@@ -678,9 +685,33 @@ export default {
                     isRequire=true
                 }
             }
-            if(isRequire){
+            if(isRequire ){
                 this.$toast({
                     message:'请填写完整'
+                })
+               // return false;
+            }
+            if(this.dataList.Pybblxpdsj.indexOf('1')>-1 && !this.dataList.Pybblxpdsj2){
+                 this.$toast({
+                    message:'请选择宝宝培养爬行时间'
+                })
+                return false;
+            }
+            if(this.dataList.Pybbyscfsj.indexOf('1')>-1 && !this.dataList.Pybbyscfsj2){
+                 this.$toast({
+                    message:'请选择宝宝培养用勺吃饭的时间'
+                })
+                return false;
+            }
+            if(this.dataList.Xhdwljkjyxs.indexOf('2')>-1 && !this.dataList.Xhdwljkjyxs1){
+                 this.$toast({
+                    message:'请选择音频时长'
+                })
+                return false;
+            }
+            if(this.dataList.Xhdwljkjyxs.indexOf('3')>-1 && !this.dataList.Xhdwljkjyxs2){
+                 this.$toast({
+                    message:'请选择视频时长'
                 })
                 return false;
             }
@@ -695,6 +726,7 @@ export default {
             document.querySelector('.qs-content').scrollTop=0
         },
         submitForm(pageName){
+            if(!this.hasReady) return false
             let isRequire=false
             let arrDom=document.querySelectorAll(`.${pageName}`)
             for(let i=0;i<arrDom.length;i++){
@@ -706,11 +738,11 @@ export default {
                 this.$toast({
                     message:'请填写完整'
                 })
-                return false;
+              //  return false;
             }
             this.dataList.DistrictNo=this.$route.query.DistrictNo||'';
             this.dataList.DistrictName=this.$route.query.DistrictName||"'"
-            this.$messagebox.confirm('确定执行此操作?').then(action => {
+            this.$messagebox.confirm('问卷提交后无法修改是否继续提交？').then(action => {
                 let checkDom=document.querySelectorAll('.moreCheck')
                 for(let i=0;i<checkDom.length;i++){
                     this.checkObj[checkDom[i].getAttribute('data-name')]=(this.dataList[checkDom[i].getAttribute('data-name')] ||[""]).join(",")

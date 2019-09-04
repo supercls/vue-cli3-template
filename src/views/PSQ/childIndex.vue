@@ -1,12 +1,11 @@
 <template>
     <div class="zf-wrapper">
-        <headers heaTitle='孕产妇调查表' :showBack="false"></headers>
+       
         <div class="qs-content mint-tab-container">
             <div class="page1" v-if="page1">
                 <div class="top">
-                    <p>尊敬的宝妈/宝爸：</p>
+                    <p style="text-indent:0em">尊敬的宝妈/宝爸：</p>
                     <p>您好！感谢您参加本次调查，请在题目后相应横线处填写答案或选择相应序号。如无特殊说明，题目均为单选。</p>
-
                 </div>
                 <div class="center">
                     <div class="zf-wrapper-mom">

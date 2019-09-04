@@ -31,14 +31,14 @@
                             </div>
                             <div class="form-list">
                                 <drage-input v-model="dataList.Mqnl" :keyValue.sync="dataList.Mqnl"
-                                    class="requrePage1" data-name="Mqnl"
+                                    class="requrePage1" data-name="Mqnl"  unit="岁"
                                      :slotContent="slotContent3F" typeItem="pickeMore" :disabled="true"
                                      label="3.母亲年龄____岁" >
                                 </drage-input>
                             </div>
                             <div class="form-list">
                                 <drage-input v-model="dataList.Fqnl" :keyValue.sync="dataList.Fqnl"
-                                 class="requrePage1" data-name="Fqnl"
+                                 class="requrePage1" data-name="Fqnl"  unit="岁"
                                      :slotContent="slotContent3F" typeItem="pickeMore" :disabled="true"
                                      label="4.父亲年龄____岁" >
                                 </drage-input>
@@ -107,10 +107,10 @@
                                     <mt-radio
                                         title=""
                                         class="requrePage1" data-name="Mqzy"  data-next="Mqzy2"
-                                        v-model="dataList.cMqzy"
-                                        :options="[{ label: '行政干部',value: '1'},{ label: '工人',value: '2'},{ label: '专业技术人员',value: '3'},{ label: '农民',value: '4'},{ label: '公司职员',value: '5'},{ label: '商业服务人员',value: '6'},{ label: '无业',value: '7'}]">
+                                        v-model="dataList.Mqzy"
+                                        :options="[{ label: '行政干部',value: '1'},{ label: '工人',value: '2'},{ label: '专业技术人员',value: '3'},{ label: '农民',value: '4'},{ label: '公司职员',value: '5'},{ label: '商业服务人员',value: '6'},{ label: '无业',value: '7'},{ label: '其他',value: '8'}]">
                                     </mt-radio>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Mqzy2"></mt-field>
+                                    <mt-field v-if="(dataList.Mqzy||'')=='8'" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Mqzy2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -120,9 +120,9 @@
                                         title=""
                                         v-model="dataList.Fqzy"
                                         class="requrePage1" data-name="Fqzy"  data-next="Fqzy2"
-                                        :options="[{ label: '行政干部',value: '1'},{ label: '工人',value: '2'},{ label: '专业技术人员',value: '3'},{ label: '农民',value: '4'},{ label: '公司职员',value: '5'},{ label: '商业服务人员',value: '6'},{ label: '无业',value: '7'}]">
+                                        :options="[{ label: '行政干部',value: '1'},{ label: '工人',value: '2'},{ label: '专业技术人员',value: '3'},{ label: '农民',value: '4'},{ label: '公司职员',value: '5'},{ label: '商业服务人员',value: '6'},{ label: '无业',value: '7'},{ label: '其他',value: '8'}]">
                                     </mt-radio>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Fqzy2"></mt-field>
+                                    <mt-field v-if="(dataList.Fqzy||'')=='8'" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Fqzy2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -132,7 +132,7 @@
                                         title=""
                                          class="requrePage1" data-name="Jtpjysr"
                                         v-model="dataList.Jtpjysr"
-                                        :options="[{ label: '3000元及以下',value: '1'},{ label: '3001-5000元',value: '2'},{ label: '5001-10000元',value: '3'},{ label: '10000元以上',value: '3'}]">
+                                        :options="[{ label: '3000元及以下',value: '1'},{ label: '3001-5000元',value: '2'},{ label: '5001-10000元',value: '3'},{ label: '10000元以上',value: '4'}]">
                                     </mt-radio>
                                 </div>
                             </div>
@@ -147,10 +147,10 @@
                             </div>
                             <div class="form-list" style="margin-top:20px;">
                                 <drage-input v-model="dataList.Hzcstz" 
-                                    :keyValue.sync="dataList.Hzcstz"  type="number"
+                                    :keyValue.sync="dataList.Hzcstz"  type="number" :isNum="true"
                                      class="requrePage1" data-name="Hzcstz"
-                                      maxlength="6"
-                                       unit="g"  label="15.您的孩子出生体重：" >
+                                     maxlength="4"
+                                     unit="g"  label="15.您的孩子出生体重：" >
                                 </drage-input>
                             </div>
                             <div class="form-list">
@@ -272,7 +272,7 @@
                                         title=""
                                         class="requrePage2 moreCheck" data-name="Yeyszqdsf"
                                         v-model="dataList.Yeyszqdsf"
-                                        :options="[{ label: '不能集中注意力',value: '1'},{ label: '不能按照要求做简单的事情',value: '2'},{ label: '不会用筷子吃饭 ',value: '3'},{ label: '不会扶栏杆上楼梯/台阶',value: '4'},{ label: '不知道 ',value: '5'}]">
+                                        :options="[{ label: '每天食物包括肉蛋奶 ',value: '1'},{ label: '按时进餐',value: '2'},{ label: '可多喝果汁补充水分 ',value: '3'},{ label: '每顿饭鼓励孩子尽量多吃促进身体发育',value: '4'},{ label: '正餐进食量不足时可以适量吃零食补充营养 ',value: '5'},{ label: '不清楚 ',value: '6'}]">
                                     </super-checklist>
                                 </div>
                             </div>
@@ -318,9 +318,9 @@
                                             title=""
                                             class="requrePage2 moreCheck" data-name="Ynzffglhzcgzsw" data-next="Ynzffglhzcgzsw2"
                                             v-model="dataList.Ynzffglhzcgzsw"
-                                            :options="[{ label: '拥抱或表扬孩子',value: '1'},{ label: '玩玩具或讲故事',value: '2'},{ label: '边看电视边吃 ',value: '3'},{ label: '甜食或零食作为奖励 ',value: '4'},{ label: '追着喂 ',value: '5'}]">
+                                            :options="[{ label: '拥抱或表扬孩子',value: '1'},{ label: '玩玩具或讲故事',value: '2'},{ label: '边看电视边吃 ',value: '3'},{ label: '甜食或零食作为奖励 ',value: '4'},{ label: '追着喂 ',value: '5'},{ label: '其他 ',value: '6'}]">
                                         </super-checklist>
-                                        <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Ynzffglhzcgzsw2"></mt-field>
+                                        <mt-field v-if="(dataList.Ynzffglhzcgzsw||[]).indexOf('6')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Ynzffglhzcgzsw2"></mt-field>
                                     </div>
                                 </div>
                             </div>
@@ -331,10 +331,11 @@
                                         <super-checklist
                                             title=""
                                             :max="1"
+                                            defaultValue="8"
                                             pickContent="fourSixth"
                                             class="requrePage2 moreCheck" data-name="Bbkssysj"
                                             v-model="dataList.Bbkssysj"
-                                            :options="[{ label: '____个月开始开始',value: '1',picker:true,filed:dataList.Bbkssysj2,name:'dataList.Bbkssysj2',placeholder:'请选择',icon:'个月'},{ label: '还没有开始',value: '2'}]">
+                                            :options="[{ label: '____个月开始',value: '1',picker:true,filed:dataList.Bbkssysj2,name:'dataList.Bbkssysj2',placeholder:'请选择',icon:'个月',},{ label: '还没有开始',value: '2'}]">
                                         </super-checklist>
                                     </div>
                                 </div>
@@ -357,9 +358,9 @@
                                         title=""
                                         class="requrePage2 moreCheck" data-name="Zjbbwt"
                                         v-model="dataList.Zjbbwt"
-                                        :options="[{ label: '无',value: '1'},{ label: '腹泻',value: '2'},{ label: '便秘 ',value: '3'},{ label: '腹痛 ',value: '4'},{ label: '体重减轻或不增 ',value: '5'},{ label: '贫血 ',value: '6'},{ label: '过敏表现：如湿疹、哮喘、食物过敏或不耐受等 ',value: '7'},{ label: '超重或肥胖 ',value: '8'}]">
+                                        :options="[{ label: '无',value: '1'},{ label: '腹泻',value: '2'},{ label: '便秘 ',value: '3'},{ label: '腹痛 ',value: '4'},{ label: '体重减轻或不增 ',value: '5'},{ label: '贫血 ',value: '6'},{ label: '过敏表现：如湿疹、哮喘、食物过敏或不耐受等 ',value: '7'},{ label: '超重或肥胖 ',value: '8'},{ label: '其他 ',value: '9'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Zjbbwt2"></mt-field>
+                                    <mt-field v-if="(dataList.Zjbbwt||[]).indexOf('9')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Zjbbwt2"></mt-field>
                                 </div>
                             </div>
                         </div>
@@ -394,9 +395,9 @@
                                         class="requrePage3 moreCheck" data-name="Xydyezs"
                                         v-model="dataList.Xydyezs"
                                         :max="3"
-                                        :options="[{ label: '生长发育',value: '1'},{ label: '生活护理',value: '2'},{ label: '营养与喂养 ',value: '3'},{ label: '常见病预防',value: '4'},{ label: '早期发展',value: '5'},{ label: '安全防护',value: '6'},{ label: '五官保健（眼、耳、口腔保健）',value: '7'}]">
+                                        :options="[{ label: '生长发育',value: '1'},{ label: '生活护理',value: '2'},{ label: '营养与喂养 ',value: '3'},{ label: '常见病预防',value: '4'},{ label: '早期发展',value: '5'},{ label: '安全防护',value: '6'},{ label: '五官保健（眼、耳、口腔保健）',value: '7'},{ label: '其他',value: '8'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Xydyezs2"></mt-field>
+                                    <mt-field v-if="(dataList.Xydyezs||[]).indexOf('8')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Xydyezs2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -407,9 +408,9 @@
                                         class="requrePage3 moreCheck" data-name="Yezshqqd"
                                         v-model="dataList.Yezshqqd"
                                         :max="3"
-                                        :options="[{ label: '医护人员',value: '1'},{ label: '孕妇学校课堂',value: '2'},{ label: '家庭成员或朋友 ',value: '3'},{ label: '宣传手册、宣传单及折',value: '4'},{ label: '书籍/报刊/杂志',value: '5'},{ label: '广播/电视',value: '6'},{ label: '母婴健康类APP',value: '7'},{ label: '其他网络：微信、百度等 ',value: '7'}]">
+                                        :options="[{ label: '医护人员',value: '1'},{ label: '孕妇学校课堂',value: '2'},{ label: '家庭成员或朋友 ',value: '3'},{ label: '宣传手册、宣传单及折',value: '4'},{ label: '书籍/报刊/杂志',value: '5'},{ label: '广播/电视',value: '6'},{ label: '母婴健康类APP',value: '7'},{ label: '其他网络：微信、百度等 ',value: '8'},{ label: '其他',value: '9'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Yezshqqd2"></mt-field>
+                                    <mt-field v-if="(dataList.Yezshqqd||[]).indexOf('9')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Yezshqqd2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -417,15 +418,15 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
+                                        defaultValue="15"
                                         class="requrePage3 moreCheck" data-name="Xhdwljkjyxs"
                                         v-model="dataList.Xhdwljkjyxs"
                                         :max="3"            
-                                        :options="[{ label: '文字形式',value: '1'},{ label: '音频',value: '2',picker:true,filed:dataList.Xhdwljkjyxs1,name:'dataList.Xhdwljkjyxs1',placeholder:'请选择音频时长'},{ label: '视频',value: '3',picker:true,filed:dataList.Xhdwljkjyxs2,name:'dataList.Xhdwljkjyxs2',placeholder:'请选择视频时长'},{ label: '微信课堂',value: '4'},{ label: '图片',value: '5'}]">
+                                        :options="[{ label: '文字形式',value: '1'},{ label: '音频',value: '2',picker:true,filed:dataList.Xhdwljkjyxs1,name:'dataList.Xhdwljkjyxs1',placeholder:'请选择音频时长',icon:'分钟'},{ label: '视频',value: '3',picker:true,filed:dataList.Xhdwljkjyxs2,name:'dataList.Xhdwljkjyxs2',placeholder:'请选择视频时长',icon:'分钟'},{ label: '微信课堂',value: '4'},{ label: '图片',value: '5'},{ label: '其他',value: '6'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Xhdwljkjyxs3"></mt-field>
+                                    <mt-field v-if="(dataList.Xhdwljkjyxs||[]).indexOf('6')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Xhdwljkjyxs3"></mt-field>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -460,51 +461,55 @@
                                     </super-radio>
                                 </div>
                             </div>
-                            <div class="form-list">
+                            <div class="form-list" v-if="dataList.SfxzsyApp!='1'">
                                 <p class="form-p1">36.您未下载使用的原因是</p>
                                 <div class="check-list">
-                                    <super-radio
+                                    <super-checklist
                                         title=""
-                                        class="requrePage4 " data-name="Wxzyy"
+                                        :max="1"
+                                        class="requrePage4 moreCheck" data-name="Wxzyy"
                                         v-model="dataList.Wxzyy"
                                         :options="[{ label: '不知道',value: '1'},{ label: '不感兴趣',value:'2'},{ label: '不需要',value:'3'},{ label: '其他',value:'4',other:true,filed:dataList.Wxzyy2,name:'dataList.Wxzyy2'}]">
-                                    </super-radio>
+                                    </super-checklist>
                                 </div>
                             </div>
-                            <div class="form-list">
+                            <div class="form-list" v-if="(dataList.Wxzyy.length==0)">
                                 <p class="form-p1">37.您是否看过《母子健康APP》健康教育内容？</p>
                                 <div class="check-list">
-                                    <super-radio
+                                    <super-checklist
                                         title=""
-                                        class="requrePage4" data-name="SfkgAppnr"
+                                        :max="1"
+                                        class="requrePage4 moreCheck" data-name="SfkgAppnr"
                                         v-model="dataList.SfkgAppnr"
                                         :options="[{ label: '看过',value: '1'},{ label: '未看过',value:'2'}]">
-                                    </super-radio>
+                                    </super-checklist>
                                 </div>
                             </div>
-                           <div class="form-list">
+                           <div class="form-list" v-if="(dataList.Wxzyy.length==0) && dataList.SfkgAppnr !='1'">
                                 <p class="form-p1">38.您未看过的原因是</p>
                                 <div class="check-list">
-                                    <super-radio
+                                    <super-checklist
                                         title=""
-                                        class="requrePage4" data-name="Wkgyy"
+                                        :max="1"
+                                        class="requrePage4 moreCheck" data-name="Wkgyy"
                                         v-model="dataList.Wkgyy"
                                         :options="[{ label: '不知道',value: '1'},{ label: '不感兴趣',value:'2'},{ label: '不需要',value:'3'},{ label: '其他',value:'4',other:true,filed:dataList.Wkgyy2,name:'dataList.Wkgyy2'}]">
-                                    </super-radio>
+                                    </super-checklist>
                                 </div>
                             </div>
-                            <div class="form-list">
+                            <div class="form-list" v-if="(dataList.Wxzyy.length==0) && dataList.Wkgyy.length==0">
                                 <p class="form-p1">39.您能否在《母子健康APP》中得到您需要的知识？</p>
                                 <div class="check-list">
-                                    <super-radio
+                                    <super-checklist
                                         title=""
-                                         class="requrePage4" data-name="NfzAppddsxzs"
+                                        :max="1"
+                                         class="requrePage4 moreCheck" data-name="NfzAppddsxzs"
                                         v-model="dataList.NfzAppddsxzs"
                                         :options="[{ label: '全部能找到',value: '1'},{ label: '大部分能得到',value:'2'},{ label: '只能得到一部分',value:'3'},{ label: '完全不能',value:'4'}]">
-                                    </super-radio>
+                                    </super-checklist>
                                 </div>
                             </div>
-                            <div class="form-list">
+                            <div class="form-list" v-if="(dataList.Wxzyy.length==0) && dataList.Wkgyy.length==0">
                                 <p class="form-p1">40.您对母子健康app健康教育内容是否满意? </p>
                                 <div class="check-list">
                                     <super-radio
@@ -515,7 +520,7 @@
                                     </super-radio>
                                 </div>
                             </div>
-                            <div class="form-list">
+                            <div class="form-list" v-if="(dataList.Wxzyy.length==0) && dataList.Wkgyy.length==0">
                                 <p class="form-p1">41.您对母子健康app健康教育呈现形式是否满意? </p>
                                 <div class="check-list">
                                     <super-radio
@@ -526,7 +531,7 @@
                                     </super-radio>
                                 </div>
                             </div>
-                            <div class="form-list">
+                            <div class="form-list" v-show="(dataList.Wxzyy.length==0) && dataList.Wkgyy.length==0">
                                 <p class="form-p1">42.您认为《母子健康APP》健康教育形式和内容存在哪些问题？（可多选）</p>
                                 <div class="check-list">
                                     <super-checklist
@@ -539,13 +544,13 @@
                                     <mt-field v-if="(dataList.Jjnrwt||[]).indexOf('8')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jjnrwt2"></mt-field>
                                 </div>
                             </div>
-                            <div class="form-list">
+                            <div class="form-list" v-if="(dataList.Wxzyy.length==0) && dataList.Wkgyy.length==0">
                                 <p class="form-p1">43.您认为针对《母子健康APP》健康教育内容应如何进一步完善？（应用APP的回答，问卷结束）</p>
                                 <div class="check-list">
                                     <mt-field class="requrePage4" data-name="Jjnrrhws" placeholder="应用APP的回答" type="textarea" rows="3" v-model="dataList.Jjnrrhws"></mt-field>
                                 </div>
                             </div>
-                            <div class="form-list">
+                            <div class="form-list" v-if="!dataList.Jjnrrhws">
                                 <p class="form-p1">44.您希望《母子健康APP》的健康教育内容是什么？（未用APP的回答，问卷结束）</p>
                                 <div class="check-list">
                                     <mt-field class="requrePage4" data-name="Xwjjnr" placeholder="应用APP的回答" type="textarea" rows="3" v-model="dataList.Xwjjnr"></mt-field>
@@ -563,14 +568,12 @@
                             <span>/</span>
                             <span>5</span>
                             </div>
-                            <button v-if="hasReady"  class="btn" @click="submitForm('requrePage4')"   :class= "{ disabledBtn: false }">提交</button>
+                            <button   class="btn" @click="submitForm('requrePage4')"   :class= "{ disabledBtn:  !hasReady }">提交</button>
                         </div>
                     </div>
                 </div>
             </div>
-           
         </div>
-       
     </div>
 </template>
 <script>
@@ -589,7 +592,11 @@ export default {
             dataList:{
                 Wxzyy:[],
                 Wkgyy:[],
-                Jjnrwt:[]
+                Xhdwljkjyxs:[],
+                Jjnrwt:[],
+                Bbkssysj:[],
+                Hzcstz:'',
+                Wxzyy:''
             },
             page1:true,
             page2:false,
@@ -638,9 +645,10 @@ export default {
         }
     },
     watch:{
-        'dataList.r'(val){
-            console.log(val)
-        }
+       'dataList.SfxzsyApp'(val){
+           this.$set(this.dataList,'Wxzyy',[])
+           this.$set(this.dataList,'Wkgyy',[])
+       },
     },
     components:{
         headers,
@@ -662,7 +670,25 @@ export default {
                 this.$toast({
                     message:'请填写完整'
                 })
-             //   return false;
+              //  return false;
+            }
+            if(this.dataList.Bbkssysj.indexOf('1')>-1 && !this.dataList.Bbkssysj2){
+                 this.$toast({
+                    message:'请输入刷牙开始的时间'
+                })
+                return false;
+            }
+            if(this.dataList.Xhdwljkjyxs.indexOf('2')>-1 && !this.dataList.Xhdwljkjyxs1){
+                 this.$toast({
+                    message:'请选择音频时长'
+                })
+                return false;
+            }
+            if(this.dataList.Xhdwljkjyxs.indexOf('3')>-1 && !this.dataList.Xhdwljkjyxs2){
+                 this.$toast({
+                    message:'请选择视频时长'
+                })
+                return false;
             }
             let checkDom=document.querySelectorAll('.moreCheck')
             for(let i=0;i<checkDom.length;i++){
@@ -674,7 +700,8 @@ export default {
             this[pageNext]=true;
             document.querySelector('.qs-content').scrollTop=0
         },
-        submitForm(){
+        submitForm(pageName){
+            if(!this.hasReady) return false
             let isRequire=false
             let arrDom=document.querySelectorAll(`.${pageName}`)
             for(let i=0;i<arrDom.length;i++){
@@ -686,11 +713,9 @@ export default {
                 this.$toast({
                     message:'请填写完整'
                 })
-              //  return false;
+                return false;
             }
-            console.log({...this.dataList,...this.checkObj})
-            return
-            this.$messagebox.confirm('确定执行此操作?').then(action => {
+            this.$messagebox.confirm('确定执行问卷提交后无法修改是否继续提交？').then(action => {
                 let checkDom=document.querySelectorAll('.moreCheck')
                 for(let i=0;i<checkDom.length;i++){
                     this.checkObj[checkDom[i].getAttribute('data-name')]=(this.dataList[checkDom[i].getAttribute('data-name')] ||[""]).join(",")

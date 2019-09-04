@@ -22,7 +22,7 @@
                             <!---->
                             <drage-input v-model="dataList.Auditor" label="审核人"  type="text" :required="true" class="requrePage1" data-name="Auditor">
                             </drage-input>
-                            <drage-input v-model="dataList.AuditDate" :required="true" :keyValue.sync="dataList.AuditDate" typeItem="date" :disabled="true"  :iconRight="true" label="填表日期" class="requrePage1" data-name="AuditDate">
+                            <drage-input v-model="dataList.AuditDate" :required="true" :keyValue.sync="dataList.AuditDate" typeItem="date" :disabled="true"  :iconRight="true" label="审核时间" class="requrePage1" data-name="AuditDate">
                             </drage-input>
                             <drage-input v-model="dataList.AuditMobileTel" label="联系电话"  type="text" :required="true" class="requrePage1" data-name="AuditMobileTel">
                             </drage-input>
@@ -34,8 +34,8 @@
                             </drage-input>
                             <drage-input v-model="dataList.OrganName" label="机构名称"  type="text" :required="true" class="requrePage1" data-name="OrganName">
                             </drage-input>
-                            <drage-input v-model="dataList.OrganGrade" :keyValue.sync="dataList.OrganGrade"
-                                        class="requrePage1" data-name="OrganGrade" :iconRight="true"
+                            <drage-input v-model="dataList.model1" :keyValue.sync="dataList.OrganGrade"
+                                        class="requrePage1" data-name="OrganGrade" :iconRight="true" :isTwo="true" :isStr="true"
                                         :slotContent="slotContent1" typeItem="pickeMore" :required="true"
                                         :disabled="true"  label="机构等级" >
                             </drage-input>
@@ -73,29 +73,31 @@
                                     </mt-radio>
                                 </div>
                             </div>
-                            <div class="form-list" v-if="dataList.OrganType!='1'">
+                            <div class="form-list" v-if="dataList.OrganType=='1'">
                                 <p class="form-p1">2.本机构相关信息（请填写2018年全年信息，保留小数点后2位）<span>（如机构性质非妇幼保健院，跳答第二部分，当地APP建设改造和使用情况）</span></p>
                                 <div class="form-inp requrePage2" data-name="MaternalCount" data-next="MaternalCountUn">
-                                    <drage-input v-model="dataList.MaternalCount" label="产妇数(例)"  type="number" >
+                                    <drage-input v-model="dataList.MaternalCount" label="产妇数(例)"  type="number" :isNum="true" clearName="MaternalCountUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.MaternalCountUn"  :keyValue.sync="dataList.MaternalCountUn" 
                                         @updateRight="updateRight(dataList.MaternalCountUn,'MaternalCount')"
                                         placeholder="请选择"
+                                        
                                         typeItem="checkRight"
                                         :disabled="true"  label="产妇数未统计" >
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="appCount" data-next="AppCountUn">
-                                    <drage-input v-model="dataList.appCount" label="其中，应用母子健康手册的产妇数（例）"  type="text" >
+                                    <drage-input v-model="dataList.appCount" label="其中，应用母子健康手册的产妇数（例）" type="number" :isNum="true" clearName="AppCountUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.AppCountUn"  :keyValue.sync="dataList.AppCountUn" 
                                         placeholder="请选择"
+                                        @updateRight="updateRight(dataList.AppCountUn,'appCount')"
                                         typeItem="checkRight"
                                         :disabled="true"  label="产妇数未统计" >
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="LiveBirthCount" data-next="LiveBirthCountUn">
-                                    <drage-input v-model="dataList.LiveBirthCount" label="活产数(例)"  type="text" >
+                                    <drage-input v-model="dataList.LiveBirthCount" label="活产数(例)" type="number" :isNum="true"clearName="LiveBirthCountUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.LiveBirthCountUn"  :keyValue.sync="dataList.LiveBirthCountUn"
                                         @updateRight="updateRight(dataList.LiveBirthCountUn,'LiveBirthCount')" 
@@ -105,17 +107,17 @@
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="JdeCount" data-next="JdeCountUn">
-                                    <drage-input v-model="dataList.JdeCount" label="巨大数(例)"  type="text" >
+                                    <drage-input v-model="dataList.JdeCount" label="巨大儿数(例)"  type="number" :isNum="true" clearName="JdeCountUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.JdeCountUn"  :keyValue.sync="dataList.JdeCountUn"
                                         @updateRight="updateRight(dataList.JdeCountUn,'JdeCount')"
                                         placeholder="请选择"
                                         typeItem="checkRight"
-                                        :disabled="true"  label="巨大数未统计" >
+                                        :disabled="true"  label="巨大儿数未统计" >
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="PgcCount" data-next="PgcCountUn">
-                                    <drage-input v-model="dataList.PgcCount" label="剖宫产数（例）"  type="text" >
+                                    <drage-input v-model="dataList.PgcCount" label="剖宫产数（例）"  type="number" :isNum="true" clearName="PgcCountUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.PgcCountUn"  :keyValue.sync="dataList.PgcCountUn"
                                         @updateRight="updateRight(dataList.PgcCountUn,'PgcCount')" 
@@ -125,7 +127,7 @@
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="GwrssCount" data-next="GwrrsUn">
-                                    <drage-input v-model="dataList.GwrssCount" label="高危妊娠数（妊娠风险分级为黄色及以上的例数）"  type="text" >
+                                    <drage-input v-model="dataList.GwrssCount" label="高危妊娠数（妊娠风险分级为黄色及以上的例数）"  type="number" :isNum="true" clearName="GwrrsUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.GwrrsUn"  :keyValue.sync="dataList.GwrrsUn"
                                         @updateRight="updateRight(dataList.GwrrsUn,'GwrssCount')"  
@@ -135,7 +137,7 @@
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="GwrrsCount_Yellow" data-next="GwrrsCountUn_Yellow">
-                                    <drage-input v-model="dataList.GwrrsCount_Yellow" label="其中黄色例数（例）"  type="text" >
+                                    <drage-input v-model="dataList.GwrrsCount_Yellow" label="其中黄色例数（例）"  type="number" :isNum="true" clearName="GwrrsCountUn_Yellow">
                                     </drage-input>
                                     <drage-input v-model="dataList.GwrrsCountUn_Yellow"  :keyValue.sync="dataList.GwrrsCountUn_Yellow"
                                         @updateRight="updateRight(dataList.GwrrsCountUn_Yellow,'GwrrsCount_Yellow')"   
@@ -145,7 +147,7 @@
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="GwrrsCount_Organge" data-next="GwrrsCountUn_Organge">
-                                    <drage-input v-model="dataList.GwrrsCount_Organge" label="其中橙色例数（例）"  type="text" >
+                                    <drage-input v-model="dataList.GwrrsCount_Organge" label="其中橙色例数（例）"  type="number" :isNum="true" clearName="GwrrsCountUn_Organge">
                                     </drage-input>
                                     <drage-input v-model="dataList.GwrrsCountUn_Organge"  :keyValue.sync="dataList.GwrrsCountUn_Organge"
                                         @updateRight="updateRight(dataList.GwrrsCountUn_Organge,'GwrrsCount_Organge')"    
@@ -155,7 +157,7 @@
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="GwrrsCount_Red" data-next="GwrrsCountUn_Red">
-                                    <drage-input v-model="dataList.GwrrsCount_Red" label="其中红色例数（例）"  type="text" >
+                                    <drage-input v-model="dataList.GwrrsCount_Red" label="其中红色例数（例）" type="number" :isNum="true" clearName="GwrrsCountUn_Red">
                                     </drage-input>
                                     <drage-input v-model="dataList.GwrrsCountUn_Red"  :keyValue.sync="dataList.GwrrsCountUn_Red"
                                         @updateRight="updateRight(dataList.GwrrsCountUn_Red,'GwrrsCount_Red')"     
@@ -165,7 +167,7 @@
                                     </drage-input>
                                 </div>
                                  <div class="form-inp requrePage2" data-name="GwrrsCount_Purple" data-next="GwrrsCountUn_Purple">
-                                    <drage-input v-model="dataList.GwrrsCount_Purple" label="其中紫色例数（例）"  type="text" >
+                                    <drage-input v-model="dataList.GwrrsCount_Purple" label="其中紫色例数（例）"  type="number" :isNum="true" clearName="GwrrsCountUn_Purple">
                                     </drage-input>
                                     <drage-input v-model="dataList.GwrrsCountUn_Purple"  :keyValue.sync="dataList.GwrrsCountUn_Purple" 
                                         @updateRight="updateRight(dataList.GwrrsCountUn_Purple,'GwrrsCount_Purple')"     
@@ -175,7 +177,7 @@
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="MrwyCount" data-next="MrwyCountUn">
-                                    <drage-input v-model="dataList.MrwyCount" label="本机构出院前纯母乳喂养例数（例）"  type="text" >
+                                    <drage-input v-model="dataList.MrwyCount" label="本机构出院前纯母乳喂养例数（例）" type="number" :isNum="true"  clearName="MrwyCountUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.MrwyCountUn"  :keyValue.sync="dataList.MrwyCountUn"
                                         @updateRight="updateRight(dataList.MrwyCountUn,'MrwyCount')"  
@@ -185,7 +187,7 @@
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="Yyghbl" data-next="YyghblUn">
-                                    <drage-input v-model="dataList.Yyghbl" label="本机构网上预约挂号比例（%）"  type="text" >
+                                    <drage-input v-model="dataList.Yyghbl" label="本机构网上预约挂号比例（%）"  type="number" :isNum="true" clearName="YyghblUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.YyghblUn"  :keyValue.sync="dataList.YyghblUn" 
                                         @updateRight="updateRight(dataList.YyghblUn,'Yyghbl')"  
@@ -195,7 +197,7 @@
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="Xszfbl" data-next="XszfblUn">
-                                    <drage-input v-model="dataList.Xszfbl" label="本机构线上支付比例（%）"  type="text" >
+                                    <drage-input v-model="dataList.Xszfbl" label="本机构线上支付比例（%）"  type="number" :isNum="true" clearName="XszfblUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.XszfblUn"  :keyValue.sync="dataList.XszfblUn" 
                                         @updateRight="updateRight(dataList.XszfblUn,'Xszfbl')"  
@@ -205,7 +207,7 @@
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="JgAppCount" data-next="JgAppCountUn">
-                                    <drage-input v-model="dataList.JgAppCount" label="本机构2018年母子健康APP覆盖人数（例）"  type="text" >
+                                    <drage-input v-model="dataList.JgAppCount" label="本机构2018年母子健康APP覆盖人数（例）" type="number" :isNum="true"  clearName="JgAppCountUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.JgAppCountUn"  :keyValue.sync="dataList.JgAppCountUn" 
                                         @updateRight="updateRight(dataList.JgAppCountUn,'JgAppCount')"  
@@ -216,20 +218,20 @@
                                 </div>
                                 <!---->
                             </div>
-                            <div class="form-list"  v-if="dataList.OrganType!='1'">
+                            <div class="form-list"  v-if="dataList.OrganType=='1'">
                                 <p class="form-p1">3.本辖区相关信息（填写2018年全年信息，仅限县级妇幼保健院填写</p>
                                 <div class="form-inp requrePage2" data-name="ZcjgCount" data-next="ZcjgCountUn">
-                                    <drage-input v-model="dataList.ZcjgCount" label="本辖区助产机构数（所）"  type="text" >
+                                    <drage-input v-model="dataList.ZcjgCount" label="本辖区助产机构数（所）"  type="number" :isNum="true" clearName="ZcjgCountUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.ZcjgCountUn"  :keyValue.sync="dataList.ZcjgCountUn" 
                                         @updateRight="updateRight(dataList.ZcjgCountUn,'ZcjgCount')"  
                                         placeholder="请选择"
                                         typeItem="checkRight"
-                                        :disabled="true"  label="本辖区助产机构数" >
+                                        :disabled="true"  label="本辖区助产机构数未统计" >
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="XqAppJGCount" data-next="XqAppJGCountUn">
-                                    <drage-input v-model="dataList.XqAppJGCount" label="本辖区母子健康APP覆盖机构数（所）"  type="text" >
+                                    <drage-input v-model="dataList.XqAppJGCount" label="本辖区母子健康APP覆盖机构数（所）"  type="number" :isNum="true" clearName="XqAppJGCountUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.XqAppJGCountUn"  :keyValue.sync="dataList.XqAppJGCountUn"
                                         @updateRight="updateRight(dataList.XqAppJGCountUn,'XqAppJGCount')" 
@@ -239,7 +241,7 @@
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="Xqhcs" data-next="XqhcsUn">
-                                    <drage-input v-model="dataList.Xqhcs" label="本辖区活产数（例）"  type="text" >
+                                    <drage-input v-model="dataList.Xqhcs" label="本辖区活产数（例）"  type="number" :isNum="true" clearName="XqhcsUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.XqhcsUn"  :keyValue.sync="dataList.XqhcsUn"
                                         @updateRight="updateRight(dataList.XqhcsUn,'Xqhcs')"  
@@ -249,7 +251,7 @@
                                     </drage-input>
                                 </div>
                                  <div class="form-inp requrePage2" data-name="Xqgwrrs" data-next="XqgwrrsUn">
-                                    <drage-input v-model="dataList.Xqgwrrs" label="本辖区2018年高危妊娠数（妊娠风险分级为黄色及以上的例数）（例）"  type="text" >
+                                    <drage-input v-model="dataList.Xqgwrrs" label="本辖区2018年高危妊娠数（妊娠风险分级为黄色及以上的例数）（例）"  type="number" :isNum="true" clearName="XqgwrrsUn">
                                     </drage-input>
                                     <drage-input v-model="dataList.XqgwrrsUn"  :keyValue.sync="dataList.XqgwrrsUn" 
                                          @updateRight="updateRight(dataList.XqgwrrsUn,'Xqgwrrs')"  
@@ -259,7 +261,7 @@
                                     </drage-input>
                                 </div>
                                <div class="form-inp requrePage2" data-name="Xqgwrrs_Yellow" data-next="XqgwrrsUn_Yellow">
-                                    <drage-input v-model="dataList.Xqgwrrs_Yellow" label="其中黄色例数（例）"  type="text" >
+                                    <drage-input v-model="dataList.Xqgwrrs_Yellow" label="其中黄色例数（例）"  type="number" :isNum="true" clearName="XqgwrrsUn_Yellow">
                                     </drage-input>
                                     <drage-input v-model="dataList.XqgwrrsUn_Yellow"  :keyValue.sync="dataList.XqgwrrsUn_Yellow"
                                         @updateRight="updateRight(dataList.XqgwrrsUn_Yellow,'Xqgwrrs_Yellow')"   
@@ -269,7 +271,7 @@
                                     </drage-input>
                                 </div>
                                  <div class="form-inp requrePage2" data-name="Xqgwrrs_Organge" data-next="XqgwrrsUn_Organge">
-                                    <drage-input v-model="dataList.Xqgwrrs_Organge" label="其中橙色例数（例）"  type="text" >
+                                    <drage-input v-model="dataList.Xqgwrrs_Organge" label="其中橙色例数（例）"  type="number" :isNum="true"  clearName="XqgwrrsUn_Organge">
                                     </drage-input>
                                     <drage-input v-model="dataList.XqgwrrsUn_Organge"  :keyValue.sync="dataList.XqgwrrsUn_Organge" 
                                         @updateRight="updateRight(dataList.XqgwrrsUn_Organge,'Xqgwrrs_Organge')"   
@@ -279,7 +281,7 @@
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="Xqgwrrs_Red" data-next="XqgwrrsUn_Red">
-                                    <drage-input v-model="dataList.Xqgwrrs_Red" label="其中红色例数（例）"  type="text" >
+                                    <drage-input v-model="dataList.Xqgwrrs_Red" label="其中红色例数（例）"  type="number" :isNum="true" clearName="XqgwrrsUn_Red">
                                     </drage-input>
                                     <drage-input v-model="dataList.XqgwrrsUn_Red"  :keyValue.sync="dataList.XqgwrrsUn_Red"
                                         @updateRight="updateRight(dataList.XqgwrrsUn_Red,'Xqgwrrs_Red')"    
@@ -289,7 +291,7 @@
                                     </drage-input>
                                 </div>
                                 <div class="form-inp requrePage2" data-name="Xqgwrrs_Purple" data-next="XqgwrrsUn_Purple">
-                                    <drage-input v-model="dataList.Xqgwrrs_Purple" label="其中紫色例数（例）"  type="text" >
+                                    <drage-input v-model="dataList.Xqgwrrs_Purple" label="其中紫色例数（例）"  type="number" :isNum="true" clearName="XqgwrrsUn_Purple">
                                     </drage-input>
                                     <drage-input v-model="dataList.XqgwrrsUn_Purple"  :keyValue.sync="dataList.XqgwrrsUn_Purple"
                                         @updateRight="updateRight(dataList.XqgwrrsUn_Purple,'Xqgwrrs_Purple')"     
@@ -303,7 +305,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bottom"  :class="{isFixed:dataList.OrganType=='1'}">
+                <div class="bottom"  :class="{isFixed:dataList.OrganType!='1'}">
                     <div class= "pagination">
                         <div class="pag-box">
                             <button  class="btn" :disabled= "false" @click="changePage('2','1')" :class= "{ disabledBtn: false }" >上一页</button>
@@ -334,7 +336,7 @@
                                         v-model="dataList.Jghlwjs"
                                         :options="[{ label: '无',value: '1'},{ label: '相关网站',value: '2'},{ label: ' 相关APP',value: '3'},{ label: '物联网技术',value: '4'},{ label: '远程医疗服务',value: '5'},{ label: '就诊环境免费提供wifi',value: '6'},{ label: '使用一卡通（机构内）',value: '7'},{ label: '使用一卡通（辖区内）',value: '8'},{ label: 'HIS等系统与区域卫生信息平台对接',value: '9'},{label:'其他',value:'10'}]">
                                     </super-checklist>
-                                    <mt-field v-if="dataList.Jghlwjs=='10'" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jghlwjs2"></mt-field>
+                                    <mt-field v-if="(dataList.Jghlwjs||[]).indexOf('10')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jghlwjs2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -347,7 +349,7 @@
                                         v-model="dataList.JgApp"
                                         :options="[{ label: '无',value: '1'},{ label: '微信（包括微信公众号、订阅号或企业号，不包括面向服务对象和医务人员的微信群）',value: '2'},{ label: ' 支付宝',value: '3'},{ label: '本机构或本地区自主开发的APP',value: '4'},{ label: '包含母子健康手册功能的APP',value: '5'},{label:'其他',value:'6'}]">
                                     </super-checklist>
-                                    <mt-field v-if="dataList.JgApp=='6'" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.JgApp2"></mt-field>
+                                    <mt-field v-if="(dataList.JgApp||[]).indexOf('6')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.JgApp2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list" v-if="dataList.JgApp!='1'">
@@ -358,9 +360,9 @@
                                          class="requrePage3 moreCheck" data-name="Jgfw" data-next="Jgfw2"
                                         @change="changeValue(dataList.Jgfw,'Jgfw','1')"
                                         v-model="dataList.Jgfw"
-                                        :options="[{ label: '无',value: '1'},{ label: '医院信息、就医、出诊等信息查询',value: '2'},{ label: ' 健康宣教',value: '3'},{ label: '预约挂号/预约医技检查',value: '4'},{ label: '线上孕妇学校',value: '5'},{ label: '线下课程预约',value: '6'},{ label: '自助缴费和相关费用查询',value: '7'},{ label: '产检、儿童体检或预防接种提醒服务',value: '8'},{ label: '产检或儿童体检信息上传',value: '9'},{ label: '医患互动咨询',value: '10'},{label:'就医满意度反馈/服务评价/投诉建议',value:'11'}]">
+                                        :options="[{ label: '无',value: '1'},{ label: '医院信息、就医、出诊等信息查询',value: '2'},{ label: ' 健康宣教',value: '3'},{ label: '预约挂号/预约医技检查',value: '4'},{ label: '线上孕妇学校',value: '5'},{ label: '线下课程预约',value: '6'},{ label: '自助缴费和相关费用查询',value: '7'},{ label: '产检、儿童体检或预防接种提醒服务',value: '8'},{ label: '产检或儿童体检信息上传',value: '9'},{ label: '医患互动咨询',value: '10'},{label:'就医满意度反馈/服务评价/投诉建议',value:'11'},{label:'其他',value:'12'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jgfw2"></mt-field>
+                                    <mt-field v-if="(dataList.Jgfw||[]).indexOf('12')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jgfw2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list" v-if="dataList.JgApp!='1'">
@@ -371,9 +373,9 @@
                                          class="requrePage3 moreCheck" data-name="Jgysfw"  data-next="Jgysfw2"
                                         @change="changeValue(dataList.Jgysfw,'Jgysfw','1')"
                                         v-model="dataList.Jgysfw"
-                                        :options="[{ label: '无',value: '1'},{ label: '查询患者基本信息',value: '2'},{ label: ' 查看患者检查报告（包括检验、影像报告等）',value: '3'},{ label: '查看患者诊疗情况',value: '4'},{ label: '下医嘱、写病历',value: '5'},{ label: '院内外会诊',value: '6'},{ label: '远程会诊',value: '7'}]">
+                                        :options="[{ label: '无',value: '1'},{ label: '查询患者基本信息',value: '2'},{ label: ' 查看患者检查报告（包括检验、影像报告等）',value: '3'},{ label: '查看患者诊疗情况',value: '4'},{ label: '下医嘱、写病历',value: '5'},{ label: '院内外会诊',value: '6'},{ label: '远程会诊',value: '7'},{label:'其他',value:'8'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jgysfw2"></mt-field>
+                                    <mt-field  v-if="(dataList.Jgysfw||[]).indexOf('8')>-1"  placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jgysfw2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list" v-if="dataList.JgApp!='1'">
@@ -384,9 +386,9 @@
                                          class="requrePage3 moreCheck" data-name="JgApphlht"  data-next="JgApphlht2"
                                         @change="changeValue(dataList.JgApphlht,'JgApphlht','1')"
                                         v-model="dataList.JgApphlht"
-                                        :options="[{ label: '无',value: '1'},{ label: '本院HIS系统',value: '2'},{ label: '医保系统',value: '3'},{ label: '公安系统',value: '4'},{ label: '计划免疫系统',value: '5'},{ label: '妇幼健康信息平台',value: '6'}]">
+                                        :options="[{ label: '无',value: '1'},{ label: '本院HIS系统',value: '2'},{ label: '医保系统',value: '3'},{ label: '公安系统',value: '4'},{ label: '计划免疫系统',value: '5'},{ label: '妇幼健康信息平台',value: '6'},{label:'其他',value:'7'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.JgApphlht2"></mt-field>
+                                    <mt-field v-if="(dataList.JgApphlht||[]).indexOf('7')>-1"  placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.JgApphlht2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list" v-if="dataList.JgApp!='1'">
@@ -397,9 +399,9 @@
                                         class="requrePage3 moreCheck" data-name="JgAppjggl" data-next="JgAppjggl2"
                                         @change="changeValue(dataList.JgAppjggl,'JgAppjggl','1')"
                                         v-model="dataList.JgAppjggl"
-                                        :options="[{ label: '无',value: '1'},{ label: '移动办公',value: '2'},{ label: '资源调配',value: '3'},{ label: '成本效益分析',value: '4'},{ label: '绩效管理',value: '5'},{ label: '培训管理',value: '6'},{ label: '不良事件报告',value: '7'}]">
+                                        :options="[{ label: '无',value: '1'},{ label: '移动办公',value: '2'},{ label: '资源调配',value: '3'},{ label: '成本效益分析',value: '4'},{ label: '绩效管理',value: '5'},{ label: '培训管理',value: '6'},{ label: '不良事件报告',value: '7'},{label:'其他',value:'8'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.JgAppjggl2"></mt-field>
+                                    <mt-field v-if="(dataList.JgAppjggl||[]).indexOf('8')>-1"   placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.JgAppjggl2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -420,9 +422,9 @@
                                         title=""
                                         class="requrePage3 moreCheck" data-name="JgAppsjwsnr" data-next="JgAppsjwsnr2"
                                         v-model="dataList.JgAppsjwsnr"
-                                        :options="[{ label: '增加了《母子健康APP》应用功能（如母子手册浏览、记录等）',value: '1'},{ label: '引入了《母子健康APP》健康教育内容',value: '2'}]">
+                                        :options="[{ label: '增加了《母子健康APP》应用功能（如母子手册浏览、记录等）',value: '1'},{ label: '引入了《母子健康APP》健康教育内容',value: '2'},{label:'其他',value:'3'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.JgAppsjwsnr2"></mt-field>
+                                    <mt-field v-if="(dataList.JgAppsjwsnr||[]).indexOf('3')>-1"   placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.JgAppsjwsnr2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -430,11 +432,12 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
+                                        @change="changeValue(dataList.Jgxxhlht,'Jgxxhlht','1')"
                                         class="requrePage3 moreCheck" data-name="Jgxxhlht" data-next="Jgxxhlht2"
                                         v-model="dataList.Jgxxhlht"
-                                        :options="[{ label: '无',value: '1'},{ label: '本院HIS系统',value: '2'},{ label: '医保系统',value: '3'},{ label: '公安系统',value: '4'},{ label: '计划免疫系统',value: '5'},{ label: '妇幼健康信息平台',value: '6'}]">
+                                        :options="[{ label: '无',value: '1'},{ label: '本院HIS系统',value: '2'},{ label: '医保系统',value: '3'},{ label: '公安系统',value: '4'},{ label: '计划免疫系统',value: '5'},{ label: '妇幼健康信息平台',value: '6'},{label:'其他',value:'7'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jgxxhlht2"></mt-field>
+                                    <mt-field v-if="(dataList.Jgxxhlht||[]).indexOf('7')>-1"  placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jgxxhlht2"></mt-field>
                                 </div>
                             </div>
                         </div>
@@ -476,9 +479,9 @@
                                         title=""
                                         class="requrePage4" data-name="Jgtgbm"  data-next="Jgtgbm2"
                                         v-model="dataList.Jgtgbm"
-                                        :options="[{ label: '无',value: '1'},{ label: '医院宣传科',value: '2'},{ label: '儿童保健科',value: '3'},{ label: '信息科',value: '4'},{ label: '健康教育科',value: '5'},{ label: '保健科',value: '6'}]">
+                                        :options="[{ label: '无',value: '1'},{ label: '医院宣传科',value: '2'},{ label: '儿童保健科',value: '3'},{ label: '信息科',value: '4'},{ label: '健康教育科',value: '5'},{ label: '保健科',value: '6'},{ label: '其他',value: '7'}]">
                                     </mt-radio>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jgtgbm2"></mt-field>
+                                    <mt-field v-if="dataList.Jgtgbm=='7'" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jgtgbm2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -488,9 +491,9 @@
                                         title=""
                                         class="requrePage4 moreCheck" data-name="Tgbscyy" data-next="Tgbscyy2"
                                         v-model="dataList.Tgbscyy"
-                                        :options="[{ label: '领导不认可',value: '1'},{ label: '机构内wifi信息不通畅',value: '2'},{ label: '硬件设备不具备',value: '3'},{ label: '政策不允许',value: '4'},{ label: '本机构有类似APP',value: '5'},{ label: '担心信息安全',value: '6'},{ label: '服务对象认可度低',value: '7'},{ label: '医务人员认可度低',value: '8'},{ label: '缺乏经费进行推广',value: '9'}]">
+                                        :options="[{ label: '领导不认可',value: '1'},{ label: '机构内wifi信息不通畅',value: '2'},{ label: '硬件设备不具备',value: '3'},{ label: '政策不允许',value: '4'},{ label: '本机构有类似APP',value: '5'},{ label: '担心信息安全',value: '6'},{ label: '服务对象认可度低',value: '7'},{ label: '医务人员认可度低',value: '8'},{ label: '缺乏经费进行推广',value: '9'},{ label: '其他',value: '10'}]">
                                     </super-checklist>
-                                    <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Tgbscyy2"></mt-field>
+                                    <mt-field  v-if="(dataList.Tgbscyy||[]).indexOf('10')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Tgbscyy2"></mt-field>
                                 </div>
                             </div>
                         </div>
@@ -545,9 +548,9 @@
                                     title=""
                                      class="requrePage5 moreCheck" data-name="Jkjyly" data-next="Jkjyly2"
                                     v-model="dataList.Jkjyly"
-                                    :options="[{ label: '网络',value: '1'},{ label: '医生经验总结',value: '2'},{ label: '项目总结',value: '3'}]">
+                                    :options="[{ label: '网络',value: '1'},{ label: '医生经验总结',value: '2'},{ label: '项目总结',value: '3'},{ label: '其他',value: '4'}]">
                                 </super-checklist>
-                                <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jkjyly2"></mt-field>
+                                <mt-field v-if="(dataList.Jkjyly||[]).indexOf('4')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jkjyly2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -557,9 +560,9 @@
                                     title=""
                                      class="requrePage5 moreCheck" data-name="Jkjyxs" data-next="Jkjyxs2"
                                     v-model="dataList.Jkjyxs"
-                                    :options="[{ label: '孕妇学校',value: '1'},{ label: '家长学校',value: '2'},{ label: '医生咨询',value: '3'},{ label: '宣传折页、小册子等纸质材料',value: '4'},{ label: '医院互联网（如微信公众号）',value: '5'}]">
+                                    :options="[{ label: '孕妇学校',value: '1'},{ label: '家长学校',value: '2'},{ label: '医生咨询',value: '3'},{ label: '宣传折页、小册子等纸质材料',value: '4'},{ label: '医院互联网（如微信公众号）',value: '5'},{ label: '其他',value: '6'}]">
                                 </super-checklist>
-                                <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jkjyxs2"></mt-field>
+                                <mt-field v-if="(dataList.Jkjyxs||[]).indexOf('6')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jkjyxs2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -569,9 +572,9 @@
                                     title=""
                                     class="requrePage5 moreCheck" data-name="Jzjkjyxs" data-next="Jzjkjyxs2"
                                     v-model="dataList.Jzjkjyxs"
-                                    :options="[{ label: '孕妇学校',value: '1'},{ label: '家长学校',value: '2'},{ label: '医生咨询',value: '3'},{ label: '宣传折页、小册子等纸质材料',value: '4'},{ label: '医院互联网（如微信公众号）',value: '5'}]">
+                                    :options="[{ label: '孕妇学校',value: '1'},{ label: '家长学校',value: '2'},{ label: '医生咨询',value: '3'},{ label: '宣传折页、小册子等纸质材料',value: '4'},{ label: '医院互联网（如微信公众号）',value: '5'},{ label: '其他',value: '6'}]">
                                 </super-checklist>
-                                <mt-field placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jzjkjyxs2"></mt-field>
+                                <mt-field v-if="(dataList.Jzjkjyxs||[]).indexOf('6')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jzjkjyxs2"></mt-field>
                                 </div>
                             </div>
                         </div>
@@ -586,7 +589,7 @@
                             <span>/</span>
                             <span>5</span>
                             </div>
-                            <button v-if="hasReady"  class="btn" @click="submitForm('requrePage5')"   :class= "{ disabledBtn: false }"> 提交</button>
+                            <button  class="btn" @click="submitForm('requrePage5')"   :class= "{ disabledBtn: !hasReady }"> 提交</button>
                         </div>
                     </div>
                 </div>
@@ -599,12 +602,14 @@ import headers from '@/components/header/header'
 import drageInput from '@/components/nomal/drageInput'
 import superChecklist from '@/components/nomal/checklist'
 import {SaveQuestionair_Hospital} from '@/api/user.js'
+import {isvalidUsername} from '@/utils/vaildata'
 export default {
     name:'hello',
     data(){
         return {
             dataList:{
-                UserId:'123'    
+                UserId:'123',
+                OrganGrade:'' 
             },
             page1:true,
             page2:false,
@@ -612,16 +617,19 @@ export default {
             page4:false,
             page5:false,
             slotContent1: {   //分娩方式
-                columns: 1,
-                default: [{text: '一级甲等', value: '1'}],
+                columns: 2,
+                default:'',
                 pData1: [
-                    {text: '一级甲等', value: '一级甲等'},
-                    {text: '一级已等', value: '一级已等'},
-                    {text: '二级甲等', value: '二级甲等'},
-                    {text: '二级已等', value: '二级已等'},
-                    {text: '二级已等', value: '二级已等'},
-                    {text: '三级甲等', value: '三级甲等'},
-                    {text: '三级已等', value: '三级已等'},
+                    {text: '一级', value: '一级'},
+                    {text: '二级', value: '二级'},
+                    {text: '三级', value: '三级'},
+                    {text: '未定级', value: '未定级'},
+                ],
+                pData2: [
+                    {text: '特等', value: '特等'},
+                    {text: '甲等', value: '甲等'},
+                    {text: '乙等', value: '乙等'},
+                    {text: '丙等', value: '丙等'},
                     {text: '未定级', value: '未定级'},
                 ]
             },
@@ -632,7 +640,7 @@ export default {
     watch:{
        'dataList.OrganType':{
            handler(value){
-               if(value=='1'){
+               if(value!='1'){
                     this.changePage(2,3)
                }
            },
@@ -668,7 +676,11 @@ export default {
                 this.$toast({
                     message:'请填写完整'
                 })
-                return false;
+               return false;
+            }
+            if(!isvalidUsername(this.dataList.FillerMobileTel) && !isvalidUsername(this.dataList.AuditMobileTel)){  //验证手机号
+               this.$toast('请输入正确的手机号码')
+               return false
             }
             let checkDom=document.querySelectorAll('.moreCheck')
             for(let i=0;i<checkDom.length;i++){
@@ -681,6 +693,7 @@ export default {
             document.querySelector('.qs-content').scrollTop=0
         },
         submitForm(pageName){
+            if(!this.hasReady) return false
             let isRequire=false
             let arrDom=document.querySelectorAll(`.${pageName}`)
             for(let i=0;i<arrDom.length;i++){
@@ -694,7 +707,7 @@ export default {
                 })
                 return false;
             }
-            this.$messagebox.confirm('确定执行此操作?').then(action => {
+            this.$messagebox.confirm('问卷提交后无法修改是否继续提交？').then(action => {
                 let checkDom=document.querySelectorAll('.moreCheck')
                 for(let i=0;i<checkDom.length;i++){
                     this.checkObj[checkDom[i].getAttribute('data-name')]=(this.dataList[checkDom[i].getAttribute('data-name')] ||[""]).join(",")
