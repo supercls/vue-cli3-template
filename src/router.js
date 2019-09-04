@@ -1,4 +1,3 @@
-const EtMain = r => require.ensure([], () => r(require('views/EtMain/index.vue')), 'EtMain')
 const q1 = r => require.ensure([], () => r(require('views/PSQ/q1.vue')), 'q1')
 const q2 = r => require.ensure([], () => r(require('views/PSQ/q2.vue')), 'q2')
 const q3 = r => require.ensure([], () => r(require('views/PSQ/q3.vue')), 'q3')
@@ -10,16 +9,9 @@ export default [{
   },
   {
     path: '/',
-    redirect: '/EtMain',
+    redirect: '/HospitalQ',
     meta: {
       title: '首页'
-    }
-  },
-  {
-    path: '/EtMain',
-    component: EtMain,
-    meta: {
-      title: 'demo'
     }
   },
   {
@@ -30,35 +22,35 @@ export default [{
     }
   },
   {
-    path: '/q1',
+    path: '/HospitalQ',
     component: q1,
     meta: {
       title: '医疗机构调查表'
     }
   },
   {
-    path: '/q2',
+    path: '/PregnantQ',
     component: q2,
     meta: {
       title: '孕产妇调查表'
     }
   },
   {
-    path: '/q3',
+    path: '/Family1',
     component: q3,
     meta: {
       title: '儿童家长调查表（不满1岁）'
     }
   },
   {
-    path: '/q4',
+    path: '/Family2',
     component: q4,
     meta: {
-      title: '儿童家长调查表（不满3岁）'
+      title: '儿童家长调查表（满1岁~不满3岁）'
     }
   },
   {
-    path: '/q5',
+    path: '/Family3',
     component: q5,
     meta: {
       title: '儿童家长调查表（满3岁不满6岁）'
