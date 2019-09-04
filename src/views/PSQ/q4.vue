@@ -670,7 +670,7 @@ export default {
                 this.$toast({
                     message:'请填写完整'
                 })
-              //  return false;
+                return false;
             }
             if(this.dataList.Bbkssysj.indexOf('1')>-1 && !this.dataList.Bbkssysj2){
                  this.$toast({
@@ -715,6 +715,8 @@ export default {
                 })
                 return false;
             }
+            this.dataList.DistrictNo=this.$route.query.DistrictNo||'';
+            this.dataList.DistrictName=this.$route.query.DistrictName||"'"
             this.$messagebox.confirm('确定执行问卷提交后无法修改是否继续提交？').then(action => {
                 let checkDom=document.querySelectorAll('.moreCheck')
                 for(let i=0;i<checkDom.length;i++){
@@ -726,6 +728,7 @@ export default {
                     this.$toast({
                         message:'提交成功，稍后请自行退出'
                     })
+                    WeixinJSBridge.call('closeWindow');
                 }).catch(err=>{
                     console.log(err)
                 })

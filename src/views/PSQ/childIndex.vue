@@ -102,7 +102,7 @@ export default {
     },
     methods:{
         changePage(){  //点击上一页，下一页
-            if(this.dataList.age=='' && this.dataList.DistrictNo==''){
+            if(this.dataList.age=='' ||  this.dataList.DistrictNo==''){
                this.$toast({
                     message:'请填写完整'
                 })

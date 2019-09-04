@@ -726,6 +726,8 @@ export default {
                 })
                 return false;
             }
+            this.dataList.DistrictNo=this.$route.query.DistrictNo||'';
+            this.dataList.DistrictName=this.$route.query.DistrictName||"'"
             this.$messagebox.confirm('问卷提交后无法修改是否继续提交？').then(action => {
                 let checkDom=document.querySelectorAll('.moreCheck')
                 for(let i=0;i<checkDom.length;i++){
@@ -750,6 +752,12 @@ export default {
 
     },
     mounted(){
+       if(localStorage.getItem(this.$route.path)){  //数据缓存
+            this.dataList=JSON.parse(localStorage.getItem(this.$route.path))
+            this.hasReady=false
+            this.$messagebox.alert('您已经提交过了，请勿重复提交')
+            return false
+        }
        this.hideOn=true
       
     },

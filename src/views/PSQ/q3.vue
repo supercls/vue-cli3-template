@@ -689,7 +689,7 @@ export default {
                 this.$toast({
                     message:'请填写完整'
                 })
-               // return false;
+                return false;
             }
             if(this.dataList.Pybblxpdsj.indexOf('1')>-1 && !this.dataList.Pybblxpdsj2){
                  this.$toast({
@@ -738,7 +738,7 @@ export default {
                 this.$toast({
                     message:'请填写完整'
                 })
-              //  return false;
+                return false;
             }
             this.dataList.DistrictNo=this.$route.query.DistrictNo||'';
             this.dataList.DistrictName=this.$route.query.DistrictName||"'"
@@ -753,6 +753,7 @@ export default {
                     this.$toast({
                         message:'提交成功，稍后请自行退出'
                     })
+                    WeixinJSBridge.call('closeWindow');
                 }).catch(err=>{
                     console.log(err)
                 })

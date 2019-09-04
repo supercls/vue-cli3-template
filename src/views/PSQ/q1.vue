@@ -718,6 +718,7 @@ export default {
                     this.$toast({
                         message:'提交成功，稍后请自行退出'
                     })
+                    WeixinJSBridge.call('closeWindow');
                 }).catch(err=>{
                     console.log(err)
                 })
