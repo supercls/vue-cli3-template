@@ -165,6 +165,7 @@
                                         typeItem="checkRight"
                                         :disabled="true"  label="红色例数未统计" >
                                     </drage-input>
+
                                 </div>
                                  <div class="form-inp requrePage2" data-name="GwrrsCount_Purple" data-next="GwrrsCountUn_Purple">
                                     <drage-input v-model="dataList.GwrrsCount_Purple" label="其中紫色例数（例）"  type="number" :isNum="true" clearName="GwrrsCountUn_Purple">
@@ -175,7 +176,7 @@
                                         typeItem="checkRight"
                                         :disabled="true"  label="紫色例数未统计" >
                                     </drage-input>
-                                </div>
+                                </div> 
                                 <div class="form-inp requrePage2" data-name="MrwyCount" data-next="MrwyCountUn">
                                     <drage-input v-model="dataList.MrwyCount" label="本机构出院前纯母乳喂养例数（例）" type="number" :isNum="true"  clearName="MrwyCountUn">
                                     </drage-input>
@@ -608,7 +609,6 @@ export default {
     data(){
         return {
             dataList:{
-                UserId:'123',
                 OrganGrade:'' 
             },
             page1:true,

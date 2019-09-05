@@ -343,10 +343,10 @@
                                             title=""
                                             defaultValue="50"
                                             :max="1"
-                                            pickContent="fourSevent"
+                                            pickContent="zeroSix"
                                             class="requrePage3 moreCheck" data-name="Ksdqccslsj"
                                             v-model="dataList.Ksdqccslsj"
-                                            :options="[{ label: '____个月开始检查视力',value: '1',picker:true,filed:dataList.Ksdqccslsj2,name:'dataList.Ksdqccslsj2',placeholder:'请选择',icon:'岁'},{ label: '还没有开始',value: '2'}]">
+                                            :options="[{ label: '____个岁开始检查视力',value: '1',picker:true,filed:dataList.Ksdqccslsj2,name:'dataList.Ksdqccslsj2',placeholder:'请选择',icon:'岁'},{ label: '还没有开始',value: '2'}]">
                                         </super-checklist>
                                     </div>
                                 </div>

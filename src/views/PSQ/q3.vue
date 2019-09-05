@@ -552,7 +552,7 @@
                                         class="requrePage4 moreCheck" data-name="Jjnrwt" data-next="Jjnrwt2"
                                         v-model="dataList.Jjnrwt"
                                         :max="3"
-                                        :options="[{ label: '没有问题',value: '1'},{ label: '查找不方便 ',value: '2'},{ label: '文字太多，不爱看 ',value: '3'},{ label: '内容太专业，看不懂 ',value: '4'},{ label: '内容不全面，想看的内容查不到',value: '5'},{ label: '形式单一，不够吸引人',value: '6'},{ label: '图片不合适',value: '7'},{ label: '图片不合适 ',value: '7'},{ label: '其他 ',value: '8'}]">
+                                        :options="[{ label: '没有问题',value: '1'},{ label: '查找不方便 ',value: '2'},{ label: '文字太多，不爱看 ',value: '3'},{ label: '内容太专业，看不懂 ',value: '4'},{ label: '内容不全面，想看的内容查不到',value: '5'},{ label: '形式单一，不够吸引人',value: '6'},{ label: '图片不合适',value: '7'},{ label: '其他 ',value: '8'}]">
                                     </super-checklist>
                                     <mt-field v-if="(dataList.Jjnrwt||[]).indexOf('8')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jjnrwt2"></mt-field>
                                 </div>

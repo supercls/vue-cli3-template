@@ -147,7 +147,7 @@
                                     </super-checklist>
                                 </div>
                             </div>
-                            <div class="form-list" v-if="!dataList.Scjdts">
+                            <div class="form-list" v-if="dataList.Scjd.indexOf('1')=='-1'">
                                 <p class="form-p1">12.您的孩子的体重(g)</p>
                                 <drage-input v-model="dataList.Cstz" :keyValue.sync="dataList.Cstz"  type="number"
                                     placeholder=""
@@ -157,7 +157,7 @@
                                     unit="g"  label="出生体重" >
                                 </drage-input>
                             </div>
-                            <div class="form-list" v-if="!dataList.Scjdts">
+                            <div class="form-list" v-if="dataList.Scjd.indexOf('1')=='-1'">
                                 <p class="form-p1">13.您宝宝的分娩方式是</p>
                                 <div class="check-list">
                                     <mt-radio
@@ -168,7 +168,7 @@
                                     </mt-radio>
                                 </div>
                             </div>
-                            <div class="form-list" v-if="!dataList.Scjdts">
+                            <div class="form-list">
                                 <p class="form-p1">14.本次怀孕是您第几个孩子？</p>
                                 <div class="check-list">
                                     <mt-radio
@@ -425,7 +425,7 @@
                                             pickContent="yunCon"
                                             class="requrePage3 moreCheck" data-name="Jsfyysyz"
                                             v-model="dataList.Jsfyysyz"
-                                            :options="[{ label: '至今仍服用',value: '1'},{ label: '孕__周停止服用',value: '2',picker:true,filed:dataList.Jsfyysyz2,name:'dataList.Jsfyysyz2',placeholder:'请选择'},{ label: '记不清',value: '3'}]">
+                                            :options="[{ label: '至今仍服用',value: '1'},{ label: '孕__周停止服用',value: '2',picker:true,filed:dataList.Jsfyysyz2,name:'dataList.Jsfyysyz2',placeholder:'请选择',icon:'周'},{ label: '记不清',value: '3'}]">
                                         </super-checklist>
                                     </div>
                                 </div>
@@ -542,6 +542,7 @@
                                     <super-checklist
                                         title=""
                                         v-model="dataList.Zxhdzscxxs"
+                                        defaultValue="15"
                                         class="requrePage4 moreCheck" data-name="Zxhdzscxxs"
                                         :max="3"            
                                         :options="[{ label: '文字形式',value: '1'},{ label: '音频',value: '2',picker:true,filed:dataList.Zxhdzscxxs2,name:'dataList.Zxhdzscxxs2',placeholder:'请选择音频时长',icon:'分钟'},{ label: '视频',value: '3',picker:true,filed:dataList.Zxhdzscxxs3,name:'dataList.Zxhdzscxxs3',placeholder:'请选择视频时长',icon:'分钟'},{ label: '微信课堂',value: '4'},{ label: '图片',value: '5'},{ label: '其他',value: '6'}]">
@@ -715,7 +716,13 @@ export default {
             dataList:{
                 Xwjjnr:'',
                 Wxzyy:[],
-                Scjdts:''
+                Scjdts:'',
+                Scjd:[],
+                Dyccqjcyz:[],
+                Ksfytjyz:[],
+                Ksfyysyz:[],
+                Zxhdzscxxs:[]
+
             },
             model1:'',
             page1:true,
@@ -785,6 +792,48 @@ export default {
                 })
                return false;
             }
+            if(this.dataList.Scjd.indexOf('1')>-1 && !this.dataList.Scjdts){
+                 this.$toast({
+                    message:'请选择怀孕孕周'
+                })
+                return false;
+            }
+            if(this.dataList.Scjd.indexOf('2')>-1 && !this.dataList.Scjdts){
+                 this.$toast({
+                    message:'请输入产后天数'
+                })
+                return false;
+            }
+            if(this.dataList.Dyccqjcyz.indexOf('1')>-1 && !this.dataList.Dyccqjcyz2){
+                 this.$toast({
+                    message:'请选择检查孕周'
+                })
+                return false;
+            }
+             if(this.dataList.Ksfytjyz.indexOf('2')>-1 && !this.dataList.Ksfytjyz2){
+                 this.$toast({
+                    message:'请选择孕周'
+                })
+                return false;
+            }
+             if(this.dataList.Ksfyysyz.indexOf('2')>-1 && !this.dataList.Ksfyysyz2){
+                 this.$toast({
+                    message:'请选择孕周'
+                })
+                return false;
+            }
+            if(this.dataList.Zxhdzscxxs.indexOf('2')>-1 && !this.dataList.Zxhdzscxxs2){
+                 this.$toast({
+                    message:'请选择音频时长'
+                })
+                return false;
+            }
+            if(this.dataList.Zxhdzscxxs.indexOf('3')>-1 && !this.dataList.Zxhdzscxxs3){
+                 this.$toast({
+                    message:'请选择视频时长'
+                })
+                return false;
+            }
             let checkDom=document.querySelectorAll('.moreCheck')
             for(let i=0;i<checkDom.length;i++){
                 this.checkObj[checkDom[i].getAttribute('data-name')]=(this.dataList[checkDom[i].getAttribute('data-name')] ||[""]).join(",")
@@ -810,7 +859,7 @@ export default {
                 })
                 return false;
             }
-            console.log(this.dataList)
+
             this.$messagebox.confirm('问卷提交后无法修改是否继续提交？').then(action => {
                 let checkDom=document.querySelectorAll('.moreCheck')
                 for(let i=0;i<checkDom.length;i++){
