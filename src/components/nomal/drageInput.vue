@@ -17,7 +17,6 @@
                             v-if="isNum"
                             ref="input"
                             :disabled="disabled"
-                            oninput="if(value.length>4)value=value.slice(0,4)"   
                             :placeholder="placeholder"
                             @blur="blusa"
                             @input="inputHandle"
@@ -75,7 +74,7 @@
                 v-if="typeItem=='date'"
                 :cutDate="currentValue"
                 ref="pickerDate"
-                :startDate=startDate
+                :startDate="startDate"
                 :endDate="endDate"
                 :defaultDate="defaultDate"
                 @confirm="handleConfirm"
@@ -177,7 +176,7 @@
                 type:String,
                 default:''
             },
-            isNum: Boolean,
+            isNum: [String,Number],
             maxlength:{
                 default:'9999999999'
             },
@@ -250,7 +249,8 @@
                 showAdress:false,
                 province: '',
                 city: '',
-                county: ''
+                county: '',
+                timeOff:false
             }
         },
         watch:{
@@ -342,10 +342,26 @@
                    }
                 },
                 immediate: true          //do now
+            },
+            showAdress(val){
+                 this.showAdress ? this.closeTouch() : this.openTouch()
+            },
+            FshowPicke(val){
+                this.FshowPicke ? this.closeTouch() : this.openTouch()
             }
         },
         methods:{
+            closeTouch() {
+                document.getElementsByTagName('body')[0].addEventListener('touchmove', this.handler, { passive: false })// 阻止默认事件
+            },
+            openTouch() {
+                document.getElementsByTagName('body')[0].removeEventListener('touchmove', this.handler, { passive: false })// 打开默认事件
+            },
+            handler(e) {
+                e.preventDefault() 
+            },
             inputHandle(e){      //input原生输入事件
+                if(this.isNum)  e.target.value=e.target.value.slice(0,this.isNum)
                 this.$emit('changeInput',e.target.value)
                 if(this.clearName)  this.$parent.dataList[this.clearName]='2'
             },
@@ -369,6 +385,7 @@
                 switch (this.typeItem) {
                     case 'date':         //日期选择器
                         this.$refs.pickerDate.open();
+                        this.timeOff=true;
                         break;
                     case 'pickeMore':
                         this.FpickData=this.slotContent

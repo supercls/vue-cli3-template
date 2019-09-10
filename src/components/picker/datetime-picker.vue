@@ -52,7 +52,6 @@
 </style>
 
 <script type="text/babel">
-/***********完整版-2019***************/
   import {dateFunction} from '@/utils/dateFormat'
   const FORMAT_MAP = {
     Y: 'year',
@@ -156,6 +155,15 @@
 
 
     methods: {
+      closeTouch() {
+          document.getElementsByTagName('body')[0].addEventListener('touchmove', this.handler, { passive: false })// 阻止默认事件
+      },
+      openTouch() {
+          document.getElementsByTagName('body')[0].removeEventListener('touchmove', this.handler, { passive: false })// 打开默认事件
+      },
+      handler(e) {
+          e.preventDefault()
+      },
       open() {
         this.visible = true;
       },
@@ -424,7 +432,9 @@
       },
 
       visible(val) {
+        val? this.closeTouch() : this.openTouch()
         this.$emit('visible-change', val);
+        
       }
     },
 
