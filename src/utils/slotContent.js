@@ -1,4 +1,4 @@
-export {monthCont, dayCont,timaAge,fourSixth, frequencyCont,cardType,hourCont,minuteCont,heightCont,radixPoint,weightCont,tenCont,bitCon,sexCon,headCon,yunCon,booleanCon,weekCon,bornCon,alltenCon,hasCon,momAge,addressCon,hukCon}
+export {monthCont, dayCont,timaAge,fourSevent,zeroSix,fourSixth, frequencyCont,cardType,hourCont,minuteCont,heightCont,radixPoint,weightCont,tenCont,bitCon,sexCon,headCon,yunCon,booleanCon,weekCon,bornCon,alltenCon,hasCon,momAge,addressCon,hukCon}
 
 let cardType=[    //证件类型
     {text: '身份证', value: '身份证'},
@@ -12,44 +12,25 @@ for(let i =0; i< 24; i ++){
 }
 
 let minuteCont=[]         //分钟范围
-for(let i = 0; i< 60; i ++){
-    let obj= {text: i+"分钟", value: i};
-    minuteCont.push(obj)
-}
 
 let frequencyCont=[]         //次数
-for(let i = 0; i< 100; i ++){
-    let obj= {text: i, value: i};
-    frequencyCont.push(obj)
-}
+
 
 let monthCont=[]         //次数
-for(let i = 0; i< 100; i ++){
-    let obj= {text: i+"月", value: i};
-    monthCont.push(obj)
-}
+
 
 let dayCont=[]         //天数
-for(let i = 0; i< 100; i ++){
-    let obj= {text: i+"天", value: i};
-    dayCont.push(obj)
-}
+
 
 let heightCont=[]         //身高范围
-for(let i =20;i<201;i++){
-    let obj= {text: i, value: i};
-    heightCont.push(obj)
-}
+
 let radixPoint=[]       //.0
 for(let i =0;i<10;i++){
     let obj= {text: '.'+i, value: '.'+i};
     radixPoint.push(obj)
 }
 let weightCont=[]       //体重
-for(let i =1;i<151;i++){
-    let obj= {text: i, value: i};
-    weightCont.push(obj)
-}
+
 let tenCont=[]          //0~9
 for(let i =0;i<10;i++){
     let obj= {text: i+'', value: i};
@@ -68,28 +49,19 @@ let sexCon=[
     {text: '女', value: false}
 ]
 let headCon=[]  //1~100
-for(let i =1;i<101;i++){
+for(let i =0;i<101;i++){
     let obj= {text: i, value: i};
     headCon.push(obj)
 }
 let yunCon=[]      //20-50
-for(let i =0;i<43;i++){
+for(let i =0;i<41;i++){
     let obj= {text: i, value: i};
     yunCon.push(obj)
 }
 let weekCon=[]
-for(let i =0;i<8;i++){
-    let obj= {text: i, value: i};
-    weekCon.push(obj)
-}
+
 let bornCon=[         //分娩方式
-    {text: '顺产', value: '顺产'},
-    {text: '剖宫产', value: '剖宫产'},
-    {text: '产钳', value: '产钳'},
-    {text: '吸引', value: '吸引'},
-    {text: '臀牵', value: '臀牵'},
-    {text: '臀助', value: '臀助'},
-    {text: '其他', value: '其他'}
+
 ]
 let alltenCon=[]
 for(let i =0;i<11;i++){
@@ -102,10 +74,7 @@ let hasCon=[           //有，无
 ]
 
 let momAge=[]
-for(let i =10;i<71;i++){
-    let obj= {text: i, value: i};
-    momAge.push(obj)
-}
+
 let addressCon=[           //
     {text: '城镇', value: true},
     {text: '农村', value: false}
@@ -124,6 +93,18 @@ for(let i =0;i*5<91;i++){
 
 let fourSixth=[]
 for(let i =4;i<17;i++){
-    let obj= {text: i+'个月', value: i+'个月'};
+    let obj= {text: i, value: i};
     fourSixth.push(obj)
+}
+
+let fourSevent=[]
+for(let i =4;i<73;i++){
+    let obj= {text: i, value: i};
+    fourSevent.push(obj)
+}
+
+let zeroSix=[]
+for(let i =0;i<7;i++){
+    let obj= {text: i, value: i};
+    zeroSix.push(obj)
 }

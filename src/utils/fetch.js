@@ -16,7 +16,7 @@ else{
 let httpName=httpBefore+window.location.host;
 let BASE_API='http://localhost:1442/api';
 if(httpName.indexOf('localhost')==-1){
-    BASE_API=httpName+'/ZD.ZFGWE.API/api/'   //版本需要随时修改
+    BASE_API=httpName+'/YYQ.API/V5.2.9/api/'   //版本需要随时修改
 }
 Vue.prototype.BASE_API=BASE_API
 const service = axios.create({
