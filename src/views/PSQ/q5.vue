@@ -149,7 +149,7 @@
                             </div>
                             <div class="form-list" style="margin-top:20px;">
                                 <drage-input v-model="dataList.Hzcstz" 
-                                    class="requrePage1" data-name="Hzcstz" isNum="true"
+                                    class="requrePage1" data-name="Hzcstz" isNum="4"
                                     :keyValue.sync="dataList.Hzcstz"
                                     type="number" maxlength="6"
                                     unit="g"  label="15.您的孩子出生体重：">

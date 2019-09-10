@@ -368,6 +368,7 @@
                                 <p class="form-p1">32.最近一个月，您的宝宝有以下问题吗？（可多选）</p>
                                 <div class="check-list">
                                     <super-checklist
+                                        @change="changeValue(dataList.Zjbbwt,'Zjbbwt','1')"
                                         title=""
                                         class="requrePage2 moreCheck" data-name="Zjbbwt"   data-next="Zjbbwt2"
                                         v-model="dataList.Zjbbwt"
@@ -677,6 +678,13 @@ export default {
         superRadio
     },
     methods:{
+        changeValue(val,name,item){   //特殊多选框，选了其他不允许继续选中
+            if(val.length>0 && val.indexOf(item)>-1){
+                let arr=[]
+                arr.push(item)
+                this.dataList[name]=arr
+            }
+        },
         changePage(before,next,pageName){  //点击上一页，下一页
             let isRequire=false
             let arrDom=document.querySelectorAll(`.${pageName}`)

@@ -147,7 +147,7 @@
                             </div>
                             <div class="form-list" style="margin-top:20px;">
                                 <drage-input v-model="dataList.Hzcstz" 
-                                    :keyValue.sync="dataList.Hzcstz"  type="number" :isNum="true"
+                                    :keyValue.sync="dataList.Hzcstz"  type="number" :isNum="4"
                                      class="requrePage1" data-name="Hzcstz"
                                      maxlength="4"
                                      unit="g"  label="15.您的孩子出生体重：" >
@@ -356,6 +356,7 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
+                                        @change="changeValue(dataList.Zjbbwt,'Zjbbwt','1')"
                                         class="requrePage2 moreCheck" data-name="Zjbbwt"
                                         v-model="dataList.Zjbbwt"
                                         :options="[{ label: '无',value: '1'},{ label: '腹泻',value: '2'},{ label: '便秘 ',value: '3'},{ label: '腹痛 ',value: '4'},{ label: '体重减轻或不增 ',value: '5'},{ label: '贫血 ',value: '6'},{ label: '过敏表现：如湿疹、哮喘、食物过敏或不耐受等 ',value: '7'},{ label: '超重或肥胖 ',value: '8'},{ label: '其他 ',value: '9'}]">
@@ -658,6 +659,13 @@ export default {
         superRadio
     },
     methods:{
+        changeValue(val,name,item){   //特殊多选框，选了其他不允许继续选中
+            if(val.length>0 && val.indexOf(item)>-1){
+                let arr=[]
+                arr.push(item)
+                this.dataList[name]=arr
+            }
+        },
         changePage(before,next,pageName){  //点击上一页，下一页
             let isRequire=false
             let arrDom=document.querySelectorAll(`.${pageName}`)

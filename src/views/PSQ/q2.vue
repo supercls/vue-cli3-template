@@ -152,7 +152,7 @@
                                 <drage-input v-model="dataList.Cstz" :keyValue.sync="dataList.Cstz"  type="number"
                                     placeholder=""
                                     maxlength="5"
-                                    :isNum="true"
+                                    :isNum="4"
                                     class="requrePage2" data-name="Cstz"
                                     unit="g"  label="出生体重" >
                                 </drage-input>
