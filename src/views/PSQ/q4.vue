@@ -33,14 +33,14 @@
                                 <drage-input v-model="dataList.Mqnl" :keyValue.sync="dataList.Mqnl"
                                     class="requrePage1" data-name="Mqnl"  unit="岁"
                                      :slotContent="slotContent3F" typeItem="pickeMore" :disabled="true"
-                                     label="3.母亲年龄____岁" >
+                                     label="3.母亲年龄____周岁" >
                                 </drage-input>
                             </div>
                             <div class="form-list">
                                 <drage-input v-model="dataList.Fqnl" :keyValue.sync="dataList.Fqnl"
                                  class="requrePage1" data-name="Fqnl"  unit="岁"
                                      :slotContent="slotContent3F" typeItem="pickeMore" :disabled="true"
-                                     label="4.父亲年龄____岁" >
+                                     label="4.父亲年龄____周岁" >
                                 </drage-input>
                             </div>
                             <div class="form-list">
@@ -106,7 +106,7 @@
                                 <div class="check-list">
                                     <mt-radio
                                         title=""
-                                        class="requrePage1" data-name="Mqzy"  data-next="Mqzy2"
+                                        class="requrePage1" data-name="Mqzy"  data-next="Mqzy2"  data-count="8"
                                         v-model="dataList.Mqzy"
                                         :options="[{ label: '行政干部',value: '1'},{ label: '工人',value: '2'},{ label: '专业技术人员',value: '3'},{ label: '农民',value: '4'},{ label: '公司职员',value: '5'},{ label: '商业服务人员',value: '6'},{ label: '无业',value: '7'},{ label: '其他',value: '8'}]">
                                     </mt-radio>
@@ -119,7 +119,7 @@
                                     <mt-radio
                                         title=""
                                         v-model="dataList.Fqzy"
-                                        class="requrePage1" data-name="Fqzy"  data-next="Fqzy2"
+                                        class="requrePage1" data-name="Fqzy"  data-next="Fqzy2"   data-count="8"
                                         :options="[{ label: '行政干部',value: '1'},{ label: '工人',value: '2'},{ label: '专业技术人员',value: '3'},{ label: '农民',value: '4'},{ label: '公司职员',value: '5'},{ label: '商业服务人员',value: '6'},{ label: '无业',value: '7'},{ label: '其他',value: '8'}]">
                                     </mt-radio>
                                     <mt-field v-if="(dataList.Fqzy||'')=='8'" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Fqzy2"></mt-field>
@@ -147,9 +147,8 @@
                             </div>
                             <div class="form-list" style="margin-top:20px;">
                                 <drage-input v-model="dataList.Hzcstz" 
-                                    :keyValue.sync="dataList.Hzcstz"  type="number" :isNum="4"
+                                    :keyValue.sync="dataList.Hzcstz"  type="number"  isNum="4"
                                      class="requrePage1" data-name="Hzcstz"
-                                     maxlength="4"
                                      unit="g"  label="15.您的孩子出生体重：" >
                                 </drage-input>
                             </div>
@@ -233,7 +232,7 @@
                                 </div>
                             </div>
                              <div class="form-list">
-                                <p class="form-p1">21.宝宝腹泻时，需要禁食吗？</p>
+                                <p class="form-p1">21.宝宝腹泻时，是否需要继续喂母乳？</p>
                                 <div class="check-list">
                                     <mt-radio
                                         title=""
@@ -296,7 +295,6 @@
                                         v-model="dataList.Nxxwkyyfetywsh"
                                         :options="[{ label: '电源进行防护',value: '1'},{ label: '热水瓶放在宝宝够不到的地方',value: '2'},{ label: '儿童床放置在窗边',value: '3'},{ label: '宝宝的洗澡水先放热水再放冷水',value: '4'},{ label: '家具边角加防护垫',value: '5'},{ label: '以上都正确',value: '6'}]">
                                     </super-checklist>
-                                    
                                 </div>
                             </div>
                             <div class="form-list">
@@ -316,7 +314,7 @@
                                     <div class="check-list">
                                         <super-checklist
                                             title=""
-                                            class="requrePage2 moreCheck" data-name="Ynzffglhzcgzsw" data-next="Ynzffglhzcgzsw2"
+                                            class="requrePage2 moreCheck" data-name="Ynzffglhzcgzsw" data-next="Ynzffglhzcgzsw2"   data-count="6"
                                             v-model="dataList.Ynzffglhzcgzsw"
                                             :options="[{ label: '拥抱或表扬孩子',value: '1'},{ label: '玩玩具或讲故事',value: '2'},{ label: '边看电视边吃 ',value: '3'},{ label: '甜食或零食作为奖励 ',value: '4'},{ label: '追着喂 ',value: '5'},{ label: '其他 ',value: '6'}]">
                                         </super-checklist>
@@ -357,7 +355,7 @@
                                     <super-checklist
                                         title=""
                                         @change="changeValue(dataList.Zjbbwt,'Zjbbwt','1')"
-                                        class="requrePage2 moreCheck" data-name="Zjbbwt"
+                                        class="requrePage2 moreCheck" data-name="Zjbbwt"   data-count="9"
                                         v-model="dataList.Zjbbwt"
                                         :options="[{ label: '无',value: '1'},{ label: '腹泻',value: '2'},{ label: '便秘 ',value: '3'},{ label: '腹痛 ',value: '4'},{ label: '体重减轻或不增 ',value: '5'},{ label: '贫血 ',value: '6'},{ label: '过敏表现：如湿疹、哮喘、食物过敏或不耐受等 ',value: '7'},{ label: '超重或肥胖 ',value: '8'},{ label: '其他 ',value: '9'}]">
                                     </super-checklist>
@@ -393,7 +391,7 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
-                                        class="requrePage3 moreCheck" data-name="Xydyezs"
+                                        class="requrePage3 moreCheck" data-name="Xydyezs"  data-count="8"  data-next="Xydyezs2"
                                         v-model="dataList.Xydyezs"
                                         :max="3"
                                         :options="[{ label: '生长发育',value: '1'},{ label: '生活护理',value: '2'},{ label: '营养与喂养 ',value: '3'},{ label: '常见病预防',value: '4'},{ label: '早期发展',value: '5'},{ label: '安全防护',value: '6'},{ label: '五官保健（眼、耳、口腔保健）',value: '7'},{ label: '其他',value: '8'}]">
@@ -406,7 +404,7 @@
                                 <div class="check-list">
                                     <super-checklist
                                         title=""
-                                        class="requrePage3 moreCheck" data-name="Yezshqqd"
+                                        class="requrePage3 moreCheck" data-name="Yezshqqd"  data-count="9"  data-next="Yezshqqd2"
                                         v-model="dataList.Yezshqqd"
                                         :max="3"
                                         :options="[{ label: '医护人员',value: '1'},{ label: '孕妇学校课堂',value: '2'},{ label: '家庭成员或朋友 ',value: '3'},{ label: '宣传手册、宣传单及折',value: '4'},{ label: '书籍/报刊/杂志',value: '5'},{ label: '广播/电视',value: '6'},{ label: '母婴健康类APP',value: '7'},{ label: '其他网络：微信、百度等 ',value: '8'},{ label: '其他',value: '9'}]">
@@ -420,10 +418,10 @@
                                     <super-checklist
                                         title=""
                                         defaultValue="15"
-                                        class="requrePage3 moreCheck" data-name="Xhdwljkjyxs"
+                                        class="requrePage3 moreCheck" data-name="Xhdwljkjyxs"  data-count="6"  data-next="Xhdwljkjyxs3"
                                         v-model="dataList.Xhdwljkjyxs"
                                         :max="3"            
-                                        :options="[{ label: '文字形式',value: '1'},{ label: '音频',value: '2',picker:true,filed:dataList.Xhdwljkjyxs1,name:'dataList.Xhdwljkjyxs1',placeholder:'请选择音频时长',icon:'分钟'},{ label: '视频',value: '3',picker:true,filed:dataList.Xhdwljkjyxs2,name:'dataList.Xhdwljkjyxs2',placeholder:'请选择视频时长',icon:'分钟'},{ label: '微信课堂',value: '4'},{ label: '图片',value: '5'},{ label: '其他',value: '6'}]">
+                                        :options="[{ label: '文字形式',value: '1'},{ label: '音频',value: '2',picker:true,filed:dataList.Xhdwljkjyxs1,name:'dataList.Xhdwljkjyxs1',placeholder:'请选择音频时长',icon:'分钟'},{ label: '视频',value: '3',picker:true,filed:dataList.Xhdwljkjyxs2,name:'dataList.Xhdwljkjyxs2',placeholder:'请选择视频时长',icon:'分钟'},{ label: '微信课堂',value: '4',picker:true,filed:dataList.Xhdwljkjyxs4,name:'dataList.Xhdwljkjyxs4',placeholder:'请选择时长',icon:'分钟'},{ label: '图片',value: '5'},{ label: '其他',value: '6'}]">
                                     </super-checklist>
                                     <mt-field v-if="(dataList.Xhdwljkjyxs||[]).indexOf('6')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Xhdwljkjyxs3"></mt-field>
                                 </div>
@@ -538,8 +536,8 @@
                                     <super-checklist
                                         title=""
                                         v-model="dataList.Jjnrwt"
-                                        class="requrePage4 moreCheck" data-name="Jjnrwt" data-next="Jjnrwt2"
-                                        :max="3"
+                                        class="requrePage4 moreCheck" data-name="Jjnrwt" data-next="Jjnrwt2"  data-count="8"
+
                                         :options="[{ label: '没有问题',value: '1'},{ label: '查找不方便 ',value: '2'},{ label: '文字太多，不爱看 ',value: '3'},{ label: '内容太专业，看不懂 ',value: '4'},{ label: '内容不全面，想看的内容查不到',value: '5'},{ label: '形式单一，不够吸引人',value: '6'},{ label: '图片不合适',value: '7'},{ label: '其他 ',value: '8'}]">
                                     </super-checklist>
                                     <mt-field v-if="(dataList.Jjnrwt||[]).indexOf('8')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jjnrwt2"></mt-field>
@@ -669,17 +667,29 @@ export default {
         changePage(before,next,pageName){  //点击上一页，下一页
             let isRequire=false
             let arrDom=document.querySelectorAll(`.${pageName}`)
+            let innerHtmlArr=[];
             for(let i=0;i<arrDom.length;i++){
-                if(!this.dataList[arrDom[i].getAttribute('data-name')] && !this.dataList[arrDom[i].getAttribute('data-next')||'']){
+                if( (!this.dataList[arrDom[i].getAttribute('data-name')]  
+                    || this.dataList[arrDom[i].getAttribute('data-name')].length==0)
+                    || ((this.dataList[arrDom[i].getAttribute('data-name')]||'').indexOf(arrDom[i].getAttribute('data-count')|| 'M')>-1
+                    && !this.dataList[arrDom[i].getAttribute('data-next')]))
+                    {
+                    if(!arrDom[i].querySelector('.mint-cell-text')){
+                        innerHtmlArr.push(arrDom[i].parentNode.parentNode.childNodes[0].innerText);
+                    }
+                    else{
+                        innerHtmlArr.push(arrDom[i].querySelector('.mint-cell-text').innerText);
+                    }
                     isRequire=true
                 }
             }
-            if(isRequire){
+             if(isRequire){
                 this.$toast({
-                    message:'请填写完整'
+                    message:`请填写${innerHtmlArr[0]}`,
+                     duration: 2000
                 })
                 return false;
-            }
+             }    
             if(this.dataList.Bbkssysj.indexOf('1')>-1 && !this.dataList.Bbkssysj2){
                  this.$toast({
                     message:'请输入刷牙开始的时间'
@@ -713,18 +723,30 @@ export default {
             let isRequire=false
             let arrDom=document.querySelectorAll(`.${pageName}`)
             for(let i=0;i<arrDom.length;i++){
-                if(!this.dataList[arrDom[i].getAttribute('data-name')] && !this.dataList[arrDom[i].getAttribute('data-next')||'']){
+                if( (!this.dataList[arrDom[i].getAttribute('data-name')]  
+                    || this.dataList[arrDom[i].getAttribute('data-name')].length==0)
+                    || ((this.dataList[arrDom[i].getAttribute('data-name')]||'').indexOf(arrDom[i].getAttribute('data-count')|| 'M')>-1
+                    && !this.dataList[arrDom[i].getAttribute('data-next')]))
+                    {
+                    if(!arrDom[i].querySelector('.drageInp')){
+                        innerHtmlArr.push(arrDom[i].parentNode.parentNode.childNodes[0].innerText);
+                    }
+                    else{
+                        innerHtmlArr.push(arrDom[i].querySelector('.mint-cell-text').innerText);
+                    }
                     isRequire=true
                 }
             }
-            if(isRequire){
+             if(isRequire){
                 this.$toast({
-                    message:'请填写完整'
+                    message:`请填写${innerHtmlArr[0]}`,
+                     duration: 1000
                 })
                 return false;
-            }
+             }    
             this.dataList.DistrictNo=this.$route.query.DistrictNo||'';
-            this.dataList.DistrictName=this.$route.query.DistrictName||"'"
+            this.dataList.DistrictName=this.$route.query.DistrictName||''
+            this.dataList.Tbszjg=this.$route.query.Tbszjg||''
             this.$messagebox.confirm('确定执行问卷提交后无法修改是否继续提交？').then(action => {
                 let checkDom=document.querySelectorAll('.moreCheck')
                 for(let i=0;i<checkDom.length;i++){

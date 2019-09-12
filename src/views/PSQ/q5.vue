@@ -108,7 +108,7 @@
                                 <div class="check-list">
                                     <mt-radio
                                         title=""
-                                        class="requrePage1" data-name="Mqzy"
+                                        class="requrePage1" data-name="Mqzy"  data-next=""
                                         v-model="dataList.Mqzy"
                                         :options="[{ label: '行政干部',value: '1'},{ label: '工人',value: '2'},{ label: '专业技术人员',value: '3'},{ label: '农民',value: '4'},{ label: '公司职员',value: '5'},{ label: '商业服务人员',value: '6'},{ label: '无业',value: '7'},{ label: '其他',value: '8'}]">
                                     </mt-radio>
@@ -263,7 +263,7 @@
                                         title=""
                                          class="requrePage2" data-name="Bbsthdljdj"
                                         v-model="dataList.Bbsthdljdj"
-                                        :options="[{ label: '1小时',value: '1'},{ label: '2小时',value: '2'},{ label: '3小时 ',value: '3'},{ label: '4小时',value: '4'}]">
+                                        :options="[{ label: '1小时',value: '1'},{ label: '2小时',value: '2'},{ label: '3小时 ',value: '3'},{ label: '4小时',value: '4'},{ label: '不清楚',value: '5'}]">
                                     </mt-radio>
                                 </div>
                             </div>
@@ -346,7 +346,7 @@
                                             pickContent="zeroSix"
                                             class="requrePage3 moreCheck" data-name="Ksdqccslsj"
                                             v-model="dataList.Ksdqccslsj"
-                                            :options="[{ label: '____个岁开始检查视力',value: '1',picker:true,filed:dataList.Ksdqccslsj2,name:'dataList.Ksdqccslsj2',placeholder:'请选择',icon:'岁'},{ label: '还没有开始',value: '2'}]">
+                                            :options="[{ label: '____岁开始检查视力',value: '1',picker:true,filed:dataList.Ksdqccslsj2,name:'dataList.Ksdqccslsj2',placeholder:'请选择',icon:'岁'},{ label: '还没有开始',value: '2'}]">
                                         </super-checklist>
                                     </div>
                                 </div>
@@ -424,7 +424,7 @@
                                         class="requrePage3 moreCheck" data-name="Xhdwljkjyxs" data-next="Xhdwljkjyxs3"
                                         v-model="dataList.Xhdwljkjyxs"
                                         :max="3"            
-                                        :options="[{ label: '文字形式',value: '1'},{ label: '音频',value: '2',picker:true,filed:dataList.Xhdwljkjyxs1,name:'dataList.Xhdwljkjyxs1',placeholder:'请选择音频时长',icon:'分钟'},{ label: '视频',value: '3',picker:true,filed:dataList.Xhdwljkjyxs2,name:'dataList.Xhdwljkjyxs2',placeholder:'请选择视频时长',icon:'分钟'},{ label: '微信课堂',value: '4'},{ label: '图片',value: '5'},{ label: '其他',value: '6'}]">
+                                        :options="[{ label: '文字形式',value: '1'},{ label: '音频',value: '2',picker:true,filed:dataList.Xhdwljkjyxs1,name:'dataList.Xhdwljkjyxs1',placeholder:'请选择音频时长',icon:'分钟'},{ label: '视频',value: '3',picker:true,filed:dataList.Xhdwljkjyxs2,name:'dataList.Xhdwljkjyxs2',placeholder:'请选择视频时长',icon:'分钟'},{ label: '微信课堂',value: '4',picker:true,filed:dataList.Xhdwljkjyxs4,name:'dataList.Xhdwljkjyxs4',placeholder:'请选择时长',icon:'分钟'},{ label: '图片',value: '5'},{ label: '其他',value: '6'}]">
                                     </super-checklist>
                                     <mt-field v-if="(dataList.Xhdwljkjyxs||[]).indexOf('6')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Xhdwljkjyxs3"></mt-field>
                                 </div>
@@ -727,7 +727,8 @@ export default {
                 return false;
             }
             this.dataList.DistrictNo=this.$route.query.DistrictNo||'';
-            this.dataList.DistrictName=this.$route.query.DistrictName||"'"
+            this.dataList.DistrictName=this.$route.query.DistrictName||''
+            this.dataList.Tbszjg=this.$route.query.Tbszjg||''
             this.$messagebox.confirm('问卷提交后无法修改是否继续提交？').then(action => {
                 let checkDom=document.querySelectorAll('.moreCheck')
                 for(let i=0;i<checkDom.length;i++){

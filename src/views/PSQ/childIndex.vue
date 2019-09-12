@@ -4,8 +4,8 @@
         <div class="qs-content mint-tab-container">
             <div class="page1" v-if="page1">
                 <div class="top">
-                    <p style="text-indent:0em">尊敬的宝妈/宝爸：</p>
-                    <p>您好！感谢您参加本次调查，请在题目后相应横线处填写答案或选择相应序号。如无特殊说明，题目均为单选。</p>
+                    <p style="text-indent:0em;font-weight:bolder">尊敬的宝妈/宝爸：</p>
+                    <p style="font-weight:bolder">您好！感谢您参加本次调查，请在题目后相应横线处填写答案或选择相应序号。如无特殊说明，题目均为单选。</p>
                 </div>
                 <div class="center">
                     <div class="zf-wrapper-mom">
@@ -14,7 +14,11 @@
                                         :slotContent="slotContent1" typeItem="pickCounty" :required="true" :iconRight="true"
                                         :disabled="true"  label="填表所在地" >
                             </drage-input>
-                             <div class="form-list">
+                            <drage-input v-model="dataList.Tbszjg" label="填表所在机构"  type="text" :required="true" class="requrePage1" data-name="Tbszjg">
+                            </drage-input>
+                            <drage-input v-model="dataList.dMqcsrq" :required="true" :keyValue.sync="dataList.dMqcsrq" typeItem="date" :disabled="true"  :iconRight="true" label="填表时间" class="requrePage1" data-name="dMqcsrq">
+                            </drage-input>
+                            <div class="form-list">
                                 <p class="form-p1">您最小孩子的年龄</p>
                                 <div class="check-list">
                                     <mt-radio
@@ -54,13 +58,16 @@ import {nations} from '@/utils/nations'
 import drageInput from '@/components/nomal/drageInput'
 import superChecklist from '@/components/nomal/checklist'
 import messageToast  from '@/components/nomal/messageToast'
+import {dateFunction}  from '@/utils/dateFormat'
 export default {
     name:'hello',
     data(){
         return {
             dataList:{
                age:'',
-               DistrictNo:''
+               DistrictNo:'',
+               Tbszjg:'',
+               dMqcsrq:dateFunction('yyyy-MM-dd',new Date()),
             },
             page1:true,
             page2:false,
@@ -102,7 +109,7 @@ export default {
     },
     methods:{
         changePage(){  //点击上一页，下一页
-            if(this.dataList.age=='' ||  this.dataList.DistrictNo==''){
+            if(this.dataList.age=='' ||  this.dataList.DistrictNo=='' || this.dataList.Tbszjg==''){
                this.$toast({
                     message:'请填写完整'
                 })
@@ -112,7 +119,8 @@ export default {
                 path:`/Family${this.dataList.age}`,
                 query:{
                     DistrictName:this.dataList.DistrictName,
-                    DistrictNo:this.dataList.DistrictNo
+                    DistrictNo:this.dataList.DistrictNo,
+                    Tbszjg:this.dataList.Tbszjg
                 }
             })
         },
