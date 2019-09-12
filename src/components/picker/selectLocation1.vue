@@ -9,7 +9,7 @@
     </transition>
 </template>
 <script>
-import { iosProvinces ,iosCitys, iosCountys} from '@/utils/dataCountry'
+import { iosProvinces ,iosCitys, iosCountys} from '@/utils/dataSIxcountry'
 export default {
     data(){
         return{

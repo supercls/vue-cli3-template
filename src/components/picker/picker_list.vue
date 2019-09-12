@@ -202,7 +202,6 @@
         target.style.webkitTransitionDuration = target.style.transitionDuration = '200ms';
         stopGear = true;
       }
-
       clearInterval(target["int_" + target.id]);
       target["int_" + target.id] = setInterval(function () {
         var pos = target["pos_" + target.id];
@@ -232,11 +231,16 @@
         target.style["-webkit-transform"] = 'translate3d(0,' + pos + 'em,0)';
         target.setAttribute('top', pos + 'em');
         d++;
-      }, 30);
+      }, 15);
     },
     setGear(target, val) {
       var _self = this
       var endVal = Math.round(val);
+      var domArr= target.querySelectorAll('.tooth')   
+      for(let i=0;i<domArr.length;i++){
+        domArr[i].classList.remove('active')
+      }
+      domArr[endVal].classList.add('active')   //给选中的div  赋值active
       var type = target.getAttribute('data-type')
       // 不是联级
       if (!this.selectData.link) {
@@ -275,17 +279,26 @@
         var pos1 = 0
         var pos2 = 0
         var pos3 = 0
-        if (defaultData[0] && Object.prototype.toString.call(defaultData[0].value)!='[object Undefined]') {
-      //  this.selects.select1 = defaultData[0]  去除默认default
-        for (var i = 0, len = this.pData1.length; i < len; i++) {
-          if (this.pData1[i].value == defaultData[0].value) {
-            pos1 = -(i*2)
-            this.selects.select1=this.pData1[i]  //2019-03-12
-            break
-          }
+        if(defaultData.length==0){
+          province?province.querySelectorAll('.tooth')[0].classList.add('active'):''
+          city?city.querySelectorAll('.tooth')[0].classList.add('active'):''
+          county?county.querySelectorAll('.tooth')[0].classList.add('active'):''
         }
-        province.style.transform = province.style["-webkit-transform"] = 'translate3d(0,' + pos1 + 'em,0)';
-        province.setAttribute('top', pos1 + 'em');
+        if (defaultData[0] && Object.prototype.toString.call(defaultData[0].value)!='[object Undefined]') {
+          for (var i = 0, len = this.pData1.length; i < len; i++) {
+            if (this.pData1[i].value == defaultData[0].value) {
+              pos1 = -(i*2)
+              this.selects.select1=this.pData1[i]  //2019-03-12
+              break
+            }
+          }
+          let domArr= province.querySelectorAll('.tooth')  
+          for(let i=0;i<domArr.length;i++){
+            domArr[i].classList.remove('active')
+          }
+          domArr[Math.abs(pos1) / 2].classList.add('active')   
+          province.style.transform = province.style["-webkit-transform"] = 'translate3d(0,' + pos1 + 'em,0)';
+          province.setAttribute('top', pos1 + 'em');
       }
       if(defaultData[1] && defaultData[1].value) {
         for (var i = 0, len = this.pData2.length; i < len; i++) {
@@ -295,7 +308,11 @@
             break
           }
         }
-      //  this.selects.select2 = defaultData[1]
+        let domArr= city.querySelectorAll('.tooth')  
+        for(let i=0;i<domArr.length;i++){
+          domArr[i].classList.remove('active')
+        }
+        domArr[Math.abs(pos2) / 2].classList.add('active')   
         city.setAttribute('top', pos2 + 'em');
         city.style["-webkit-transform"] = 'translate3d(0,' + pos2 + 'em,0)';
       }
@@ -308,7 +325,13 @@
           }
         }
         this.posiTop=pos3
-      //  this.selects.select3 = defaultData[2]
+        let domArr= city.querySelectorAll('.tooth')  
+        for(let i=0;i<domArr.length;i++){
+          domArr[i].classList.remove('active')
+        }
+        domArr[Math.abs(pos3) / 2].classList.add('active')   
+        county.setAttribute('top', pos2 + 'em');
+        county.style["-webkit-transform"] = 'translate3d(0,' + pos2 + 'em,0)';
         county.setAttribute('top', pos3 + 'em');
         county.style["-webkit-transform"] = 'translate3d(0,' + pos3 + 'em,0)';
       }
@@ -639,6 +662,7 @@
     flex-direction: column;
     overflow: hidden
   }
+  .active{color:#2EA5FF}
   .area_roll .ares_line{
     float: left;
     flex: 1;
