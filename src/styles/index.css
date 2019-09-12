@@ -34,11 +34,11 @@
   overflow: auto;
 }
 .zf-wrapper .picker-slot {
-  font-size: 32px;
+  font-size: 34px;
   color: #696969;
 }
 .zf-wrapper .mint-datetime-action {
-  font-size: 32px;
+  font-size: 34px;
 }
 .zf-wrapper .mint-field .mint-cell-title {
   width: auto;
@@ -60,7 +60,7 @@
   color: #333;
 }
 .picker-item.picker-selected {
-  color: #666;
+  color:#26A2FF;
 }
 .eims.zf-jc-wrapper .mint-navbar .mint-tab-item .mint-tab-item-label {
   font-size: 26px;
