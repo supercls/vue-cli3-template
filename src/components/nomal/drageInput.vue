@@ -362,7 +362,7 @@
             inputHandle(e){      //input原生输入事件
                 if(this.isNum)  e.target.value=e.target.value.slice(0,this.isNum)
                 this.$emit('changeInput',e.target.value)
-                if(this.clearName)  this.$parent.dataList[this.clearName]='2'
+                if(this.clearName)  this.$parent.dataList[this.clearName]=null
             },
             clearValue(){         //清除按钮
                 this.$emit('changeInput','')
@@ -400,8 +400,8 @@
                         this.$emit('update:keyValue',this.currentValue)
                         break;
                     case 'checkRight':   //对勾选择器
-                        this.$emit('update:keyValue',this.currentValue=='1'?'2':'1')
-                        this.$emit('updateRight',this.currentValue=='1'?'2':'1')
+                        this.$emit('update:keyValue',this.currentValue=='1'?null:'1')
+                        this.$emit('updateRight',this.currentValue=='1'?null:'1')
                         break;    
                     default:
                         console.log('error')
@@ -524,7 +524,7 @@
         }
     }
     input{cursor: pointer;}
-    .checkListDiv{position:absolute;top:0px;right:20px;width:200px;height:100%;background:#fff;}
+    .checkListDiv{position:absolute;top:0px;right:20px;width:180px;height:100%;background:#fff;}
     .check-span-cen{
             margin-top: 36px;
             margin-left:50%; 

@@ -119,7 +119,6 @@ export default {
       if(this.limit) e.target.checked=false
     },
     showPicker(name,val){   //picker选择器
-     // localStorage.clear(); 
       this.FshowPicke=true;
       this.dataName=name;
       this.dataItem=val;
@@ -166,9 +165,10 @@ export default {
   watch: {
     pickContent:{
       handler(val){
-        let arr=[{text:this.defaultValue||'',value:this.defaultValue||''}]
+          console.log(this.defaultValue)
+          let arr=[{text:this.defaultValue||'',value:this.defaultValue||''}]
           this.FpickData.default=arr
-            this.FpickData.pData1=slotList[val] || slotList.timaAge
+          this.FpickData.pData1=slotList[val] || slotList.timaAge
         },
         immediate:true
     },

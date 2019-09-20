@@ -32,7 +32,7 @@
         },
         methods: {
             closeToase: function () {    //关闭按钮
-
+            
                 this.toggleOn=false
                 this.$emit("Onchange",false)
             }
