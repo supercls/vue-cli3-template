@@ -85,9 +85,9 @@ let hukCon=[           //
     {text: '本省外市', value: '本省外市'},
     {text: '外省', value: '外省'}
 ]
-let timaAge=[]
-for(let i =0;i*5<91;i++){
-    let obj= {text: i*5, value: i*5};
+let timaAge=[ {text: '1分钟', value: '1'}, {text: '2分钟', value: '2'}, {text: '3分钟', value: '3'}, {text: '4分钟', value: '4'},]
+for(let i =1;i*5<91;i++){
+    let obj= {text: i*5+'分钟', value: i*5};
     timaAge.push(obj)
 }
 
