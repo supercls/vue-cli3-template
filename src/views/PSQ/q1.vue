@@ -65,12 +65,12 @@
                             <div class="form-list">
                                 <p class="form-p1">1.机构性质</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage2" data-name="OrganType"
                                         v-model="dataList.OrganType"
                                         :options="[{ label: '县级妇幼保健院',value: '1'},{ label: '县级综合医院',value: '2'},{ label: ' 乡镇卫生院',value: '3'},{ label: '社区卫生服务中心',value: '4'},{ label: '专科医院',value: '5'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list" >
@@ -406,12 +406,12 @@
                             <div class="form-list">
                                 <p class="form-p1">10.本机构APP是否按照国家《母子健康APP》项目要求进行升级完善？</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage3" data-name="JgAppsjws"
                                         v-model="dataList.JgAppsjws"
                                         :options="[{ label: '未进行',value: '1'},{ label: '进行中',value: '2'},{ label: '已完成',value: '3'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -447,6 +447,7 @@
                         <div class="pag-box">
                             <button  class="btn" :disabled= "false" @click="changePage('3','2')" :class= "{ disabledBtn: false }" >上一页</button>
                             <div class= "pag-center">
+
                             <span class= "num1">3</span>
                             <span>/</span>
                             <span>5</span>
@@ -464,22 +465,24 @@
                             <h3>三、《母子健康APP》宣传应用情况</h3>
                             <div class="form-list">
                                 <p class="form-p1">13.本机构是否已经开始推广使用《母子健康APP》?</p>
-                                <mt-radio
-                                    title=""
-                                     class="requrePage4" data-name="Jgkstgapp"
-                                    v-model="dataList.Jgkstgapp"
-                                    :options="[{ label: '使用',value: '1'},{ label: '未使用',value: '2'}]">
-                                </mt-radio>
+                                <div class="check-list">
+                                    <super-radio
+                                        title=""
+                                        class="requrePage4" data-name="Jgkstgapp"
+                                        v-model="dataList.Jgkstgapp"
+                                        :options="[{ label: '使用',value: '1'},{ label: '未使用',value: '2'}]">
+                                    </super-radio>
+                                </div>
                             </div>
                             <div class="form-list" v-if="dataList.Jgkstgapp!='2'">
                                 <p class="form-p1">14.该项目宣传推广是否具体到某个部门负责？</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage4" data-name="Jgtgbm"  data-next="Jgtgbm2"  data-count="7"
                                         v-model="dataList.Jgtgbm"
                                         :options="[{ label: '无',value: '1'},{ label: '医院宣传科',value: '2'},{ label: '儿童保健科',value: '3'},{ label: '信息科',value: '4'},{ label: '健康教育科',value: '5'},{ label: '保健科',value: '6'},{ label: '其他',value: '7'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                     <mt-field v-if="dataList.Jgtgbm=='7'" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Jgtgbm2"></mt-field>
                                 </div>
                             </div>
@@ -521,23 +524,23 @@
                             <div class="form-list">
                                 <p class="form-p1">16.本机构是否有独立的健康教育部门？</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage5" data-name="Sfyjkjybm"
                                         v-model="dataList.Sfyjkjybm"
                                         :options="[{ label: '有',value: '1'},{ label: '无',value: '2'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                  </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">17.本机构是否由专人负责健康教育工作？</p>
                                 <div class="check-list">
-                                <mt-radio
+                                <super-radio
                                     title=""
                                     class="requrePage5" data-name="Sfyzrfzjkjy"
                                     v-model="dataList.Sfyzrfzjkjy"
                                     :options="[{ label: '有',value: '1'},{ label: '无',value: '2'}]">
-                                </mt-radio>
+                                </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -604,6 +607,7 @@ import drageInput1 from '@/components/nomal/drageInput1'
 import {SaveQuestionair_Hospital} from '@/api/user.js'
 import {isvalidUsername} from '@/utils/vaildata'
 import {dateFunction}  from '@/utils/dateFormat'
+import superRadio from '@/components/nomal/superRadio'
 export default {
     name:'hello',
     data(){
@@ -648,7 +652,8 @@ export default {
         headers,
         drageInput,
         superChecklist,
-        drageInput1
+        drageInput1,
+        superRadio,
     },
     methods:{
         changeValue(val,name,item){   //特殊多选框，选了其他不允许继续选中
@@ -703,10 +708,10 @@ export default {
                 })
                 return false;
             }
-            if(!isvalidUsername(this.dataList.FillerMobileTel) && !isvalidUsername(this.dataList.AuditMobileTel)){  //验证手机号
-              this.$toast('请输入正确的手机号码')
-               return false
-            }
+            // if(!isvalidUsername(this.dataList.FillerMobileTel) && !isvalidUsername(this.dataList.AuditMobileTel)){  //验证手机号
+            //   this.$toast('请输入正确的手机号码')
+            //    return false
+            // }
             let checkDom=document.querySelectorAll('.moreCheck')
             for(let i=0;i<checkDom.length;i++){
                 this.checkObj[checkDom[i].getAttribute('data-name')]=(this.dataList[checkDom[i].getAttribute('data-name')] ||[""]).join(",")
@@ -739,23 +744,27 @@ export default {
             }
             if(isRequire){
                 this.$toast({
-                    message:'请填写完整'
+                    message:`请填写${innerHtmlArr[0]}`,
+                    duration: 2000
                 })
-                return false;
+                return false
             }
             this.$messagebox.confirm('问卷提交后无法修改是否继续提交？').then(action => {
                 let checkDom=document.querySelectorAll('.moreCheck')
                 for(let i=0;i<checkDom.length;i++){
                     this.checkObj[checkDom[i].getAttribute('data-name')]=(this.dataList[checkDom[i].getAttribute('data-name')] ||[""]).join(",")
                 }
+                this.$indicator.open();
                 SaveQuestionair_Hospital({...this.dataList,...this.checkObj}).then(res=>{
-                    localStorage.setItem(this.$route.path,JSON.stringify(this.dataList))
+                    localStorage.setItem('zdHosptal',JSON.stringify(this.dataList))
                     this.hasReady=false
                     this.$toast({
                         message:'提交成功，稍后请自行退出'
                     })
+                    this.$indicator.close();
                     WeixinJSBridge.call('closeWindow');
                 }).catch(err=>{
+                    this.$indicator.close();
                     console.log(err)
                 })
                 console.log(this.dataList)
@@ -768,10 +777,11 @@ export default {
 
     },
     mounted(){
-        if(localStorage.getItem(this.$route.path)){  //数据缓存
-            this.dataList=JSON.parse(localStorage.getItem(this.$route.path))
+        if(localStorage.getItem('zdHosptal')){  //数据缓存
+            this.dataList=JSON.parse(localStorage.getItem('zdHosptal'))
             this.hasReady=false
-            this.$messagebox.alert('您已经提交过了，请勿重复提交')
+            this.$messagebox.alert('您已经提交过问卷了，请勿重复提交')
+            return false
         }
     },
     computed:{

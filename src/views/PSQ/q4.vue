@@ -10,12 +10,12 @@
                             <div class="form-list">
                                 <p class="form-p1">1.填表人</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage1" data-name="Tbr"
                                         v-model="dataList.Tbr"
                                         :options="[{ label: '孩子母亲',value: '1'},{ label: '孩子父亲',value: '2'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -60,83 +60,83 @@
                             <div class="form-list">
                                 <p class="form-p1">7.母亲的户籍</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                          class="requrePage1" data-name="Mqhj"
                                         v-model="dataList.Mqhj"
                                         :options="[{ label: '城市',value: '1'},{ label: '农村',value: '2'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">8.父亲的户籍</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage1" data-name="Fqhj"
                                         v-model="dataList.Fqhj"
                                         :options="[{ label: '城市',value: '1'},{ label: '农村',value: '2'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">9.父亲文化程度</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage1" data-name="Fqwhcd"
                                         v-model="dataList.Fqwhcd"
                                         :options="[{ label: '文盲',value: '1'},{ label: '小学',value: '2'},{ label: '初中',value: '3'},{ label: '高中/中专',value: '4'},{ label: '大专',value: '5'},{ label: '本科',value: '6'},{ label: '硕士及以上',value: '7'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">10.母亲的文化程度</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage1" data-name="Mqwhcd"
                                         v-model="dataList.Mqwhcd"
                                         :options="[{ label: '文盲',value: '1'},{ label: '小学',value: '2'},{ label: '初中',value: '3'},{ label: '高中/中专',value: '4'},{ label: '大专',value: '5'},{ label: '本科',value: '6'},{ label: '硕士及以上',value: '7'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">11.母亲职业</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage1" data-name="Mqzy"  data-next="Mqzy2"  data-count="8"
                                         v-model="dataList.Mqzy"
                                         :options="[{ label: '行政干部',value: '1'},{ label: '工人',value: '2'},{ label: '专业技术人员',value: '3'},{ label: '农民',value: '4'},{ label: '公司职员',value: '5'},{ label: '商业服务人员',value: '6'},{ label: '无业',value: '7'},{ label: '其他',value: '8'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                     <mt-field v-if="(dataList.Mqzy||'')=='8'" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Mqzy2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">12.父亲职业</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         v-model="dataList.Fqzy"
                                         class="requrePage1" data-name="Fqzy"  data-next="Fqzy2"   data-count="8"
                                         :options="[{ label: '行政干部',value: '1'},{ label: '工人',value: '2'},{ label: '专业技术人员',value: '3'},{ label: '农民',value: '4'},{ label: '公司职员',value: '5'},{ label: '商业服务人员',value: '6'},{ label: '无业',value: '7'},{ label: '其他',value: '8'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                     <mt-field v-if="(dataList.Fqzy||'')=='8'" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Fqzy2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">13.家庭平均月收入</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                          class="requrePage1" data-name="Jtpjysr"
                                         v-model="dataList.Jtpjysr"
                                         :options="[{ label: '3000元及以下',value: '1'},{ label: '3001-5000元',value: '2'},{ label: '5001-10000元',value: '3'},{ label: '10000元以上',value: '4'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
-                            <h3>以下调查为您最小孩子的信息</h3>
+                            <h3>以下调查为您<b>最小孩子</b>的信息</h3>
                             <div class="form-list" style="margin-top:20px;">
                                 <drage-input v-model="dataList.Hzcsrq" 
                                     :keyValue.sync="dataList.Hzcsrq" 
@@ -155,12 +155,12 @@
                             <div class="form-list">
                                 <p class="form-p1">16.家里最小的是您第几个孩子？</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage1" data-name="Zxdsdjghz"
                                         v-model="dataList.Zxdsdjghz"
                                         :options="[{ label: '第1个',value: '1'},{ label: '第2个',value: '2'},{ label: '第3个及以上',value: '3'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div style="margin:20px auto;"></div>
@@ -190,78 +190,78 @@
                             <div class="form-list">
                                 <p class="form-p1">17.孩子满1岁后-3岁期间每年至少要做几次健康体检？</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage2" data-name="Zjcjkjc"
                                         v-model="dataList.Zjcjkjc"
                                         :options="[{ label: '不知道',value: '1'},{ label: '2次',value: '2'},{ label: '4次',value: '3'},{ label: '6次',value: '4'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">18.宝宝6个月后应继续母乳喂养，可持续到宝宝几岁？</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage2" data-name="Mrwydjgy"
                                         v-model="dataList.Mrwydjgy"
                                         :options="[{ label: '1岁',value: '1'},{ label: '1岁半',value: '2'},{ label: '2岁',value: '3'},{ label: '3岁',value: '4'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">19.下列食物中，含铁最丰富的是？</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage2" data-name="Htffdsw"
                                         v-model="dataList.Htffdsw"
                                         :options="[{ label: '蛋黄',value: '1'},{ label: '豆类',value: '2'},{ label: '谷类',value: '3'},{ label: '动物肝脏',value: '4'},{ label: '不清楚',value: '5'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">20.以下哪种维生素可以促进铁的吸收？</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                          class="requrePage2" data-name="Nzwsfcjtxs"
                                         v-model="dataList.Nzwsfcjtxs"
                                         :options="[{ label: '维生素A',value: '1'},{ label: '维生素B',value: '2'},{ label: '维生素C',value: '3'},{ label: '维生素D',value: '4'},{ label: '不清楚',value: '5'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                              <div class="form-list">
                                 <p class="form-p1">21.宝宝腹泻时，是否需要继续喂母乳？</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage2" data-name="Bbfxxyjsm"
                                         v-model="dataList.Bbfxxyjsm"
                                         :options="[{ label: '需要',value: '1'},{ label: '不需要',value: '2'},{ label: '不清楚',value: '3'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">22.2岁以上的宝宝看视频、玩电子游戏等视屏时间，每天不超过多长时间？</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                          class="requrePage2" data-name="Bbkspsj"
                                         v-model="dataList.Bbkspsj"
                                         :options="[{ label: '15分钟',value: '1'},{ label: '30分钟',value: '2'},{ label: '1小时',value: '3'},{ label: '2小时',value: '4'},{ label: '不清楚',value: '5'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">23.以下哪种微量元素有预防龋齿作用？</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                          class="requrePage2" data-name="Nzwlysyyfqczy"
                                         v-model="dataList.Nzwlysyyfqczy"
                                         :options="[{ label: '锌',value: '1'},{ label: '铁',value: '2'},{ label: '氟 ',value: '3'},{ label: '碘',value: '4'},{ label: '不清楚',value: '5'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -300,53 +300,49 @@
                             <div class="form-list">
                                 <p class="form-p1">27.您是否给孩子喝果汁（包括自制的鲜果汁）？</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                         class="requrePage2" data-name="Sfghzhgz"
                                         v-model="dataList.Sfghzhgz"
                                         :options="[{ label: '经常',value: '1'},{ label: '有时',value: '2'},{ label: '偶尔 ',value: '3'},{ label: '否',value: '4'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">28.您用哪些方法鼓励孩子吃各种食物？（可多选） </p>
-                                <div class="form-inp">
-                                    <div class="check-list">
-                                        <super-checklist
-                                            title=""
-                                            class="requrePage2 moreCheck" data-name="Ynzffglhzcgzsw" data-next="Ynzffglhzcgzsw2"   data-count="6"
-                                            v-model="dataList.Ynzffglhzcgzsw"
-                                            :options="[{ label: '拥抱或表扬孩子',value: '1'},{ label: '玩玩具或讲故事',value: '2'},{ label: '边看电视边吃 ',value: '3'},{ label: '甜食或零食作为奖励 ',value: '4'},{ label: '追着喂 ',value: '5'},{ label: '其他 ',value: '6'}]">
-                                        </super-checklist>
-                                        <mt-field v-if="(dataList.Ynzffglhzcgzsw||[]).indexOf('6')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Ynzffglhzcgzsw2"></mt-field>
-                                    </div>
+                                <div class="check-list">
+                                    <super-checklist
+                                        title=""
+                                        class="requrePage2 moreCheck" data-name="Ynzffglhzcgzsw" data-next="Ynzffglhzcgzsw2"   data-count="6"
+                                        v-model="dataList.Ynzffglhzcgzsw"
+                                        :options="[{ label: '拥抱或表扬孩子',value: '1'},{ label: '玩玩具或讲故事',value: '2'},{ label: '边看电视边吃 ',value: '3'},{ label: '甜食或零食作为奖励 ',value: '4'},{ label: '追着喂 ',value: '5'},{ label: '其他 ',value: '6'}]">
+                                    </super-checklist>
+                                    <mt-field v-if="(dataList.Ynzffglhzcgzsw||[]).indexOf('6')>-1" placeholder="其他（请详述）" type="textarea" rows="3" v-model="dataList.Ynzffglhzcgzsw2"></mt-field>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">29.您的宝宝开始用婴儿牙刷刷牙的时间</p>
-                                <div class="form-inp">
-                                     <div class="check-list">
-                                        <super-checklist
-                                            title=""
-                                            :max="1"
-                                            defaultValue="8"
-                                            pickContent="fourSixth"
-                                            class="requrePage2 moreCheck" data-name="Bbkssysj"
-                                            v-model="dataList.Bbkssysj"
-                                            :options="[{ label: '____个月开始',value: '1',picker:true,filed:dataList.Bbkssysj2,name:'dataList.Bbkssysj2',placeholder:'请选择',icon:'个月',},{ label: '还没有开始',value: '2'}]">
-                                        </super-checklist>
-                                    </div>
+                                    <div class="check-list">
+                                    <super-checklist
+                                        title=""
+                                        :max="1"
+                                        defaultValue="8"
+                                        pickContent="fourSixth"
+                                        class="requrePage2 moreCheck" data-name="Bbkssysj"  data-next="Bbkssysj2"  data-count="1"
+                                        v-model="dataList.Bbkssysj"
+                                        :options="[{ label: '____个月开始',value: '1',picker:true,filed:dataList.Bbkssysj2,name:'dataList.Bbkssysj2',placeholder:'请选择',icon:'个月',},{ label: '还没有开始',value: '2'}]">
+                                    </super-checklist>
                                 </div>
                             </div>
                             <div class="form-list">
                                 <p class="form-p1">30.您的宝宝是否在吃维生素D或维生素AD ？</p>
                                 <div class="check-list">
-                                    <mt-radio
+                                    <super-radio
                                         title=""
                                          class="requrePage2" data-name="Bbsfzcvd"
                                         v-model="dataList.Bbsfzcvd"
                                         :options="[{ label: '一直吃',value: '1'},{ label: '间断吃 ',value: '2'},{ label: '从不吃 ',value: '3'},{ label: '不清楚',value: '4'}]">
-                                    </mt-radio>
+                                    </super-radio>
                                 </div>
                             </div>
                             <div class="form-list">
@@ -355,7 +351,7 @@
                                     <super-checklist
                                         title=""
                                         @change="changeValue(dataList.Zjbbwt,'Zjbbwt','1')"
-                                        class="requrePage2 moreCheck" data-name="Zjbbwt"   data-count="9"
+                                        class="requrePage2 moreCheck" data-name="Zjbbwt"   data-count="9"  data-next="Zjbbwt2"
                                         v-model="dataList.Zjbbwt"
                                         :options="[{ label: '无',value: '1'},{ label: '腹泻',value: '2'},{ label: '便秘 ',value: '3'},{ label: '腹痛 ',value: '4'},{ label: '体重减轻或不增 ',value: '5'},{ label: '贫血 ',value: '6'},{ label: '过敏表现：如湿疹、哮喘、食物过敏或不耐受等 ',value: '7'},{ label: '超重或肥胖 ',value: '8'},{ label: '其他 ',value: '9'}]">
                                     </super-checklist>
@@ -466,7 +462,7 @@
                                     <super-checklist
                                         title=""
                                         :max="1"
-                                        class="requrePage4 moreCheck" data-name="Wxzyy"
+                                        class="requrePage4 moreCheck" data-name="Wxzyy"  data-next="Wxzyy2"  data-count="4"
                                         v-model="dataList.Wxzyy"
                                         :options="[{ label: '不知道',value: '1'},{ label: '不感兴趣',value:'2'},{ label: '不需要',value:'3'},{ label: '其他',value:'4',other:true,filed:dataList.Wxzyy2,name:'dataList.Wxzyy2'}]">
                                     </super-checklist>
@@ -530,7 +526,7 @@
                                     </super-radio>
                                 </div>
                             </div>
-                            <div class="form-list" v-show="(dataList.Wxzyy.length==0) && dataList.Wkgyy.length==0">
+                            <div class="form-list" v-if="(dataList.Wxzyy.length==0) && dataList.Wkgyy.length==0">
                                 <p class="form-p1">42.您认为《母子健康APP》健康教育形式和内容存在哪些问题？（可多选）</p>
                                 <div class="check-list">
                                     <super-checklist
@@ -595,7 +591,9 @@ export default {
                 Jjnrwt:[],
                 Bbkssysj:[],
                 Hzcstz:'',
-                Wxzyy:''
+                Wxzyy:'',
+                Pybblxpdsj:'',
+                Pybbyscfsj:''
             },
             page1:true,
             page2:false,
@@ -627,7 +625,7 @@ export default {
             },
             slotContent3F:{
                 columns:1,
-                default:[{text:'26',value:'25'}],
+                default:[{text:'26周岁',value:'25'}],
                 pData1:headCon
             },
             articleArray:[
@@ -671,7 +669,7 @@ export default {
             for(let i=0;i<arrDom.length;i++){
                 if( (!this.dataList[arrDom[i].getAttribute('data-name')]  
                     || this.dataList[arrDom[i].getAttribute('data-name')].length==0)
-                    || ((this.dataList[arrDom[i].getAttribute('data-name')]||'').indexOf(arrDom[i].getAttribute('data-count')|| 'M')>-1
+                    || (((this.dataList[arrDom[i].getAttribute('data-name')]||'').toString()).indexOf(arrDom[i].getAttribute('data-count')|| 'M')>-1
                     && !this.dataList[arrDom[i].getAttribute('data-next')]))
                     {
                     if(!arrDom[i].querySelector('.mint-cell-text')){
@@ -690,9 +688,9 @@ export default {
                 })
                 return false;
              }    
-            if(this.dataList.Bbkssysj.indexOf('1')>-1 && !this.dataList.Bbkssysj2){
+            if(this.dataList.Pybblxpdsj.indexOf('1')>-1 && !this.dataList.Pybblxpdsj2){
                  this.$toast({
-                    message:'请输入刷牙开始的时间'
+                    message:'请选择宝宝培养爬行时间'
                 })
                 return false;
             }
@@ -705,6 +703,12 @@ export default {
             if(this.dataList.Xhdwljkjyxs.indexOf('3')>-1 && !this.dataList.Xhdwljkjyxs2){
                  this.$toast({
                     message:'请选择视频时长'
+                })
+                return false;
+            }
+            if(this.dataList.Xhdwljkjyxs.indexOf('4')>-1 && !this.dataList.Xhdwljkjyxs4){
+                 this.$toast({
+                    message:'请选择微信课堂时长'
                 })
                 return false;
             }
@@ -722,6 +726,7 @@ export default {
             if(!this.hasReady) return false
             let isRequire=false
             let arrDom=document.querySelectorAll(`.${pageName}`)
+            let innerHtmlArr=[];
             for(let i=0;i<arrDom.length;i++){
                 if( (!this.dataList[arrDom[i].getAttribute('data-name')]  
                     || this.dataList[arrDom[i].getAttribute('data-name')].length==0)
@@ -740,7 +745,7 @@ export default {
              if(isRequire){
                 this.$toast({
                     message:`请填写${innerHtmlArr[0]}`,
-                     duration: 1000
+                     duration: 2000
                 })
                 return false;
              }    
@@ -752,14 +757,18 @@ export default {
                 for(let i=0;i<checkDom.length;i++){
                     this.checkObj[checkDom[i].getAttribute('data-name')]=(this.dataList[checkDom[i].getAttribute('data-name')] ||[""]).join(",")
                 }
+                this.$indicator.open();
                 SaveQuestionair_Parent2({...this.dataList,...this.checkObj}).then(res=>{
                     localStorage.setItem(this.$route.path,JSON.stringify(this.dataList))
+                    localStorage.setItem('zdQuestion',this.$route.path)
                     this.hasReady=false
                     this.$toast({
                         message:'提交成功，稍后请自行退出'
                     })
+                    this.$indicator.close();
                     WeixinJSBridge.call('closeWindow');
                 }).catch(err=>{
+                     this.$indicator.close();
                     console.log(err)
                 })
             }).catch(error=>{
@@ -771,13 +780,13 @@ export default {
 
     },
     mounted(){
-        if(localStorage.getItem(this.$route.path)){  //数据缓存
-            this.dataList=JSON.parse(localStorage.getItem(this.$route.path))
+        if(localStorage.getItem('zdQuestion')){  //数据缓存
+            if(this.$route.path== localStorage.getItem('zdQuestion')){
+                 this.dataList=JSON.parse(localStorage.getItem(this.$route.path))
+            }
             this.hasReady=false
-            this.$messagebox.alert('您已经提交过了，请勿重复提交')
-            return false
+            this.$messagebox.alert('您已经提交过问卷了，请勿重复提交')
         }
-       this.hideOn=true
     },
     computed:{
 

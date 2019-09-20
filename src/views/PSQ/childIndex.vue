@@ -10,10 +10,10 @@
                 <div class="center">
                     <div class="zf-wrapper-mom">
                         <div class="form-component">
-                            <drage-input v-model="dataList.DistrictName" :keyValue.sync="dataList.DistrictName" :modelValue.sync="dataList.DistrictNo"  
+                            <drage-input1 v-model="dataList.DistrictName" :keyValue.sync="dataList.DistrictName" :modelValue.sync="dataList.DistrictNo"  
                                         :slotContent="slotContent1" typeItem="pickCounty" :required="true" :iconRight="true"
                                         :disabled="true"  label="填表所在地" >
-                            </drage-input>
+                            </drage-input1>
                             <drage-input v-model="dataList.Tbszjg" label="填表所在机构"  type="text" :required="true" class="requrePage1" data-name="Tbszjg">
                             </drage-input>
                             <drage-input v-model="dataList.dMqcsrq" :required="true" :keyValue.sync="dataList.dMqcsrq" typeItem="date" :disabled="true"  :iconRight="true" label="填表时间" class="requrePage1" data-name="dMqcsrq">
@@ -32,7 +32,7 @@
                         </div>
                     </div>        
                 </div>
-                <div class="bottom" style="position:absolute;bottom:0;left:0;right:0;">
+                <div class="bottom" >
                     <div class= "pagination">
                         <div class="pag-box">
                             <button  class="btn" :disabled= "true" :class= "{ disabledBtn: true }" >上一页</button>
@@ -48,7 +48,7 @@
             </div>    
 
         </div>
-        <message-toast :hideOn="hideOn" mtitle="知情同意书" type="3" :conts="articleArray"></message-toast>    
+        <message-toast :hideOn="hideOn" mtitle="知情同意书" type="3" :conts="articleArray" @Onchange="Onchange"></message-toast>    
     </div>
 </template>
 <script>
@@ -56,6 +56,7 @@ import headers from '@/components/header/header'
 import {yunCon}  from '@/utils/slotContent'
 import {nations} from '@/utils/nations'
 import drageInput from '@/components/nomal/drageInput'
+import drageInput1 from '@/components/nomal/drageInput1'
 import superChecklist from '@/components/nomal/checklist'
 import messageToast  from '@/components/nomal/messageToast'
 import {dateFunction}  from '@/utils/dateFormat'
@@ -105,9 +106,13 @@ export default {
         headers,
         drageInput,
         superChecklist,
-        messageToast
+        messageToast,
+        drageInput1
     },
     methods:{
+        Onchange(){
+            this.hideOn=false
+        },
         changePage(){  //点击上一页，下一页
             if(this.dataList.age=='' ||  this.dataList.DistrictNo=='' || this.dataList.Tbszjg==''){
                this.$toast({
